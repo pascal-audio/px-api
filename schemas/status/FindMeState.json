@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Find-me LED state.",
+  "properties": {
+    "active": {
+      "description": "Whether find-me is currently active",
+      "type": "boolean"
+    },
+    "timeout_remaining": {
+      "description": "Seconds remaining until automatic timeout (None if not active)",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": [
+        "integer",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "active"
+  ],
+  "title": "FindMeState",
+  "type": "object"
+}

@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "properties": {
+    "attack": {
+      "anyOf": [
+        {
+          "$ref": "./RmsLimiterAttackType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "hold": {
+      "anyOf": [
+        {
+          "$ref": "./RmsLimiterHoldType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "knee": {
+      "anyOf": [
+        {
+          "$ref": "./RmsLimiterKneeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release": {
+      "anyOf": [
+        {
+          "$ref": "./RmsLimiterReleaseType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "threshold": {
+      "anyOf": [
+        {
+          "$ref": "./RmsLimiterThresholdType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

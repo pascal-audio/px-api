@@ -1,0 +1,70 @@
+{
+  "type": "object",
+  "properties": {
+    "fuse_protection": {
+      "anyOf": [
+        {
+          "$ref": "./FuseProtectionMode.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "last_power_state": {
+      "anyOf": [
+        {
+          "$ref": "./LastPowerState.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mute_time": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "$ref": "./MuteTimeType.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "power_on": {
+      "anyOf": [
+        {
+          "$ref": "./PowerOnMode.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "standby_time": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "$ref": "./StandbyTimeType.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

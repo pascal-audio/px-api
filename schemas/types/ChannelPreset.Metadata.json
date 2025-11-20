@@ -1,0 +1,54 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Metadata for a speaker preset This is stored unencrypted for easy identification without decryption",
+  "properties": {
+    "created_date": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Date.json"
+        }
+      ],
+      "description": "ISO 8601 timestamp of creation (RFC3339 format)"
+    },
+    "id": {
+      "description": "Unique preset identifier (UUID v4 or v7)",
+      "format": "uuid",
+      "type": "string"
+    },
+    "name": {
+      "description": "Human-readable preset name (e.g., \"Dynaudio Core 7 RevB\" or \"KRK Rokit 5 G4\")",
+      "type": "string"
+    },
+    "sample_rate": {
+      "description": "Vector of supported sample rates (48kHz or 96kHz)",
+      "items": {
+        "$ref": "../definitions/SampleRate.json"
+      },
+      "type": "array"
+    },
+    "vendor_lock": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/VendorId.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Vendor lock - prevents preset from being used with different vendor hardware"
+    },
+    "version": {
+      "description": "Version of the preset definition (e.g., \"1.2.0\")",
+      "type": "string"
+    }
+  },
+  "required": [
+    "created_date",
+    "id",
+    "name",
+    "sample_rate",
+    "version"
+  ],
+  "title": "ChannelPresetMetadata",
+  "type": "object"
+}

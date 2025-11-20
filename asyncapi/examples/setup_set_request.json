@@ -1,0 +1,11 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "setup_set",
+  "params": {
+    "path": "/audio/input/analog/1",
+    "value": {
+      "name": "Channel 1"
+    }
+  }
+}

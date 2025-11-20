@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Crossover filter with independent high-pass and low-pass filters.\n\n# Internal Type Used in **preset processing layer only**. User and array layers do NOT have crossover. Path: `/audio/output/speaker/1/preset/crossover`\n\n# Critical: Layer Availability - ✅ Preset layer: Has crossover (from factory presets)\n\n# Purpose Frequency-splits signal for multi-way speaker systems. Factory presets configure appropriate crossover points for LF, MF, HF drivers based on speaker model.\n\n# Structure - `gain`: Crossover gain adjustment (-20.0 to +20.0 dB) - `lpf`: Low-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off) - `lpf_freq`: Low-pass corner frequency (20.0-20000.0 Hz) - `hpf`: High-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off) - `hpf_freq`: High-pass corner frequency (20.0-20000.0 Hz) - `bypass`: Bypass both filters\n\n# Filter Types Each filter supports multiple slopes (6/12/24/36/48 dB/octave) and topologies: - Butterworth (But): Maximally flat passband - Linkwitz-Riley (LR): Ideal for multi-way systems (constant power sum) - Bessel (Bes): Linear phase, minimal ringing\n\n# Factory Defaults - Gain: 0 dB - Both filters: Off - Frequencies: 20 Hz (HPF), 20 kHz (LPF) - full bandwidth when enabled",
+  "properties": {
+    "bypass": {
+      "description": "Bypass both filters",
+      "type": "boolean"
+    },
+    "gain": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FilterGainType.json"
+        }
+      ],
+      "description": "Crossover gain adjustment in dB (range: -20.0 to +20.0)"
+    },
+    "hpf": {
+      "allOf": [
+        {
+          "$ref": "../definitions/CrossoverType.json"
+        }
+      ],
+      "description": "High-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off)"
+    },
+    "hpf_freq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FilterFrequencyType.json"
+        }
+      ],
+      "description": "High-pass corner frequency in Hz (range: 20.0-20000.0)"
+    },
+    "lpf": {
+      "allOf": [
+        {
+          "$ref": "../definitions/CrossoverType.json"
+        }
+      ],
+      "description": "Low-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off)"
+    },
+    "lpf_freq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FilterFrequencyType.json"
+        }
+      ],
+      "description": "Low-pass corner frequency in Hz (range: 20.0-20000.0)"
+    }
+  },
+  "required": [
+    "bypass",
+    "gain",
+    "hpf",
+    "hpf_freq",
+    "lpf",
+    "lpf_freq"
+  ],
+  "title": "Crossover",
+  "type": "object"
+}

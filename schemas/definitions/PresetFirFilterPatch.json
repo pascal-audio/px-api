@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "taps": {
+      "anyOf": [
+        {
+          "$ref": "./PresetFirTaps.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

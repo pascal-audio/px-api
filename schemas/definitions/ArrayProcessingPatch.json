@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "delay": {
+      "anyOf": [
+        {
+          "$ref": "./ArrayDelayTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./GainTrimType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "polarity": {
+      "anyOf": [
+        {
+          "$ref": "./PolarityType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

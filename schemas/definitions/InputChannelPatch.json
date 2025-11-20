@@ -1,0 +1,42 @@
+{
+  "type": "object",
+  "properties": {
+    "delay": {
+      "anyOf": [
+        {
+          "$ref": "./InputDelayTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./InputGainType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mute": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "FIR (Finite Impulse Response) filter for array processing layer.\n\n# Internal Type Used in **array processing layer** for installer-configurable linear-phase filtering. Path: `/audio/output/speaker/1/array/fir`\n\n# Purpose Installer-loaded FIR filters for array tuning. Typically used for: - Speaker voicing/tuning - Room acoustic correction - Phase alignment in multi-cabinet arrays\n\n# Structure - `bypass`: Enable/disable FIR filter - `taps`: FIR coefficient array (float32, max 64 taps)\n\n# Tap Validation `PresetFirTaps` validates: - Maximum 64 taps - Valid float values (no NaN/Inf) - Empty array allowed (no filtering)",
+  "properties": {
+    "bypass": {
+      "description": "Enable/disable FIR filter",
+      "type": "boolean"
+    },
+    "taps": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PresetFirTaps.json"
+        }
+      ],
+      "description": "FIR filter coefficients (max 64 taps, float32 array)"
+    }
+  },
+  "required": [
+    "bypass",
+    "taps"
+  ],
+  "title": "ArrayFirFilter",
+  "type": "object"
+}

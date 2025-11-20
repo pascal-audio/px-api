@@ -1,0 +1,6 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "status_get_all",
+  "params": {}
+}

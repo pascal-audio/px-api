@@ -1,0 +1,133 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Equalizer filter type defining the frequency response characteristic. Each filter type has different slope characteristics and use cases for audio processing.",
+  "oneOf": [
+    {
+      "description": "Parametric bell filter - symmetric boost/cut around center frequency with adjustable Q",
+      "enum": [
+        "parametric"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low-pass filter with 6 dB/octave slope - gentle treble rolloff",
+      "enum": [
+        "low_pass6"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low-pass filter with 12 dB/octave slope - steeper treble rolloff",
+      "enum": [
+        "low_pass12"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High-pass filter with 6 dB/octave slope - gentle bass rolloff",
+      "enum": [
+        "high_pass6"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High-pass filter with 12 dB/octave slope - steeper bass rolloff",
+      "enum": [
+        "high_pass12"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low shelf filter - boost/cut all frequencies below the corner frequency",
+      "enum": [
+        "low_shelf"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low shelf filter with Q control - adjustable transition steepness",
+      "enum": [
+        "low_shelf_q"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low shelf filter with 6 dB/octave slope",
+      "enum": [
+        "low_shelf6"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Low shelf filter with 12 dB/octave slope",
+      "enum": [
+        "low_shelf12"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High shelf filter - boost/cut all frequencies above the corner frequency",
+      "enum": [
+        "high_shelf"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High shelf filter with 6 dB/octave slope",
+      "enum": [
+        "high_shelf6"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High shelf filter with Q control - adjustable transition steepness",
+      "enum": [
+        "high_shelf_q"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "High shelf filter with 12 dB/octave slope",
+      "enum": [
+        "high_shelf12"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "All-pass filter (1st order) - phase shift without magnitude change",
+      "enum": [
+        "allpass1"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "All-pass filter (2nd order) - phase shift without magnitude change",
+      "enum": [
+        "allpass2"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Band-pass filter - passes frequencies within a band, attenuates outside",
+      "enum": [
+        "bandpass"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Notch filter - attenuates frequencies in a narrow band (opposite of parametric)",
+      "enum": [
+        "notch"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Tilt filter - simultaneous shelf boost at one end and cut at the other",
+      "enum": [
+        "tilt"
+      ],
+      "type": "string"
+    }
+  ],
+  "title": "EqualizerType"
+}

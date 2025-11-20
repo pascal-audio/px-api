@@ -1,0 +1,5 @@
+{
+  "description": "Vendor identifier (internal use only)",
+  "type": "integer",
+  "format": "uint32"
+}

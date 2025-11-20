@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for unsubscribe operations (status_unsubscribe, setup_unsubscribe, metrics_unsubscribe).\n\nCancels an active subscription using the subscription ID returned by the subscribe method.\n\n# Fields * `subscription_id` - Subscription identifier to cancel\n\n# Example ```json { \"subscription_id\": \"550e8400-e29b-41d4-a716-446655440000\" } ```",
+  "properties": {
+    "subscription_id": {
+      "default": "",
+      "description": "Subscription ID to cancel",
+      "type": "string"
+    }
+  },
+  "title": "JapiUnsubscribeParams",
+  "type": "object"
+}

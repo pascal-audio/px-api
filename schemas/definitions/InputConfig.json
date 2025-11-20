@@ -1,0 +1,17 @@
+{
+  "description": "Global input configuration (source selection).\n\n# Internal Type Single instance per device. Path: `/audio/input/config`\n\n# Structure - `input_switch`: Active input source (Analog, Digital, Network, Generator)\n\n# Behavior Determines which physical/network input feeds the speaker output channels. Only one input type can be active at a time.",
+  "type": "object",
+  "required": [
+    "input_switch"
+  ],
+  "properties": {
+    "input_switch": {
+      "description": "Active input source (Analog, Digital, Network, or Generator)",
+      "allOf": [
+        {
+          "$ref": "./InputSwitchType.json"
+        }
+      ]
+    }
+  }
+}

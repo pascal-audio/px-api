@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for subscribe operations (status_subscribe, setup_subscribe, metrics_subscribe).\n\nEstablishes a subscription for real-time updates on configuration or status changes.\n\n# Fields * `path` - Optional path filter (None = subscribe to all changes) * `freq` - Optional update frequency in Hz (metrics_subscribe only)\n\n# Example - Subscribe to all setup changes ```json { \"path\": null } ```\n\n# Example - Subscribe to specific path ```json { \"path\": \"/audio/output/speaker/1\" } ```\n\n# Example - Metrics at 10 Hz ```json { \"path\": null, \"freq\": 10.0 } ```",
+  "properties": {
+    "freq": {
+      "description": "Optional frequency for metrics subscriptions (Hz)",
+      "format": "float",
+      "type": [
+        "number",
+        "null"
+      ]
+    },
+    "path": {
+      "description": "Optional path to subscribe to (None = subscribe to all)",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "title": "JapiSubscribeParams",
+  "type": "object"
+}

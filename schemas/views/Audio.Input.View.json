@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "View version of AudioInput with numbered channel keys.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.) for JSON API compatibility.",
+  "properties": {
+    "analog": {
+      "additionalProperties": {
+        "$ref": "../definitions/InputChannel.json"
+      },
+      "description": "Analog input channels (keys: \"1\", \"2\", \"3\", \"4\")",
+      "type": "object"
+    },
+    "config": {
+      "allOf": [
+        {
+          "$ref": "../definitions/InputConfig.json"
+        }
+      ],
+      "description": "Input source selection configuration"
+    },
+    "digital": {
+      "additionalProperties": {
+        "$ref": "../definitions/InputChannel.json"
+      },
+      "description": "Digital (AES/EBU) input channels (keys: \"1\", \"2\")",
+      "type": "object"
+    },
+    "generator": {
+      "allOf": [
+        {
+          "$ref": "../definitions/GeneratorSetup.json"
+        }
+      ],
+      "description": "Test signal generator settings"
+    },
+    "network": {
+      "additionalProperties": {
+        "$ref": "../definitions/InputChannel.json"
+      },
+      "description": "Network (Dante) input channels (keys: \"1\" through \"64\")",
+      "type": "object"
+    }
+  },
+  "required": [
+    "analog",
+    "config",
+    "digital",
+    "generator",
+    "network"
+  ],
+  "title": "AudioInputView",
+  "type": "object"
+}

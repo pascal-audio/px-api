@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "enum": [
+    "white_noise",
+    "pink_noise",
+    "sine"
+  ]
+}

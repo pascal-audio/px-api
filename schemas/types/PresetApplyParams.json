@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for applying a channel preset\n\n# Fields * `channel` - Speaker channel index (1-4) * `preset` - Preset data in one of two formats: - JSON object: Plain `ChannelPreset` structure - Base64 string: Encrypted or unencrypted CBOR binary preset",
+  "properties": {
+    "channel": {
+      "description": "Speaker channel index (1-4)",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": "integer"
+    },
+    "preset": {
+      "description": "Preset data - JSON object or base64-encoded binary"
+    }
+  },
+  "required": [
+    "channel",
+    "preset"
+  ],
+  "title": "PresetApplyParams",
+  "type": "object"
+}

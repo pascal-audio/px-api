@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Generic status response\n\n# Fields * `success` - Whether the operation succeeded * `message` - Human-readable status message",
+  "properties": {
+    "message": {
+      "description": "Status or error message",
+      "type": "string"
+    },
+    "success": {
+      "description": "Operation success indicator",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "message",
+    "success"
+  ],
+  "title": "JapiSuccessResponse",
+  "type": "object"
+}

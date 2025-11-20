@@ -1,0 +1,40 @@
+{
+  "description": "Log level for filtering device logs",
+  "oneOf": [
+    {
+      "description": "Trace level - most verbose",
+      "type": "string",
+      "enum": [
+        "TRACE"
+      ]
+    },
+    {
+      "description": "Debug level - detailed debugging information",
+      "type": "string",
+      "enum": [
+        "DEBUG"
+      ]
+    },
+    {
+      "description": "Info level - general informational messages",
+      "type": "string",
+      "enum": [
+        "INFO"
+      ]
+    },
+    {
+      "description": "Warn level - warning messages",
+      "type": "string",
+      "enum": [
+        "WARN"
+      ]
+    },
+    {
+      "description": "Error level - error messages only",
+      "type": "string",
+      "enum": [
+        "ERROR"
+      ]
+    }
+  ]
+}

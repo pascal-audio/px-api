@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "A speaker preset with associated metadata",
+  "properties": {
+    "clip_limiter": {
+      "$ref": "../definitions/ClipLimiter.json"
+    },
+    "crossover": {
+      "$ref": "../definitions/Crossover.json"
+    },
+    "delay": {
+      "$ref": "../definitions/PresetDelayTimeType.json"
+    },
+    "drive": {
+      "$ref": "../definitions/OutputDriveType.json"
+    },
+    "eq": {
+      "$ref": "../definitions/Equalizer.json"
+    },
+    "fir": {
+      "$ref": "../definitions/ChannelPresetFirFilter.json"
+    },
+    "id": {
+      "format": "uuid",
+      "type": "string"
+    },
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ChannelPresetMetadata.json"
+        }
+      ],
+      "description": "Metadata for the preset (identification, manufacturer info, etc.)"
+    },
+    "peak_limiter": {
+      "$ref": "../definitions/PeakLimiter.json"
+    },
+    "polarity": {
+      "$ref": "../definitions/PolarityType.json"
+    },
+    "rms_limiter": {
+      "$ref": "../definitions/RmsLimiter.json"
+    },
+    "version": {
+      "$ref": "../definitions/ChannelPresetVersion.json"
+    }
+  },
+  "required": [
+    "clip_limiter",
+    "crossover",
+    "delay",
+    "drive",
+    "eq",
+    "fir",
+    "id",
+    "metadata",
+    "peak_limiter",
+    "polarity",
+    "rms_limiter",
+    "version"
+  ],
+  "title": "ChannelPreset",
+  "type": "object"
+}

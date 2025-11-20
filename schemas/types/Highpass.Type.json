@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "enum": [
+    "off",
+    "but12",
+    "but24",
+    "lr12",
+    "lr24"
+  ],
+  "title": "HighpassType",
+  "type": "string"
+}

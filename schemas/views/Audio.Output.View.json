@@ -1,0 +1,46 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "View version of AudioOutput with numbered channel keys and preset locking.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.). Uses SpeakerOutputChannelView to handle vendor-locked presets.",
+  "properties": {
+    "digital": {
+      "additionalProperties": {
+        "$ref": "../definitions/DigitalOutputChannel.json"
+      },
+      "description": "Digital (AES/EBU) output channels (keys: \"1\", \"2\")",
+      "type": "object"
+    },
+    "network": {
+      "additionalProperties": {
+        "$ref": "../definitions/DigitalOutputChannel.json"
+      },
+      "description": "Network (Dante) output channels (keys: \"1\" through \"64\")",
+      "type": "object"
+    },
+    "speaker": {
+      "additionalProperties": {
+        "$ref": "../definitions/SpeakerOutputChannelView.json"
+      },
+      "description": "Speaker output channels with 3-layer DSP (keys: \"1\", \"2\", \"3\", \"4\")",
+      "type": "object"
+    },
+    "summing_matrix": {
+      "description": "Input-to-output summing/routing matrix",
+      "items": {
+        "items": {
+          "format": "float",
+          "type": "number"
+        },
+        "type": "array"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "digital",
+    "network",
+    "speaker",
+    "summing_matrix"
+  ],
+  "title": "AudioOutputView",
+  "type": "object"
+}

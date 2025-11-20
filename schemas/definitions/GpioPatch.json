@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "gpio1": {
+      "anyOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gpio2": {
+      "anyOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gpio3": {
+      "anyOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gpio4": {
+      "anyOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

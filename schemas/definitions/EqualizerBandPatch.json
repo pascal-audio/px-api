@@ -1,0 +1,52 @@
+{
+  "type": "object",
+  "properties": {
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "frequency": {
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./FilterGainType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "kind": {
+      "anyOf": [
+        {
+          "$ref": "./EqualizerType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "q": {
+      "anyOf": [
+        {
+          "$ref": "./FilterQType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

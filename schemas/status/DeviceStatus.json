@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Complete runtime device status.\n\nThis is the root type returned by `status_get_all()`.",
+  "properties": {
+    "audio": {
+      "allOf": [
+        {
+          "$ref": "../definitions/AudioStatus.json"
+        }
+      ],
+      "description": "Audio processing status (sample rate, sync source, channel states)"
+    },
+    "firmware": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FirmwareVersions.json"
+        }
+      ],
+      "description": "Firmware and subsystem versions"
+    },
+    "info": {
+      "allOf": [
+        {
+          "$ref": "../definitions/DeviceInfo.json"
+        }
+      ],
+      "description": "Static device information"
+    },
+    "network": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NetworkStatus.json"
+        }
+      ],
+      "description": "Network interface status (LAN1, LAN2, Dante)"
+    },
+    "state": {
+      "allOf": [
+        {
+          "$ref": "../definitions/DeviceState.json"
+        }
+      ],
+      "description": "Device operational state (power, find_me, uptime)"
+    }
+  },
+  "required": [
+    "audio",
+    "firmware",
+    "info",
+    "network",
+    "state"
+  ],
+  "title": "DeviceStatus",
+  "type": "object"
+}

@@ -1,0 +1,5056 @@
+asyncapi: 3.0.0
+channels:
+  jsonrpc:
+    address: /ws
+    description: JSON-RPC 2.0 WebSocket channel for bidirectional communication
+    messages:
+      api_check_version_request:
+        $ref: '#/components/messages/api_check_version_request'
+      api_check_version_response:
+        $ref: '#/components/messages/api_check_version_response'
+      api_ping_request:
+        $ref: '#/components/messages/api_ping_request'
+      api_ping_response:
+        $ref: '#/components/messages/api_ping_response'
+      api_version_request:
+        $ref: '#/components/messages/api_version_request'
+      api_version_response:
+        $ref: '#/components/messages/api_version_response'
+      backup_create_request:
+        $ref: '#/components/messages/backup_create_request'
+      backup_create_response:
+        $ref: '#/components/messages/backup_create_response'
+      backup_restore_request:
+        $ref: '#/components/messages/backup_restore_request'
+      backup_restore_response:
+        $ref: '#/components/messages/backup_restore_response'
+      device_find_me_request:
+        $ref: '#/components/messages/device_find_me_request'
+      device_find_me_response:
+        $ref: '#/components/messages/device_find_me_response'
+      device_get_time_request:
+        $ref: '#/components/messages/device_get_time_request'
+      device_get_time_response:
+        $ref: '#/components/messages/device_get_time_response'
+      device_power_off_request:
+        $ref: '#/components/messages/device_power_off_request'
+      device_power_off_response:
+        $ref: '#/components/messages/device_power_off_response'
+      device_power_on_request:
+        $ref: '#/components/messages/device_power_on_request'
+      device_power_on_response:
+        $ref: '#/components/messages/device_power_on_response'
+      device_reboot_request:
+        $ref: '#/components/messages/device_reboot_request'
+      device_reboot_response:
+        $ref: '#/components/messages/device_reboot_response'
+      device_reset_request:
+        $ref: '#/components/messages/device_reset_request'
+      device_reset_response:
+        $ref: '#/components/messages/device_reset_response'
+      device_set_time_request:
+        $ref: '#/components/messages/device_set_time_request'
+      device_set_time_response:
+        $ref: '#/components/messages/device_set_time_response'
+      diagnostics_get_request:
+        $ref: '#/components/messages/diagnostics_get_request'
+      diagnostics_get_response:
+        $ref: '#/components/messages/diagnostics_get_response'
+      logs_get_request:
+        $ref: '#/components/messages/logs_get_request'
+      logs_get_response:
+        $ref: '#/components/messages/logs_get_response'
+      logs_set_level_request:
+        $ref: '#/components/messages/logs_set_level_request'
+      logs_set_level_response:
+        $ref: '#/components/messages/logs_set_level_response'
+      metrics_subscribe_request:
+        $ref: '#/components/messages/metrics_subscribe_request'
+      metrics_subscribe_response:
+        $ref: '#/components/messages/metrics_subscribe_response'
+      metrics_unsubscribe_request:
+        $ref: '#/components/messages/metrics_unsubscribe_request'
+      metrics_unsubscribe_response:
+        $ref: '#/components/messages/metrics_unsubscribe_response'
+      metrics_update_notification:
+        $ref: '#/components/messages/metrics_update_notification'
+      preset_apply_request:
+        $ref: '#/components/messages/preset_apply_request'
+      preset_apply_response:
+        $ref: '#/components/messages/preset_apply_response'
+      preset_clear_request:
+        $ref: '#/components/messages/preset_clear_request'
+      preset_clear_response:
+        $ref: '#/components/messages/preset_clear_response'
+      preset_create_request:
+        $ref: '#/components/messages/preset_create_request'
+      preset_create_response:
+        $ref: '#/components/messages/preset_create_response'
+      preset_show_request:
+        $ref: '#/components/messages/preset_show_request'
+      preset_show_response:
+        $ref: '#/components/messages/preset_show_response'
+      setup_get_all_request:
+        $ref: '#/components/messages/setup_get_all_request'
+      setup_get_all_response:
+        $ref: '#/components/messages/setup_get_all_response'
+      setup_get_request:
+        $ref: '#/components/messages/setup_get_request'
+      setup_get_response:
+        $ref: '#/components/messages/setup_get_response'
+      setup_get_value_request:
+        $ref: '#/components/messages/setup_get_value_request'
+      setup_get_value_response:
+        $ref: '#/components/messages/setup_get_value_response'
+      setup_set_request:
+        $ref: '#/components/messages/setup_set_request'
+      setup_set_response:
+        $ref: '#/components/messages/setup_set_response'
+      setup_set_value_request:
+        $ref: '#/components/messages/setup_set_value_request'
+      setup_set_value_response:
+        $ref: '#/components/messages/setup_set_value_response'
+      setup_subscribe_request:
+        $ref: '#/components/messages/setup_subscribe_request'
+      setup_subscribe_response:
+        $ref: '#/components/messages/setup_subscribe_response'
+      setup_unsubscribe_request:
+        $ref: '#/components/messages/setup_unsubscribe_request'
+      setup_unsubscribe_response:
+        $ref: '#/components/messages/setup_unsubscribe_response'
+      setup_update_notification:
+        $ref: '#/components/messages/setup_update_notification'
+      status_get_all_request:
+        $ref: '#/components/messages/status_get_all_request'
+      status_get_all_response:
+        $ref: '#/components/messages/status_get_all_response'
+      status_get_request:
+        $ref: '#/components/messages/status_get_request'
+      status_get_response:
+        $ref: '#/components/messages/status_get_response'
+      status_subscribe_request:
+        $ref: '#/components/messages/status_subscribe_request'
+      status_subscribe_response:
+        $ref: '#/components/messages/status_subscribe_response'
+      status_unsubscribe_request:
+        $ref: '#/components/messages/status_unsubscribe_request'
+      status_unsubscribe_response:
+        $ref: '#/components/messages/status_unsubscribe_response'
+      status_update_notification:
+        $ref: '#/components/messages/status_update_notification'
+components:
+  messages:
+    api_check_version_request:
+      contentType: application/json
+      description: |
+        Check client version compatibility.
+
+        Validates whether the client version is compatible with the server API.
+        Supports N-1 major version compatibility (current and previous major version).
+
+        # Parameters
+        * `params.client_version` - Client version string (e.g., "1.0.0")
+
+        # Returns
+        `ApiCheckVersionResponse` with compatibility status and warnings
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: api_check_version example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: api_check_version
+          params:
+            client_version: 1.0.0
+        summary: Example request for api_check_version
+      name: api_check_version_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: api_check_version
+            type: string
+          params:
+            $ref: ./schemas/types/ApiCheckVersionParams.json
+            description: Parameters for api_check_version
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Check client version compatibility.
+      tags:
+      - name: api
+      title: api_check_version Request
+    api_check_version_response:
+      contentType: application/json
+      examples:
+      - name: api_check_version example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            compatible: true
+            server_api_level: 1
+            server_version: 1.0.0
+            warnings: []
+        summary: Example response for api_check_version
+      name: api_check_version_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/ApiCheckVersionResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for api_check_version
+      title: api_check_version Response
+    api_ping_request:
+      contentType: application/json
+      description: |
+        Ping the API.
+
+        Simple connectivity test that returns "pong".
+
+        # Parameters
+        None
+
+        # Returns
+        String "pong"
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: api_ping example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: api_ping
+          params: {}
+        summary: Example request for api_ping
+      name: api_ping_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: api_ping
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for api_ping
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Ping the API.
+      tags:
+      - name: api
+      title: api_ping Request
+    api_ping_response:
+      contentType: application/json
+      examples:
+      - name: api_ping example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result: pong
+        summary: Example response for api_ping
+      name: api_ping_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/ApiPingResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for api_ping
+      title: api_ping Response
+    api_version_request:
+      contentType: application/json
+      description: |
+        Get API version information.
+
+        Returns current JAPI version, API level, and firmware version.
+
+        # Parameters
+        None
+
+        # Returns
+        `ApiVersionResponse` with version details
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: api_version example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: api_version
+          params: {}
+        summary: Example request for api_version
+      name: api_version_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: api_version
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for api_version
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get API version information.
+      tags:
+      - name: api
+      title: api_version Request
+    api_version_response:
+      contentType: application/json
+      examples:
+      - name: api_version example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            api_level: 1
+            api_version: 1.0.0
+            firmware_version: 0.1.0
+        summary: Example response for api_version
+      name: api_version_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/ApiVersionResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for api_version
+      title: api_version Response
+    backup_create_request:
+      contentType: application/json
+      description: Create device backup
+      examples:
+      - name: backup_create example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: backup_create
+          params: {}
+        summary: Example request for backup_create
+      name: backup_create_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: backup_create
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for backup_create
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Create device backup
+      tags:
+      - name: device
+      title: backup_create Request
+    backup_create_response:
+      contentType: application/json
+      examples:
+      - name: backup_create example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            config: 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
+            timestamp: 2025-11-12T15:54:36.690750146+00:00
+        summary: Example response for backup_create
+      name: backup_create_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/DeviceBackupResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for backup_create
+      title: backup_create Response
+    backup_restore_request:
+      contentType: application/json
+      description: Restore device from backup
+      examples:
+      - name: backup_restore example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: backup_restore
+          params:
+            config: UEsDBDMAAQBjANJ+bFtmCGUSkwQAALsnAAAQAAsAZGV2aWNlX3NldHVwLmJpbgGZBwABAEFFAQgAXoYPGZb5ws0bR/6CiQw6dksbFMJl+cGl4X3n5+Tt1dPIe6JGvDz7+4rOS8IL9mDgCgm0/FIM0MbeY/R37H/e8dTvMkksOVe3Rm0/qpy+aR0CRe9+nE7tRQnKmRHXeJSO+zXiTPnNJAPGGmuP9Zor1Sy7PTdeorupwMOUiDoIlQR0rFtVjv/+APyatRFal5AFkCXUqfM4gAn73/+hNBd9vyaGWeCoDOes4jYcpEEJL2DtNIf31cuc43cqqByp7zhWKkYUWscv/f2UaPDdjZxDmBm5MYBAT4YNnnWUxX6S75eEahLpJ6wHNk3tL+wCRd/ctQu//+JjbeOoQ3OnTnll7YBXUxfSDdowUyifL329e2P2G8u3jXe8VIPETHNaloNcYSrGRDjwJVX778QeE3jOEYX4Z7yZjVAG2dQEb0iyVQb1bAmKEuuj3P/pRJMrl46oachLmLPxrwoWvAf2Syf63us/YUhjXcjSyyE67ir+ikSmH+3A9CTQXuD1Ln+bgHG4iXUuajre18EFPYiU1/asIpkg1Ewzus8xXgsCob2L74sck5QAkt6dvthr7RE4B7EDkJsu/snlQuD1ZeSMIGCfu/RImOZVx+hhifdByuDvKdZY38T3hAUSyHtbVI+wEBICwWT9MmB+vQNwbCUtSTiifNKQkf37xJDj7debeifTPykZ8tf0HBaX3aAItfVkHWK4JYPoIslRV2EtZqAhI/VUZXP1F6MJ6BSeAQVjgdXROs2edaL+UwcrHwO5JdZFh5aCBql+HXGz00FwlQjbLWpwW9AbiP7AGAgGBMYM4eG3QYjH/bdew3phPtNw2rPyZBz9iHA/j606FflphlMevBc8s2WJI2woq/juKxvndTZ5jM82TuGOCoYptbxszjx7aKan9oY3K9AuejOoA8AlyuDXzknVSupF5rmZ4dNYSZmZ2LbvywvYksYG5MGFENNUFRMj5l3APxfwc30Eb+alQEwZ/3fOB64R3siP5Jgw+wufASTUtuS1MQDngb5pnxBhBJtNesUvam5fXnIDU9v9kcHwFV3G2TVNB97etnb155hJ0mhq1syQBAHqDwDO9rWpAjtNa9hcfaaM1t6euMLaBm+SAfGwj8edIYXHK96hWGU9Vw3JNO9x/ZyO2lNZjyXr7n8wMTW3RJ2v/R4VEvP/GAk5QpsE2MonMQigpoQA5diDVG4JH98ap1oaSOjzaXtmRWonNxVlJTwpxiTc31l+zfToQDlFkZV8PJxQEDpo0AeEkUe12WRYESsBLyFTaP1N+3eQGxns1WDzu6KDxwwRpMEFyJuFsD6DvjuZcyhnoJzZyyVWBiYgnJIUtnt5UYqe0GKc3kSwcQeDMFFgnrF/mARnRceY7laurlAFBCkQSYoWFobAAK36edF3rvK4p3mwiQj62G20ZDvIGhVgoFNKrkVfEUFgos+T7x2zabarhmXlNEHA1E4DzSsLD6WYfSq4LeTRTpaDhvYw9LTCv1A4xPDXmN8xH+7rFXJS12dTIEud+HHY9mTQbxOnNYnh+Q80fSMis1PW+1jDD+J/sxkgtUsiY4EosVBLAwQUAAAACADSfmxbQP8NoYMAAADfAAAAFAAAAGJhY2t1cF9tZXRhZGF0YS5qc29uNYw7DsIwEER7n2LkmiDvZtdJfA5EAaJIkSISAUQsGsTdkeV1NaM3n68D/Gd57+vz4RP8mfyhoLxuy57n7VUgB9aOqCM+kSaV1MdjGEZhjSyXOtjne/YJVwcALFwgQFKV2QCHaEnszehQTW9dGqlVGjFVCzjYm45VpRUnO53EATf3+wNQSwECMwMzAAEAYwDSfmxbZghlEpMEAAC7JwAAEAALAAAAAAAAAAAAgIEAAAAAZGV2aWNlX3NldHVwLmJpbgGZBwABAEFFAQgAUEsBAhQDFAAAAAgA0n5sW0D/DaGDAAAA3wAAABQAAAAAAAAAAAAAAKSBzAQAAGJhY2t1cF9tZXRhZGF0YS5qc29uUEsFBgAAAAACAAIAiwAAAIEFAAAAAA==
+        summary: Example request for backup_restore
+      name: backup_restore_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: backup_restore
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceRestoreParams.json
+            description: Parameters for backup_restore
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Restore device from backup
+      tags:
+      - name: device
+      title: backup_restore Request
+    backup_restore_response:
+      contentType: application/json
+      examples:
+      - name: backup_restore example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Device configuration restored successfully, preserve_network false
+            success: true
+        summary: Example response for backup_restore
+      name: backup_restore_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for backup_restore
+      title: backup_restore Response
+    device_find_me_request:
+      contentType: application/json
+      description: Make device identify itself (find me)
+      examples:
+      - name: device_find_me example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_find_me
+          params:
+            timeout: 5.0
+        summary: Example request for device_find_me
+      name: device_find_me_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_find_me
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceFindMeParams.json
+            description: Parameters for device_find_me
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Make device identify itself (find me)
+      tags:
+      - name: device
+      title: device_find_me Request
+    device_find_me_response:
+      contentType: application/json
+      examples:
+      - name: device_find_me example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            status: identifying
+            timeout: 5.0
+        summary: Example response for device_find_me
+      name: device_find_me_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/DeviceFindMeResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_find_me
+      title: device_find_me Response
+    device_get_time_request:
+      contentType: application/json
+      description: Get system time in UTC RFC 3339 format
+      examples:
+      - name: device_get_time example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_get_time
+          params: {}
+        summary: Example request for device_get_time
+      name: device_get_time_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_get_time
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for device_get_time
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get system time in UTC RFC 3339 format
+      tags:
+      - name: device
+      title: device_get_time Request
+    device_get_time_response:
+      contentType: application/json
+      examples:
+      - name: device_get_time example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            time: 2025-11-12T15:49:25.272567910+00:00
+        summary: Example response for device_get_time
+      name: device_get_time_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/SystemTimeResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_get_time
+      title: device_get_time Response
+    device_power_off_request:
+      contentType: application/json
+      description: Power off the device
+      examples:
+      - name: device_power_off example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_power_off
+          params: {}
+        summary: Example request for device_power_off
+      name: device_power_off_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_power_off
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for device_power_off
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Power off the device
+      tags:
+      - name: device
+      title: device_power_off Request
+    device_power_off_response:
+      contentType: application/json
+      examples:
+      - name: device_power_off example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            status: powering_off
+        summary: Example response for device_power_off
+      name: device_power_off_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_power_off
+      title: device_power_off Response
+    device_power_on_request:
+      contentType: application/json
+      description: Power on the device
+      examples:
+      - name: device_power_on example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_power_on
+          params: {}
+        summary: Example request for device_power_on
+      name: device_power_on_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_power_on
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for device_power_on
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Power on the device
+      tags:
+      - name: device
+      title: device_power_on Request
+    device_power_on_response:
+      contentType: application/json
+      examples:
+      - name: device_power_on example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            status: powering_on
+        summary: Example response for device_power_on
+      name: device_power_on_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_power_on
+      title: device_power_on Response
+    device_reboot_request:
+      contentType: application/json
+      description: Reboot the device
+      examples:
+      - name: device_reboot example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_reboot
+          params: {}
+        summary: Example request for device_reboot
+      name: device_reboot_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_reboot
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for device_reboot
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Reboot the device
+      tags:
+      - name: device
+      title: device_reboot Request
+    device_reboot_response:
+      contentType: application/json
+      examples:
+      - name: device_reboot example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result: true
+        summary: Example response for device_reboot
+      name: device_reboot_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSuccessResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_reboot
+      title: device_reboot Response
+    device_reset_request:
+      contentType: application/json
+      description: Factory reset the device
+      examples:
+      - name: device_reset example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_reset
+          params:
+            preserve_network: false
+        summary: Example request for device_reset
+      name: device_reset_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_reset
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceResetParams.json
+            description: Parameters for device_reset
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Factory reset the device
+      tags:
+      - name: device
+      title: device_reset Request
+    device_reset_response:
+      contentType: application/json
+      examples:
+      - name: device_reset example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Device configuration reset to factory defaults
+            preserve_network: false
+            success: true
+        summary: Example response for device_reset
+      name: device_reset_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/DeviceResetResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_reset
+      title: device_reset Response
+    device_set_time_request:
+      contentType: application/json
+      description: Set system time from UTC RFC 3339 format
+      examples:
+      - name: device_set_time example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: device_set_time
+          params:
+            time: 2025-11-12T15:51:13.658128+00:00
+        summary: Example request for device_set_time
+      name: device_set_time_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: device_set_time
+            type: string
+          params:
+            $ref: ./schemas/types/SystemSetTimeParams.json
+            description: Parameters for device_set_time
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Set system time from UTC RFC 3339 format
+      tags:
+      - name: device
+      title: device_set_time Request
+    device_set_time_response:
+      contentType: application/json
+      examples:
+      - name: device_set_time example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: System time set to 2025-11-12T15:51:13.658128+00:00
+            success: true
+        summary: Example response for device_set_time
+      name: device_set_time_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for device_set_time
+      title: device_set_time Response
+    diagnostics_get_request:
+      contentType: application/json
+      description: Execute the diagnostics_get method
+      examples:
+      - name: diagnostics_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: diagnostics_get
+          params: {}
+        summary: Example request for diagnostics_get
+      name: diagnostics_get_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: diagnostics_get
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceGetDiagnosticsParams.json
+            description: Parameters for diagnostics_get
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Execute diagnostics_get
+      tags:
+      - name: device
+      title: diagnostics_get Request
+    diagnostics_get_response:
+      contentType: application/json
+      examples:
+      - name: diagnostics_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            system_state:
+              current_state: Off
+              error_count: 0
+              fw_update_in_progress: false
+              last_error: null
+              last_error_timestamp: null
+              power_button_pressed: false
+              previous_state: Init
+              recovery_attempt_count: 0
+              request_power_off: false
+              request_power_on: false
+              state_enter_timestamp: 1762962562.4993558
+              time_in_state_seconds: 417.500644169
+              time_since_last_error_seconds: null
+        summary: Example response for diagnostics_get
+      name: diagnostics_get_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for diagnostics_get
+      title: diagnostics_get Response
+    logs_get_request:
+      contentType: application/json
+      description: |
+        Get device logs with optional limit and offset (default: 100 most recent entries, offset 0)
+        Logs are returned newest first. Use offset for paging.
+      examples:
+      - name: logs_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: logs_get
+          params: {}
+        summary: Example request for logs_get
+      name: logs_get_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: logs_get
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceGetLogsParams.json
+            description: Parameters for logs_get
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: |-
+        Get device logs with optional limit and offset (default: 100 most recent entries, offset 0)
+        Logs are returned newest first.
+      tags:
+      - name: device
+      title: logs_get Request
+    logs_get_response:
+      contentType: application/json
+      examples:
+      - name: logs_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+          - fields: {}
+            level: INFO
+            message: Starting DanteControllerFake
+            target: thrust::device::managers::dante_controller_fake
+            timestamp: 2025-11-12T15:49:22.876Z
+          - fields: {}
+            level: INFO
+            message: Starting StateController
+            target: thrust::device::managers::state_controller
+            timestamp: 2025-11-12T15:49:22.876Z
+        summary: Example response for logs_get
+      name: logs_get_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/DeviceGetLogsResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for logs_get
+      title: logs_get Response
+    logs_set_level_request:
+      contentType: application/json
+      description: Set log level filter
+      examples:
+      - name: logs_set_level example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: logs_set_level
+          params:
+            filter: ERROR
+        summary: Example request for logs_set_level
+      name: logs_set_level_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: logs_set_level
+            type: string
+          params:
+            $ref: ./schemas/types/DeviceSetLogLevelParams.json
+            description: Parameters for logs_set_level
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Set log level filter
+      tags:
+      - name: device
+      title: logs_set_level Request
+    logs_set_level_response:
+      contentType: application/json
+      examples:
+      - name: logs_set_level example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: 'Log level filter set to: ERROR'
+            success: true
+        summary: Example response for logs_set_level
+      name: logs_set_level_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for logs_set_level
+      title: logs_set_level Response
+    metrics_subscribe_request:
+      contentType: application/json
+      description: |
+        Subscribe to metrics updates.
+
+        Creates a subscription for real-time metrics data (audio levels, temperatures, etc.).
+
+        # Parameters
+        * `params.path` - Optional path filter (None = all metrics)
+        * `params.freq` - Optional update frequency in Hz (default: system default)
+
+        # Returns
+        Subscription response with subscription_id
+
+        # Errors
+        * `INVALID_VALUE` - Invalid frequency value (out of supported range)
+      examples:
+      - name: metrics_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: metrics_subscribe
+          params:
+            interval: 1000
+        summary: Example request for metrics_subscribe
+      name: metrics_subscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: metrics_subscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiSubscribeParams.json
+            description: Parameters for metrics_subscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Subscribe to metrics updates.
+      tags:
+      - name: metrics
+      title: metrics_subscribe Request
+    metrics_subscribe_response:
+      contentType: application/json
+      examples:
+      - name: metrics_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example response for metrics_subscribe
+      name: metrics_subscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSubscribeResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for metrics_subscribe
+      title: metrics_subscribe Response
+    metrics_unsubscribe_request:
+      contentType: application/json
+      description: |
+        Unsubscribe from metrics updates.
+
+        Cancels an active metrics subscription.
+
+        # Parameters
+        * `params.subscription_id` - Subscription identifier to cancel
+
+        # Returns
+        Null value confirming cancellation
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: metrics_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: metrics_unsubscribe
+          params:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example request for metrics_unsubscribe
+      name: metrics_unsubscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: metrics_unsubscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiUnsubscribeParams.json
+            description: Parameters for metrics_unsubscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Unsubscribe from metrics updates.
+      tags:
+      - name: metrics
+      title: metrics_unsubscribe Request
+    metrics_unsubscribe_response:
+      contentType: application/json
+      examples:
+      - name: metrics_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Unsubscribed
+            success: true
+        summary: Example response for metrics_unsubscribe
+      name: metrics_unsubscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSuccessResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for metrics_unsubscribe
+      title: metrics_unsubscribe Response
+    metrics_update_notification:
+      contentType: application/json
+      name: metrics_update_notification
+      payload:
+        properties:
+          method:
+            const: metrics_update
+            type: string
+          params:
+            description: Notification payload for metrics_update
+        required:
+        - method
+        - params
+        type: object
+      summary: Real-time metrics update notification
+      tags:
+      - name: notifications
+      title: metrics_update Notification
+    preset_apply_request:
+      contentType: application/json
+      description: |
+        Apply a speaker preset to a channel
+
+        Accepts presets in two formats:
+        1. **JSON object** - Plain `ChannelPreset` structure with all processing parameters
+        2. **Base64 string** - Encoded binary preset (encrypted vendor-locked or plain CBOR)
+
+        The method automatically detects the format, deserializes the preset, and applies
+        all processing parameters to the specified channel. Encrypted presets are decrypted
+        transparently if the device has the vendor key.
+
+        # Parameters
+        * `params.channel` - Speaker channel (1-4)
+        * `params.preset` - Preset data (JSON object or base64 string)
+
+        # Returns
+        Success response with applied preset name:
+        ```json
+        {
+        "success": true,
+        "message": "Preset applied to channel 1",
+        "preset_name": "Stadium Mode"
+        }
+        ```
+
+        # Errors
+        * `INVALID_CHANNEL` - Channel index out of range (not 1-4)
+        * `INVALID_VALUE` - Preset format invalid (not JSON object or base64 string)
+        * `PRESET_INVALID` - Preset data corrupted or malformed
+        * `PRESET_LOCKED` - Encrypted preset decryption failed (wrong vendor key)
+        * `DEVICE_BUSY` - Device service unavailable or factory config verification in progress
+        * `PERMISSION_DENIED` - Write operations blocked (verification failed or restart needed)
+        * `HARDWARE_ERROR` - Failed to apply preset to hardware
+
+        # Notes
+        Applying a preset emits granular `setup_update` notifications for all affected
+        fields (crossover, EQ, limiters, etc.) so clients can track individual changes.
+      examples:
+      - name: preset_apply example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: preset_apply
+          params:
+            channel: 1
+            preset: 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
+        summary: Example request for preset_apply
+      name: preset_apply_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: preset_apply
+            type: string
+          params:
+            $ref: ./schemas/types/PresetApplyParams.json
+            description: Parameters for preset_apply
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: |-
+        Apply a speaker preset to a channel
+
+        Accepts presets in two formats:
+        1.
+      tags:
+      - name: preset
+      title: preset_apply Request
+    preset_apply_response:
+      contentType: application/json
+      examples:
+      - name: preset_apply example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Preset applied to channel 1
+            preset_name: MySpeaker
+            success: true
+        summary: Example response for preset_apply
+      name: preset_apply_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for preset_apply
+      title: preset_apply Response
+    preset_clear_request:
+      contentType: application/json
+      description: |
+        Clear the applied preset for a channel
+
+        Removes the current preset and restores factory default processing configuration.
+        This resets all preset layer parameters (crossover, EQ, limiters, etc.) to their
+        default values while preserving user and array layer settings.
+
+        # Parameters
+        * `params.channel` - Speaker channel (1-4)
+
+        # Returns
+        Success confirmation:
+        ```json
+        {
+        "success": true,
+        "message": "Preset cleared on channel 1"
+        }
+        ```
+
+        # Errors
+        * `INVALID_CHANNEL` - Channel index out of range (not 1-4)
+        * `DEVICE_BUSY` - Device service unavailable
+        * `HARDWARE_ERROR` - Failed to apply default configuration to hardware
+
+        # Notes
+        Clearing emits `setup_update` notifications for all affected preset layer fields.
+      examples:
+      - name: preset_clear example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: preset_clear
+          params:
+            channel: 1
+        summary: Example request for preset_clear
+      name: preset_clear_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: preset_clear
+            type: string
+          params:
+            $ref: ./schemas/types/PresetClearParams.json
+            description: Parameters for preset_clear
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: |-
+        Clear the applied preset for a channel
+
+        Removes the current preset and restores factory default processing configuration.
+      tags:
+      - name: preset
+      title: preset_clear Request
+    preset_clear_response:
+      contentType: application/json
+      examples:
+      - name: preset_clear example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Preset cleared on channel 1
+            success: true
+        summary: Example response for preset_clear
+      name: preset_clear_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for preset_clear
+      title: preset_clear Response
+    preset_create_request:
+      contentType: application/json
+      description: |
+        Create a preset from the current channel configuration
+
+        Captures the current processing configuration from a speaker channel and creates
+        a portable preset that can be applied to other channels or devices. The preset
+        includes all preset layer parameters: drive mode, polarity, delay, crossover,
+        EQ (15 bands), FIR filter, and all limiters.
+
+        # Parameters
+        * `params.channel` - Speaker channel (1-4) to capture configuration from
+        * `params.name` - Human-readable preset name (e.g., "Stadium Mode")
+        * `params.version` - Version string (e.g., "1.0", "2.3.1")
+        * `params.created_date` - Creation timestamp in RFC3339 format
+        * `params.vendor_lock` - If true, encrypts preset with device vendor key
+
+        # Returns
+        **Plain JSON preset** (vendor_lock=false):
+        ```json
+        {
+        "success": true,
+        "preset_type": "json",
+        "preset": { /* ChannelPreset structure */ },
+        "metadata": { /* ChannelPresetMetadata */ }
+        }
+        ```
+
+        **Encrypted binary preset** (vendor_lock=true):
+        ```json
+        {
+        "success": true,
+        "preset_type": "binary",
+        "preset": "base64EncodedCBOR...",
+        "metadata": { /* ChannelPresetMetadata with vendor_lock */ }
+        }
+        ```
+
+        # Errors
+        * `INVALID_CHANNEL` - Channel index out of range
+        * `HARDWARE_ERROR` - Failed to serialize preset to CBOR or encrypt
+
+        # Notes
+        - FIR filter taps are captured for the current sample rate only
+        - Vendor-locked presets cannot be modified after creation
+        - Each preset gets a unique UUID identifier
+      examples:
+      - name: preset_create example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: preset_create
+          params:
+            channel: 1
+            created_date: 2025-11-14T07:38:24.088288+00:00
+            name: My Speaker
+            vendor_lock: false
+            version: 1.2.3
+        summary: Example request for preset_create
+      name: preset_create_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: preset_create
+            type: string
+          params:
+            $ref: ./schemas/types/PresetCreateParams.json
+            description: Parameters for preset_create
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: |-
+        Create a preset from the current channel configuration
+
+        Captures the current processing configuration from a speaker channel and creates
+        a portable preset that can be applied to other channels or devices.
+      tags:
+      - name: preset
+      title: preset_create Request
+    preset_create_response:
+      contentType: application/json
+      examples:
+      - name: preset_create example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            metadata:
+              created_date: 2025-11-12T16:04:09.436563+00:00
+              id: 81c7a7e9-a42f-411f-8e6c-f86460d65c18
+              name: MySpeaker
+              sample_rate:
+              - '96000'
+              vendor_lock: Pascal
+              version: 1.2.3
+            preset: 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
+            preset_type: binary
+            success: true
+        summary: Example response for preset_create
+      name: preset_create_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/PresetCreateResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for preset_create
+      title: preset_create Response
+    preset_show_request:
+      contentType: application/json
+      description: |
+        Show preset information for a channel
+
+        Returns metadata about the currently applied preset, including whether it has
+        been customized (modified after application). If no preset is applied, returns null.
+
+        # Parameters
+        * `params.channel` - Speaker channel (1-4)
+
+        # Returns
+        **When preset is applied:**
+        ```json
+        {
+        "id": "550e8400-e29b-41d4-a716-446655440000",
+        "name": "Stadium Mode",
+        "version": "1.0",
+        "created_date": "2024-01-15T10:30:00Z",
+        "is_locked": false,
+        "is_customized": true
+        }
+        ```
+
+        **When no preset is applied:**
+        ```json
+        null
+        ```
+
+        # Errors
+        * `INVALID_CHANNEL` - Channel index out of range (not 1-4)
+        * `HARDWARE_ERROR` - Internal error reading preset information
+
+        # Notes
+        - `is_locked`: true if preset is vendor-locked (encrypted)
+        - `is_customized`: true if user modified any preset parameters after application
+      examples:
+      - name: preset_show example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: preset_show
+          params:
+            channel: 1
+        summary: Example request for preset_show
+      name: preset_show_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: preset_show
+            type: string
+          params:
+            $ref: ./schemas/types/PresetClearParams.json
+            description: Parameters for preset_show
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: |-
+        Show preset information for a channel
+
+        Returns metadata about the currently applied preset, including whether it has
+        been customized (modified after application).
+      tags:
+      - name: preset
+      title: preset_show Request
+    preset_show_response:
+      contentType: application/json
+      examples:
+      - name: preset_show example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            created_date: 2025-11-12T16:04:09.436563+00:00
+            id: 81c7a7e9-a42f-411f-8e6c-f86460d65c18
+            is_customized: false
+            is_locked: true
+            name: MySpeaker
+            version: 1.2.3
+        summary: Example response for preset_show
+      name: preset_show_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              oneOf:
+              - $ref: ./schemas/views/ChannelPresetMetadata.View.json
+              - type: 'null'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for preset_show
+      title: preset_show Response
+    setup_get_all_request:
+      contentType: application/json
+      description: |
+        Get all setup configuration.
+
+        Retrieves the entire device configuration tree.
+
+        # Parameters
+        * `params.flatten` - If true, returns flattened dot-notation structure
+
+        # Returns
+        Complete configuration (hierarchical or flattened)
+
+        # Errors
+        * `HARDWARE_ERROR` - Failed to serialize configuration
+      examples:
+      - name: setup_get_all example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_get_all
+          params:
+            flatten: false
+        summary: Example request for setup_get_all
+      name: setup_get_all_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_get_all
+            type: string
+          params:
+            $ref: ./schemas/types/JapiGetAllParams.json
+            description: Parameters for setup_get_all
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get all setup configuration.
+      tags:
+      - name: setup
+      title: setup_get_all Request
+    setup_get_all_response:
+      contentType: application/json
+      examples:
+      - name: setup_get_all example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            audio:
+              input:
+                analog:
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Analog 1
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Analog 2
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Analog 3
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Analog 4
+                config:
+                  input_switch: analog
+                digital:
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Digital 1
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Digital 2
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Digital 3
+                - delay: 0.0
+                  gain: 0.0
+                  mute: false
+                  name: Digital 4
+                generator:
+                  frequency: 1000.0
+                  gain: -40.0
+                  hpf_freq: null
+                  kind: pink_noise
+                  lpf_freq: null
+                  name: ''
+                network: []
+              output:
+                digital: []
+                network: []
+                speaker:
+                - array:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    polarity: 1
+                  fallback_src: off
+                  name: Speaker 1
+                  preset:
+                    clip_limiter:
+                      bypass: false
+                      mode: normal
+                    crossover:
+                      bypass: false
+                      gain: 0.0
+                      hpf: off
+                      hpf_freq: 20.0
+                      lpf: off
+                      lpf_freq: 20000.0
+                    delay: 0.0
+                    drive: lo_z
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 11000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 12000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 13000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 14000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 15000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    peak_limiter:
+                      attack: 0.04500000178813934
+                      auto: false
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 0.75
+                      threshold: 159.80613708496094
+                    polarity: 1
+                    preset:
+                      clip_limiter:
+                        bypass: false
+                        mode: normal
+                      crossover:
+                        bypass: false
+                        gain: 0.0
+                        hpf: off
+                        hpf_freq: 20.0
+                        lpf: off
+                        lpf_freq: 20000.0
+                      delay: 0.0
+                      drive: lo_z
+                      eq:
+                        bands:
+                        - bypass: false
+                          frequency: 1000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 2000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 3000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 4000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 5000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 6000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 7000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 8000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 9000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 10000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 11000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 12000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 13000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 14000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        - bypass: false
+                          frequency: 15000.0
+                          gain: 0.0
+                          kind: parametric
+                          q: 0.699999988079071
+                        bypass: false
+                      fir:
+                        bypass: false
+                        taps_96k: []
+                      id: 7bd1b8f7-89d0-44a6-a1f3-5bd9972cdd9a
+                      metadata:
+                        created_date: 2025-11-12T16:04:09.436563+00:00
+                        id: 81c7a7e9-a42f-411f-8e6c-f86460d65c18
+                        name: MySpeaker
+                        sample_rate:
+                        - '96000'
+                        vendor_lock: Pascal
+                        version: 1.2.3
+                      peak_limiter:
+                        attack: 0.04500000178813934
+                        auto: false
+                        bypass: true
+                        hold: 0.0
+                        knee: 0.0
+                        release: 0.75
+                        threshold: 159.80613708496094
+                      polarity: 1
+                      rms_limiter:
+                        attack: 2.5
+                        bypass: true
+                        hold: 0.0
+                        knee: 0.0
+                        release: 5.0
+                        threshold: 113.0
+                      version: 100
+                    preset_customized: false
+                    rms_limiter:
+                      attack: 2.5
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 5.0
+                      threshold: 113.0
+                  primary_src: analog/1
+                  user:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    gain: 0.0
+                    generator_mix: off
+                    hpf: off
+                    hpf_freq: 20.0
+                    mute: false
+                    polarity: 1
+                - array:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    polarity: 1
+                  fallback_src: off
+                  name: Speaker 2
+                  preset:
+                    clip_limiter:
+                      bypass: false
+                      mode: normal
+                    crossover:
+                      bypass: false
+                      gain: 0.0
+                      hpf: off
+                      hpf_freq: 20.0
+                      lpf: off
+                      lpf_freq: 20000.0
+                    delay: 0.0
+                    drive: lo_z
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 11000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 12000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 13000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 14000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 15000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    peak_limiter:
+                      attack: 0.04500000178813934
+                      auto: false
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 0.75
+                      threshold: 159.80613708496094
+                    polarity: 1
+                    preset: null
+                    preset_customized: false
+                    rms_limiter:
+                      attack: 2.5
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 5.0
+                      threshold: 113.0
+                  primary_src: analog/2
+                  user:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    gain: 0.0
+                    generator_mix: off
+                    hpf: off
+                    hpf_freq: 20.0
+                    mute: false
+                    polarity: 1
+                - array:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    polarity: 1
+                  fallback_src: off
+                  name: Speaker 3
+                  preset:
+                    clip_limiter:
+                      bypass: false
+                      mode: normal
+                    crossover:
+                      bypass: false
+                      gain: 0.0
+                      hpf: off
+                      hpf_freq: 20.0
+                      lpf: off
+                      lpf_freq: 20000.0
+                    delay: 0.0
+                    drive: lo_z
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 11000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 12000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 13000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 14000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 15000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    peak_limiter:
+                      attack: 0.04500000178813934
+                      auto: false
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 0.75
+                      threshold: 159.80613708496094
+                    polarity: 1
+                    preset: null
+                    preset_customized: false
+                    rms_limiter:
+                      attack: 2.5
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 5.0
+                      threshold: 113.0
+                  primary_src: analog/3
+                  user:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    gain: 0.0
+                    generator_mix: off
+                    hpf: off
+                    hpf_freq: 20.0
+                    mute: false
+                    polarity: 1
+                - array:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    polarity: 1
+                  fallback_src: off
+                  name: Speaker 4
+                  preset:
+                    clip_limiter:
+                      bypass: false
+                      mode: normal
+                    crossover:
+                      bypass: false
+                      gain: 0.0
+                      hpf: off
+                      hpf_freq: 20.0
+                      lpf: off
+                      lpf_freq: 20000.0
+                    delay: 0.0
+                    drive: lo_z
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 11000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 12000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 13000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 14000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 15000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    fir:
+                      bypass: false
+                      taps: []
+                    gain: 0.0
+                    peak_limiter:
+                      attack: 0.04500000178813934
+                      auto: false
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 0.75
+                      threshold: 159.80613708496094
+                    polarity: 1
+                    preset: null
+                    preset_customized: false
+                    rms_limiter:
+                      attack: 2.5
+                      bypass: true
+                      hold: 0.0
+                      knee: 0.0
+                      release: 5.0
+                      threshold: 113.0
+                  primary_src: analog/4
+                  user:
+                    delay: 0.0
+                    eq:
+                      bands:
+                      - bypass: false
+                        frequency: 1000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 2000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 3000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 4000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 5000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 6000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 7000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 8000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 9000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      - bypass: false
+                        frequency: 10000.0
+                        gain: 0.0
+                        kind: parametric
+                        q: 0.699999988079071
+                      bypass: false
+                    gain: 0.0
+                    generator_mix: off
+                    hpf: off
+                    hpf_freq: 20.0
+                    mute: false
+                    polarity: 1
+                speaker_ways:
+                - id: 1
+                  way: FR
+                - id: 2
+                  way: FR
+                - id: 3
+                  way: FR
+                - id: 4
+                  way: FR
+                summing_matrix:
+                - - 1.0
+                  - 0.0
+                  - 0.0
+                  - 0.0
+                - - 0.0
+                  - 1.0
+                  - 0.0
+                  - 0.0
+                - - 0.0
+                  - 0.0
+                  - 1.0
+                  - 0.0
+                - - 0.0
+                  - 0.0
+                  - 0.0
+                  - 1.0
+            device_info:
+              factory_config:
+                created: 2024-11-11T11:11:11Z
+                hardware_id: 50001
+                id: f1ff416d-27a1-4887-a69e-f6d6ecf6ee83
+                mac_0: 00:00:00:00:00:00
+                mac_1: 00:00:00:00:00:00
+                manufacturer_name: Pascal Audio
+                model_name: PX4000.4
+                product_code: 660
+                serial: 0000001234X00000
+                software_id: 50002
+                version: null
+            gpio:
+              gpio1: off
+              gpio2: off
+              gpio3: off
+              gpio4: off
+            id: 04758e41-f9e6-4650-91b4-e3c14ece36f0
+            install:
+              asset_tag: ''
+              contact_info: ''
+              custom1: ''
+              custom2: ''
+              custom3: ''
+              customer_name: ''
+              device_name: PX4000.4 0000-00000
+              install_date: ''
+              install_notes: ''
+              installer_name: ''
+              venue_name: ''
+            network:
+              lan1:
+                dns1: 8.8.8.8
+                dns2: 8.8.4.4
+                gateway: 192.168.64.1
+                ip_address: 192.168.64.100
+                netmask: 255.255.255.0
+                network_mode: dhcp
+              lan2:
+                dns1: 8.8.8.8
+                dns2: 8.8.4.4
+                gateway: 192.168.64.1
+                ip_address: 192.168.64.100
+                netmask: 255.255.255.0
+                network_mode: dhcp
+              mode: split
+            power:
+              fuse_protection: off
+              last_power_state: off
+              mute_time: 300.0
+              power_on: network_only
+              standby_time: 1800.0
+            version: 100
+        summary: Example response for setup_get_all
+      name: setup_get_all_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_get_all
+      title: setup_get_all Response
+    setup_get_request:
+      contentType: application/json
+      description: |
+        Get setup value by path.
+
+        Retrieves configuration data at the specified JSON path.
+
+        # Parameters
+        * `params.path` - Configuration path (e.g., "/audio/output/speaker/1/gain")
+
+        # Returns
+        Configuration value at the path (type depends on path)
+
+        # Errors
+        * `INVALID_PATH` - Path does not exist in configuration tree
+        * `DEVICE_BUSY` - Device still initializing
+      examples:
+      - name: setup_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_get
+          params:
+            path: /audio/input/analog/1
+        summary: Example request for setup_get
+      name: setup_get_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_get
+            type: string
+          params:
+            $ref: ./schemas/types/JapiGetParams.json
+            description: Parameters for setup_get
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get setup value by path.
+      tags:
+      - name: setup
+      title: setup_get Request
+    setup_get_response:
+      contentType: application/json
+      examples:
+      - name: setup_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            delay: 0.0
+            gain: 0.0
+            mute: false
+            name: Analog 1
+        summary: Example response for setup_get
+      name: setup_get_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_get
+      title: setup_get Response
+    setup_get_value_request:
+      contentType: application/json
+      description: |
+        Get specific property value from setup path.
+
+        Extracts a single property from a configuration object.
+
+        # Parameters
+        * `params.path` - Base configuration path
+        * `params.property` - Property name to extract
+
+        # Returns
+        Value of the specified property
+
+        # Errors
+        * `INVALID_PATH` - Path does not exist or property not found in object
+      examples:
+      - name: setup_get_value example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_get_value
+          params:
+            path: /audio/input/analog/1/name
+        summary: Example request for setup_get_value
+      name: setup_get_value_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_get_value
+            type: string
+          params:
+            $ref: ./schemas/types/JapiGetValueParams.json
+            description: Parameters for setup_get_value
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get specific property value from setup path.
+      tags:
+      - name: setup
+      title: setup_get_value Request
+    setup_get_value_response:
+      contentType: application/json
+      examples:
+      - name: setup_get_value example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result: Analog 1
+        summary: Example response for setup_get_value
+      name: setup_get_value_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_get_value
+      title: setup_get_value Response
+    setup_set_request:
+      contentType: application/json
+      description: |
+        Set setup value by path.
+
+        Modifies configuration at the specified JSON path.
+
+        # Parameters
+        * `params.path` - Configuration path to modify
+        * `params.value` - New value to set
+
+        # Returns
+        Success confirmation
+
+        # Errors
+        * `INVALID_PATH` - Path does not exist in configuration tree
+        * `INVALID_VALUE` - Value type invalid for the path
+        * `HARDWARE_ERROR` - Failed to apply configuration to hardware
+      examples:
+      - name: setup_set example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_set
+          params:
+            path: /audio/input/analog/1
+            value:
+              name: Channel 1
+        summary: Example request for setup_set
+      name: setup_set_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_set
+            type: string
+          params:
+            $ref: ./schemas/types/JapiSetParams.json
+            description: Parameters for setup_set
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Set setup value by path.
+      tags:
+      - name: setup
+      title: setup_set Request
+    setup_set_response:
+      contentType: application/json
+      examples:
+      - name: setup_set example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            delay: 0.0
+            gain: 0.0
+            mute: false
+            name: Analog 1
+        summary: Example response for setup_set
+      name: setup_set_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_set
+      title: setup_set Response
+    setup_set_value_request:
+      contentType: application/json
+      description: |
+        Set specific property value at setup path.
+
+        Modifies a single property within a configuration object.
+
+        # Parameters
+        * `params.path` - Base configuration path
+        * `params.property` - Property name to modify
+        * `params.value` - New value for the property
+
+        # Returns
+        Success confirmation
+
+        # Errors
+        * `INVALID_PATH` - Path does not exist in configuration tree
+        * `INVALID_VALUE` - Value type invalid for the property
+        * `HARDWARE_ERROR` - Failed to apply configuration to hardware
+        * `DEVICE_BUSY` - Factory config verification in progress
+        * `PERMISSION_DENIED` - Write operations blocked (verification failed or restart needed)
+      examples:
+      - name: setup_set_value example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_set_value
+          params:
+            path: /audio/input/analog/1
+            property: name
+            value: Channel 1
+        summary: Example request for setup_set_value
+      name: setup_set_value_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_set_value
+            type: string
+          params:
+            $ref: ./schemas/types/JapiSetValueParams.json
+            description: Parameters for setup_set_value
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Set specific property value at setup path.
+      tags:
+      - name: setup
+      title: setup_set_value Request
+    setup_set_value_response:
+      contentType: application/json
+      examples:
+      - name: setup_set_value example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            delay: 0.0
+            gain: 0.0
+            mute: false
+            name: Channel 1
+        summary: Example response for setup_set_value
+      name: setup_set_value_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_set_value
+      title: setup_set_value Response
+    setup_subscribe_request:
+      contentType: application/json
+      description: |
+        Subscribe to setup updates.
+
+        Creates a subscription for real-time configuration change notifications.
+
+        # Parameters
+        * `params.path` - Optional path filter (None = all changes)
+
+        # Returns
+        Subscription confirmation with subscription_id
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: setup_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_subscribe
+          params: {}
+        summary: Example request for setup_subscribe
+      name: setup_subscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_subscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiSubscribeParams.json
+            description: Parameters for setup_subscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Subscribe to setup updates.
+      tags:
+      - name: setup
+      title: setup_subscribe Request
+    setup_subscribe_response:
+      contentType: application/json
+      examples:
+      - name: setup_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example response for setup_subscribe
+      name: setup_subscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSubscribeResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_subscribe
+      title: setup_subscribe Response
+    setup_unsubscribe_request:
+      contentType: application/json
+      description: |
+        Unsubscribe from setup updates.
+
+        Cancels an active configuration subscription.
+
+        # Parameters
+        * `params.subscription_id` - Subscription identifier to cancel
+
+        # Returns
+        Null value confirming cancellation
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: setup_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: setup_unsubscribe
+          params:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example request for setup_unsubscribe
+      name: setup_unsubscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: setup_unsubscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiUnsubscribeParams.json
+            description: Parameters for setup_unsubscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Unsubscribe from setup updates.
+      tags:
+      - name: setup
+      title: setup_unsubscribe Request
+    setup_unsubscribe_response:
+      contentType: application/json
+      examples:
+      - name: setup_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            message: Unsubscribed
+            success: true
+        summary: Example response for setup_unsubscribe
+      name: setup_unsubscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSuccessResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for setup_unsubscribe
+      title: setup_unsubscribe Response
+    setup_update_notification:
+      contentType: application/json
+      name: setup_update_notification
+      payload:
+        properties:
+          method:
+            const: setup_update
+            type: string
+          params:
+            description: Notification payload for setup_update
+        required:
+        - method
+        - params
+        type: object
+      summary: Device configuration change notification
+      tags:
+      - name: notifications
+      title: setup_update Notification
+    status_get_all_request:
+      contentType: application/json
+      description: |
+        Get all device status.
+
+        Retrieves complete device status including device, network, audio, and firmware info.
+
+        # Parameters
+        None
+
+        # Returns
+        Complete `DeviceStatus` structure
+
+        # Errors
+        This method does not return errors under normal operation.
+      examples:
+      - name: status_get_all example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: status_get_all
+          params: {}
+        summary: Example request for status_get_all
+      name: status_get_all_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: status_get_all
+            type: string
+          params:
+            $ref: ./schemas/types/JapiEmptyParams.json
+            description: Parameters for status_get_all
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get all device status.
+      tags:
+      - name: status
+      title: status_get_all Request
+    status_get_all_response:
+      contentType: application/json
+      examples:
+      - name: status_get_all example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            audio:
+              sample_rate: '48000'
+              sync_source: internal
+            device:
+              boot_time: 2025-11-12T15:49:22.875888461+00:00
+              find_me:
+                active: false
+                timeout_remaining: null
+              power_state: on
+              reboot_pending: null
+              uptime_seconds: 0
+            firmware:
+              amp_mcu: 1.0.0
+              bootloader: 0.9.0
+              dsp: 2.1.0
+              front_mcu: 1.0.5
+              main: 0.0.0
+              psu_primary_mcu: 1.0.0
+              psu_secondary_mcu: 1.0.0
+              system_mcu: 1.1.2
+            network:
+              dante: null
+              lan1:
+                address: 192.168.1.100
+                connected: true
+                link_speed: speed1000
+                mode: dhcp
+              lan2:
+                address: null
+                connected: false
+                link_speed: down
+                mode: static
+        summary: Example response for status_get_all
+      name: status_get_all_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/status/DeviceStatus.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for status_get_all
+      title: status_get_all Response
+    status_get_request:
+      contentType: application/json
+      description: |
+        Get status at specific path.
+
+        # Parameters
+
+        - `path`: Status path (e.g., "/info", "/state", "/network", "/audio", "/firmware")
+
+        # Returns
+
+        Value at the specified path.
+
+        # Errors
+
+        - `INVALID_PATH`: Path does not exist
+
+        # Example Request
+
+        ```json
+        {
+        "jsonrpc": "2.0",
+        "method": "status_get",
+        "params": {
+        "path": "/state"
+        },
+        "id": 2
+        }
+        ```
+      examples:
+      - name: status_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: status_get
+          params:
+            path: device
+        summary: Example request for status_get
+      name: status_get_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: status_get
+            type: string
+          params:
+            $ref: ./schemas/types/JapiGetParams.json
+            description: Parameters for status_get
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Get status at specific path.
+      tags:
+      - name: status
+      title: status_get Request
+    status_get_response:
+      contentType: application/json
+      examples:
+      - name: status_get example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            boot_time: 2025-11-12T15:49:22.875888461+00:00
+            find_me:
+              active: false
+              timeout_remaining: null
+            power_state: on
+            reboot_pending: null
+            uptime_seconds: 0
+        summary: Example response for status_get
+      name: status_get_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: '#/components/schemas/JsonValue'
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for status_get
+      title: status_get Response
+    status_subscribe_request:
+      contentType: application/json
+      description: |
+        Subscribe to status updates via WebSocket.
+
+        Creates a subscription for real-time device status change notifications.
+
+        # Parameters
+        * `params.path` - Optional status path filter (None = all status changes)
+
+        # Returns
+        Subscription ID for managing the subscription
+
+        # Errors
+        This method does not return errors under normal operation.
+
+        # Notifications
+
+        Client receives `status_update` notifications when state changes:
+
+        ```json
+        {
+        "jsonrpc": "2.0",
+        "method": "status_update",
+        "params": {
+        "path": "/state",
+        "value": { "power_state": "standby", ... }
+        }
+        }
+        ```
+      examples:
+      - name: status_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: status_subscribe
+          params: {}
+        summary: Example request for status_subscribe
+      name: status_subscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: status_subscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiSubscribeParams.json
+            description: Parameters for status_subscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Subscribe to status updates via WebSocket.
+      tags:
+      - name: status
+      title: status_subscribe Request
+    status_subscribe_response:
+      contentType: application/json
+      examples:
+      - name: status_subscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example response for status_subscribe
+      name: status_subscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/JapiSubscribeResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for status_subscribe
+      title: status_subscribe Response
+    status_unsubscribe_request:
+      contentType: application/json
+      description: |
+        Unsubscribe from status updates.
+
+        Cancels an active status subscription.
+
+        # Parameters
+        * `params.subscription_id` - Subscription ID returned from `status_subscribe`
+
+        # Returns
+        Null value confirming cancellation
+
+        # Errors
+        This method does not return errors under normal operation.
+
+        # Example Request
+
+        ```json
+        {
+        "jsonrpc": "2.0",
+        "method": "status_unsubscribe",
+        "params": {
+        "subscription_id": "status-subscription-placeholder"
+        },
+        "id": 3
+        }
+        ```
+      examples:
+      - name: status_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          method: status_unsubscribe
+          params:
+            subscription_id: 15171094-9a3c-44cb-adce-95f05b8dc07e
+        summary: Example request for status_unsubscribe
+      name: status_unsubscribe_request
+      payload:
+        properties:
+          id:
+            oneOf:
+            - type: string
+            - type: number
+          jsonrpc:
+            const: '2.0'
+            type: string
+          method:
+            const: status_unsubscribe
+            type: string
+          params:
+            $ref: ./schemas/types/JapiUnsubscribeParams.json
+            description: Parameters for status_unsubscribe
+        required:
+        - jsonrpc
+        - method
+        - id
+        type: object
+      summary: Unsubscribe from status updates.
+      tags:
+      - name: status
+      title: status_unsubscribe Request
+    status_unsubscribe_response:
+      contentType: application/json
+      examples:
+      - name: status_unsubscribe example
+        payload:
+          id: 1
+          jsonrpc: '2.0'
+          result: null
+        summary: Example response for status_unsubscribe
+      name: status_unsubscribe_response
+      payload:
+        oneOf:
+        - description: Success response
+          properties:
+            id:
+              oneOf:
+              - type: string
+              - type: number
+            jsonrpc:
+              const: '2.0'
+              type: string
+            result:
+              $ref: ./schemas/types/StatusResponse.json
+          required:
+          - jsonrpc
+          - result
+          - id
+          type: object
+        - description: Error response
+          properties:
+            error:
+              $ref: '#/components/schemas/JsonRpcError'
+            id:
+              oneOf:
+              - type: string
+              - type: number
+              - type: 'null'
+            jsonrpc:
+              const: '2.0'
+              type: string
+          required:
+          - jsonrpc
+          - error
+          - id
+          type: object
+      summary: Response for status_unsubscribe
+      title: status_unsubscribe Response
+    status_update_notification:
+      contentType: application/json
+      name: status_update_notification
+      payload:
+        properties:
+          method:
+            const: status_update
+            type: string
+          params:
+            description: Notification payload for status_update
+        required:
+        - method
+        - params
+        type: object
+      summary: Device status change notification
+      tags:
+      - name: notifications
+      title: status_update Notification
+  schemas:
+    EmptyObject:
+      description: Empty parameters object
+      type: object
+    ErrorResponse:
+      properties:
+        error:
+          properties:
+            code:
+              description: JSON-RPC error code
+              type: integer
+            data:
+              properties:
+                details:
+                  type: string
+                error_code:
+                  $ref: ./schemas/types/JapiError.json
+              type: object
+            message:
+              description: Human-readable error message
+              type: string
+          required:
+          - code
+          - message
+          type: object
+        id:
+          oneOf:
+          - type: string
+          - type: number
+        jsonrpc:
+          const: '2.0'
+          type: string
+      required:
+      - jsonrpc
+      - error
+      - id
+      type: object
+    JsonRpcError:
+      description: JSON-RPC 2.0 error object
+      properties:
+        code:
+          description: Error code
+          type: integer
+        data:
+          description: Additional error data
+          oneOf:
+          - type: 'null'
+          - type: object
+        message:
+          description: Error message
+          type: string
+      required:
+      - code
+      - message
+      type: object
+    JsonValue:
+      description: Any JSON value
+      oneOf:
+      - type: 'null'
+      - type: boolean
+      - type: number
+      - type: string
+      - items: {}
+        type: array
+      - type: object
+    String:
+      type: string
+    bool:
+      type: boolean
+defaultContentType: application/json
+info:
+  contact:
+    name: Pascal Audio
+    url: https://pascal-audio.com
+  description: |
+    Professional audio amplifier control API with integrated DSP processing.
+
+    This API provides:
+    - **JSON-RPC 2.0 over WebSocket** for device control and real-time subscriptions
+    - **HTTP POST** for firmware updates
+
+    The WebSocket API supports bidirectional communication with:
+    - Request/response for queries and commands
+    - Server-push notifications for setup changes, metrics, and status updates
+  license:
+    name: Proprietary
+  title: Thorium Firmware API
+  version: 1.0.0
+operations:
+  api_check_version:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/api_check_version_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/api_check_version_response'
+    tags:
+    - name: api
+  api_ping:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/api_ping_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/api_ping_response'
+    tags:
+    - name: api
+  api_version:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/api_version_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/api_version_response'
+    tags:
+    - name: api
+  backup_create:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/backup_create_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/backup_create_response'
+    tags:
+    - name: device
+  backup_restore:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/backup_restore_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/backup_restore_response'
+    tags:
+    - name: device
+  device_find_me:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_find_me_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_find_me_response'
+    tags:
+    - name: device
+  device_get_time:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_get_time_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_get_time_response'
+    tags:
+    - name: device
+  device_power_off:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_power_off_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_power_off_response'
+    tags:
+    - name: device
+  device_power_on:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_power_on_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_power_on_response'
+    tags:
+    - name: device
+  device_reboot:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_reboot_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_reboot_response'
+    tags:
+    - name: device
+  device_reset:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_reset_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_reset_response'
+    tags:
+    - name: device
+  device_set_time:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/device_set_time_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/device_set_time_response'
+    tags:
+    - name: device
+  diagnostics_get:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/diagnostics_get_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/diagnostics_get_response'
+    tags:
+    - name: device
+  logs_get:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/logs_get_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/logs_get_response'
+    tags:
+    - name: device
+  logs_set_level:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/logs_set_level_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/logs_set_level_response'
+    tags:
+    - name: device
+  metrics_subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/metrics_subscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/metrics_subscribe_response'
+    tags:
+    - name: metrics
+  metrics_unsubscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/metrics_unsubscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/metrics_unsubscribe_response'
+    tags:
+    - name: metrics
+  preset_apply:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/preset_apply_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/preset_apply_response'
+    tags:
+    - name: preset
+  preset_clear:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/preset_clear_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/preset_clear_response'
+    tags:
+    - name: preset
+  preset_create:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/preset_create_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/preset_create_response'
+    tags:
+    - name: preset
+  preset_show:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/preset_show_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/preset_show_response'
+    tags:
+    - name: preset
+  receive_metrics_update:
+    action: receive
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/metrics_update_notification'
+    tags:
+    - name: notifications
+  receive_setup_update:
+    action: receive
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_update_notification'
+    tags:
+    - name: notifications
+  receive_status_update:
+    action: receive
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/status_update_notification'
+    tags:
+    - name: notifications
+  setup_get:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_get_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_get_response'
+    tags:
+    - name: setup
+  setup_get_all:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_get_all_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_get_all_response'
+    tags:
+    - name: setup
+  setup_get_value:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_get_value_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_get_value_response'
+    tags:
+    - name: setup
+  setup_set:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_set_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_set_response'
+    tags:
+    - name: setup
+  setup_set_value:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_set_value_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_set_value_response'
+    tags:
+    - name: setup
+  setup_subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_subscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_subscribe_response'
+    tags:
+    - name: setup
+  setup_unsubscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/setup_unsubscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/setup_unsubscribe_response'
+    tags:
+    - name: setup
+  status_get:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/status_get_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/status_get_response'
+    tags:
+    - name: status
+  status_get_all:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/status_get_all_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/status_get_all_response'
+    tags:
+    - name: status
+  status_subscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/status_subscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/status_subscribe_response'
+    tags:
+    - name: status
+  status_unsubscribe:
+    action: send
+    channel:
+      $ref: '#/channels/jsonrpc'
+    messages:
+    - $ref: '#/channels/jsonrpc/messages/status_unsubscribe_request'
+    reply:
+      channel:
+        $ref: '#/channels/jsonrpc'
+      messages:
+      - $ref: '#/channels/jsonrpc/messages/status_unsubscribe_response'
+    tags:
+    - name: status
+servers:
+  development:
+    description: Development/virtual mode WebSocket endpoint
+    host: '{device_ip}:8080'
+    protocol: ws
+    variables:
+      device_ip:
+        default: localhost
+        description: Device IP address on network
+  production:
+    description: Production device WebSocket endpoint
+    host: '{device_ip}:80'
+    protocol: ws
+    variables:
+      device_ip:
+        default: 192.168.1.100
+        description: Device IP address on network

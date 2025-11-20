@@ -1,0 +1,116 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Preset processing layer - factory speaker voicing and protection.\n\n# Processing Layer 3 of 3 Final layer in 3-layer DSP chain: User → Array → **Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/preset` **Note**: Does NOT derive `Patch` - uses custom partial update logic.\n\n# Purpose Factory-defined speaker model voicing, including: - Driver voicing (frequency response shaping) - Crossover filters (multi-way speaker systems) - Protection limiters (thermal, peak, clip) - Factory-tuned FIR filters\n\n# Preset Locking Factory presets can be **vendor-locked** (encrypted). When locked: - Scalar fields (gain, polarity, delay) return `null` in API views - Complex objects (crossover, EQ, FIR, limiters) are visible but modifications cause `preset_customized` flag to be set - Locking prevents reverse-engineering proprietary speaker voicing\n\n# Structure - `preset`: Currently applied `ChannelPreset` (if any) - `preset_customized`: Flag indicating user modified preset parameters - `drive`: Amplifier drive mode (Off, LoZ, 70v, 100v) - `gain`: Preset gain trim (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Preset delay (0.0 to 0.01 seconds) - `crossover`: Crossover filters (HPF + LPF) - **ONLY in preset layer** - `eq`: 15-band parametric equalizer (most bands of all layers) - `fir`: Factory FIR filter - `peak_limiter`: Fast transient protection - `rms_limiter`: Thermal/long-term protection - `clip_limiter`: Final hard-clipping protection\n\n# Critical: Crossover Only Here User and array layers do NOT have crossover. Only preset layer has crossover filters, configured by factory presets for specific speaker models.",
+  "properties": {
+    "clip_limiter": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ClipLimiter.json"
+        }
+      ],
+      "description": "Final hard-clipping protection limiter"
+    },
+    "crossover": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Crossover.json"
+        }
+      ],
+      "description": "Crossover filters (HPF + LPF). ONLY in preset layer, not user/array."
+    },
+    "delay": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PresetDelayTimeType.json"
+        }
+      ],
+      "description": "Preset delay in seconds (range: 0.0 to 0.01)"
+    },
+    "drive": {
+      "allOf": [
+        {
+          "$ref": "../definitions/OutputDriveType.json"
+        }
+      ],
+      "description": "Amplifier drive mode (2.83V, 1W, or Custom)"
+    },
+    "eq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Equalizer.json"
+        }
+      ],
+      "description": "15-band parametric equalizer (most bands of all layers)"
+    },
+    "fir": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PresetFirFilter.json"
+        }
+      ],
+      "description": "Factory FIR filter (may be locked/hidden if preset is vendor-locked)"
+    },
+    "gain": {
+      "allOf": [
+        {
+          "$ref": "../definitions/GainTrimType.json"
+        }
+      ],
+      "description": "Preset gain trim in dB (range: -15.0 to +15.0)"
+    },
+    "peak_limiter": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PeakLimiter.json"
+        }
+      ],
+      "description": "Fast transient peak protection limiter"
+    },
+    "polarity": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PolarityType.json"
+        }
+      ],
+      "description": "Signal polarity (+1 = normal, -1 = inverted)"
+    },
+    "preset": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/ChannelPreset.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Currently applied channel preset (None if no preset loaded)"
+    },
+    "preset_customized": {
+      "description": "Flag indicating user has modified preset parameters (breaks factory tuning)",
+      "type": "boolean"
+    },
+    "rms_limiter": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiter.json"
+        }
+      ],
+      "description": "Thermal/long-term RMS protection limiter"
+    }
+  },
+  "required": [
+    "clip_limiter",
+    "crossover",
+    "delay",
+    "drive",
+    "eq",
+    "fir",
+    "gain",
+    "peak_limiter",
+    "polarity",
+    "preset_customized",
+    "rms_limiter"
+  ],
+  "title": "PresetProcessing",
+  "type": "object"
+}

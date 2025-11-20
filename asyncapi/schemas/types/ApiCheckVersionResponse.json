@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "compatible": {
+      "description": "Whether client is compatible with server",
+      "type": "boolean"
+    },
+    "server_api_level": {
+      "description": "Server API level",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": "integer"
+    },
+    "server_version": {
+      "description": "Server API version",
+      "type": "string"
+    },
+    "warnings": {
+      "description": "Warning messages (if any)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    }
+  },
+  "required": [
+    "compatible",
+    "server_api_level",
+    "server_version",
+    "warnings"
+  ],
+  "title": "ApiCheckVersionResponse",
+  "type": "object"
+}

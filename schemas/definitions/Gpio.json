@@ -1,0 +1,44 @@
+{
+  "description": "GPIO pin configuration for external control integration.\n\nFour configurable GPIO pins for: - Remote mute/unmute control - Fault indicators - External trigger inputs",
+  "type": "object",
+  "required": [
+    "gpio1",
+    "gpio2",
+    "gpio3",
+    "gpio4"
+  ],
+  "properties": {
+    "gpio1": {
+      "description": "GPIO pin 1 function (Off, MuteIn, FaultOut, etc.)",
+      "allOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        }
+      ]
+    },
+    "gpio2": {
+      "description": "GPIO pin 2 function (Off, MuteIn, FaultOut, etc.)",
+      "allOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        }
+      ]
+    },
+    "gpio3": {
+      "description": "GPIO pin 3 function (Off, MuteIn, FaultOut, etc.)",
+      "allOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        }
+      ]
+    },
+    "gpio4": {
+      "description": "GPIO pin 4 function (Off, MuteIn, FaultOut, etc.)",
+      "allOf": [
+        {
+          "$ref": "./GpioPinType.json"
+        }
+      ]
+    }
+  }
+}

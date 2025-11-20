@@ -1,0 +1,62 @@
+{
+  "description": "A speaker preset with associated metadata",
+  "type": "object",
+  "required": [
+    "clip_limiter",
+    "crossover",
+    "delay",
+    "drive",
+    "eq",
+    "fir",
+    "id",
+    "metadata",
+    "peak_limiter",
+    "polarity",
+    "rms_limiter",
+    "version"
+  ],
+  "properties": {
+    "clip_limiter": {
+      "$ref": "./ClipLimiter.json"
+    },
+    "crossover": {
+      "$ref": "./Crossover.json"
+    },
+    "delay": {
+      "$ref": "./PresetDelayTimeType.json"
+    },
+    "drive": {
+      "$ref": "./OutputDriveType.json"
+    },
+    "eq": {
+      "$ref": "./Equalizer.json"
+    },
+    "fir": {
+      "$ref": "./ChannelPresetFirFilter.json"
+    },
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "metadata": {
+      "description": "Metadata for the preset (identification, manufacturer info, etc.)",
+      "allOf": [
+        {
+          "$ref": "./ChannelPresetMetadata.json"
+        }
+      ]
+    },
+    "peak_limiter": {
+      "$ref": "./PeakLimiter.json"
+    },
+    "polarity": {
+      "$ref": "./PolarityType.json"
+    },
+    "rms_limiter": {
+      "$ref": "./RmsLimiter.json"
+    },
+    "version": {
+      "$ref": "./ChannelPresetVersion.json"
+    }
+  }
+}

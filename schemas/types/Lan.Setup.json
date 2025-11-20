@@ -1,0 +1,51 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Network interface configuration for one LAN port.\n\nSupports DHCP or static IP configuration with DNS settings.",
+  "properties": {
+    "dns1": {
+      "description": "Primary DNS server address",
+      "format": "ipv4",
+      "type": "string"
+    },
+    "dns2": {
+      "description": "Secondary DNS server address (optional)",
+      "format": "ipv4",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "gateway": {
+      "description": "Default gateway address (used when network_mode=Static)",
+      "format": "ipv4",
+      "type": "string"
+    },
+    "ip_address": {
+      "description": "Static IP address (used when network_mode=Static)",
+      "format": "ipv4",
+      "type": "string"
+    },
+    "netmask": {
+      "description": "Subnet mask (used when network_mode=Static)",
+      "format": "ipv4",
+      "type": "string"
+    },
+    "network_mode": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NetworkConfigType.json"
+        }
+      ],
+      "description": "Network configuration mode (Dhcp or Static)"
+    }
+  },
+  "required": [
+    "dns1",
+    "gateway",
+    "ip_address",
+    "netmask",
+    "network_mode"
+  ],
+  "title": "LanSetup",
+  "type": "object"
+}

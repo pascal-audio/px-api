@@ -1,0 +1,62 @@
+{
+  "type": "object",
+  "properties": {
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./FilterGainType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hpf": {
+      "anyOf": [
+        {
+          "$ref": "./CrossoverType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hpf_freq": {
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lpf": {
+      "anyOf": [
+        {
+          "$ref": "./CrossoverType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lpf_freq": {
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

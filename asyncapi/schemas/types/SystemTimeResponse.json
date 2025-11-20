@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Response for device_get_time\n\n# Fields * `time` - Current system time in RFC3339 format",
+  "properties": {
+    "time": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Timestamp.json"
+        }
+      ],
+      "description": "Current system time"
+    }
+  },
+  "required": [
+    "time"
+  ],
+  "title": "SystemTimeResponse",
+  "type": "object"
+}

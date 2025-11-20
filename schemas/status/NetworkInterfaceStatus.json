@@ -1,0 +1,40 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Status of a single network interface.",
+  "properties": {
+    "address": {
+      "description": "Current IP address (None if not connected or no IP)",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "connected": {
+      "description": "Physical link connected",
+      "type": "boolean"
+    },
+    "link_speed": {
+      "allOf": [
+        {
+          "$ref": "../definitions/LinkSpeed.json"
+        }
+      ],
+      "description": "Link speed in Mbps"
+    },
+    "mode": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NetworkConfigMode.json"
+        }
+      ],
+      "description": "Network configuration mode"
+    }
+  },
+  "required": [
+    "connected",
+    "link_speed",
+    "mode"
+  ],
+  "title": "NetworkInterfaceStatus",
+  "type": "object"
+}

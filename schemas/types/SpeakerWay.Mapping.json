@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "id": {
+      "description": "Physical speaker number this channel drives (1-based)",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": "integer"
+    },
+    "way": {
+      "allOf": [
+        {
+          "$ref": "../definitions/SpeakerWay.json"
+        }
+      ],
+      "description": "Frequency range/role this channel serves"
+    }
+  },
+  "required": [
+    "id",
+    "way"
+  ],
+  "title": "SpeakerWayMapping",
+  "type": "object"
+}

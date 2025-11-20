@@ -1,0 +1,5 @@
+{
+  "description": "RFC 3339 timestamp (e.g., \"2025-11-11T14:30:00Z\")",
+  "type": "string",
+  "format": "date-time"
+}

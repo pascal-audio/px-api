@@ -1,0 +1,45 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "View of preset metadata for API responses Includes both metadata and runtime state (customization status)",
+  "properties": {
+    "created_date": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Date.json"
+        }
+      ],
+      "description": "ISO 8601 timestamp of creation (RFC3339 format)"
+    },
+    "id": {
+      "description": "Unique preset identifier (UUID v4 or v7)",
+      "format": "uuid",
+      "type": "string"
+    },
+    "is_customized": {
+      "description": "Whether the preset has been customized after application (runtime state)",
+      "type": "boolean"
+    },
+    "is_locked": {
+      "description": "Whether the preset has a vendor lock",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "Human-readable preset name",
+      "type": "string"
+    },
+    "version": {
+      "description": "Version of the preset definition (e.g., \"1.2.0\")",
+      "type": "string"
+    }
+  },
+  "required": [
+    "created_date",
+    "id",
+    "is_customized",
+    "is_locked",
+    "name",
+    "version"
+  ],
+  "title": "ChannelPresetMetadataView",
+  "type": "object"
+}

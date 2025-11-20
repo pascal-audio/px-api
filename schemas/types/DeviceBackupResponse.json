@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Response for backup_create\n\n# Fields * `timestamp` - Time when backup was created * `config` - Base64-encoded backup data",
+  "properties": {
+    "config": {
+      "description": "Base64-encoded configuration backup",
+      "type": "string"
+    },
+    "timestamp": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Timestamp.json"
+        }
+      ],
+      "description": "RFC3339 timestamp of backup creation"
+    }
+  },
+  "required": [
+    "config",
+    "timestamp"
+  ],
+  "title": "DeviceBackupResponse",
+  "type": "object"
+}

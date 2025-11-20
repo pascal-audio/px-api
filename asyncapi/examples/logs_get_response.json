@@ -1,0 +1,20 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": [
+    {
+      "fields": {},
+      "level": "INFO",
+      "message": "Starting DanteControllerFake",
+      "target": "thrust::device::managers::dante_controller_fake",
+      "timestamp": "2025-11-12T15:49:22.876Z"
+    },
+    {
+      "fields": {},
+      "level": "INFO",
+      "message": "Starting StateController",
+      "target": "thrust::device::managers::state_controller",
+      "timestamp": "2025-11-12T15:49:22.876Z"
+    }
+  ]
+}

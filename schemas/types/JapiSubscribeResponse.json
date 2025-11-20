@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Generic subscription response used across all subscription endpoints\n\n# Fields * `subscription_id` - Unique identifier for managing the subscription",
+  "properties": {
+    "subscription_id": {
+      "description": "Unique subscription identifier for unsubscribe operations",
+      "type": "string"
+    }
+  },
+  "required": [
+    "subscription_id"
+  ],
+  "title": "JapiSubscribeResponse",
+  "type": "object"
+}

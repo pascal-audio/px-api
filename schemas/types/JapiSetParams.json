@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for setting a value at a path.\n\nUsed by `setup_set` to write configuration values at arbitrary JSON paths.\n\n# Fields * `path` - Configuration path to modify (e.g., \"/audio/output/speaker/1/gain\") * `value` - New value to set (type depends on path)\n\n# Example - Set speaker gain ```json { \"path\": \"/audio/output/speaker/1/gain\", \"value\": -3.0 } ```\n\n# Example - Set input name ```json { \"path\": \"/audio/input/analog/1/name\", \"value\": \"Microphone A\" } ```",
+  "properties": {
+    "path": {
+      "description": "Path to set (e.g., \"/audio/output/speaker/1/gain\")",
+      "type": "string"
+    },
+    "value": {
+      "description": "Value to set at the path"
+    }
+  },
+  "required": [
+    "path",
+    "value"
+  ],
+  "title": "JapiSetParams",
+  "type": "object"
+}

@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "setup_get_value",
+  "params": {
+    "path": "/audio/input/analog/1/name"
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "description": "Test signal generator configuration.\n\nProvides internal test signals (sine, pink noise, white noise) that can be: - Routed as input source (replaces analog/digital inputs) - Mixed into speaker channels via `user.generator_mix` parameter\n\nUseful for system testing, alignment, and troubleshooting.",
+  "type": "object",
+  "required": [
+    "gain",
+    "kind"
+  ],
+  "properties": {
+    "frequency": {
+      "description": "Sine wave frequency in Hz (range: 20.0-20000.0). Only used when kind=Sine.",
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "description": "Generator output level in dB (range: -60.0 to 0.0)",
+      "allOf": [
+        {
+          "$ref": "./GeneratorGainType.json"
+        }
+      ]
+    },
+    "hpf_freq": {
+      "description": "High-pass filter frequency in Hz (range: 20.0-20000.0). Optional filter.",
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "kind": {
+      "description": "Generator type (PinkNoise, WhiteNoise, Sine)",
+      "allOf": [
+        {
+          "$ref": "./GeneratorType.json"
+        }
+      ]
+    },
+    "lpf_freq": {
+      "description": "Low-pass filter frequency in Hz (range: 20.0-20000.0). Optional filter.",
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name": {
+      "description": "Generator name (read-only, always \"Generator\")",
+      "default": "",
+      "readOnly": true,
+      "type": "string"
+    }
+  }
+}

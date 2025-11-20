@@ -1,0 +1,7 @@
+{
+  "type": "string",
+  "enum": [
+    "Rate48k",
+    "Rate96k"
+  ]
+}

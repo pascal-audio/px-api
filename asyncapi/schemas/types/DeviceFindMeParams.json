@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for device_find_me",
+  "properties": {
+    "timeout": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/FindMeTimeout.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Timeout in seconds (0-120). If not specified, uses device default."
+    }
+  },
+  "title": "DeviceFindMeParams",
+  "type": "object"
+}

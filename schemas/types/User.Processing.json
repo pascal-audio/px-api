@@ -1,0 +1,78 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "User processing layer - user-adjustable DSP parameters.\n\n# Processing Layer 1 of 3 First layer in 3-layer DSP chain: **User → Array → Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/user`\n\n# Purpose User-accessible controls for everyday adjustments. Remains editable even with factory preset applied (preset is in separate layer).\n\n# Structure - `mute`: Channel mute - `gain`: User gain (-144.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: User delay (0.0 to 2.0 seconds) - alignment, lip sync - `hpf`: High-pass filter type (Off, 6dB, 12dB slopes) - `hpf_freq`: HPF corner frequency (10.0-22000.0 Hz) - `generator_mix`: Test signal mix mode (Off, Replace, Mix) - `eq`: 10-band parametric equalizer\n\n# EQ Configuration User EQ has 10 fully parametric bands (vs 5 in array, 15 in preset). Bands updated individually via `SetSpeakerOutputUserEqBand`.",
+  "properties": {
+    "delay": {
+      "allOf": [
+        {
+          "$ref": "../definitions/UserDelayTimeType.json"
+        }
+      ],
+      "description": "User delay in seconds (range: 0.0 to 2.0) for alignment/lip-sync"
+    },
+    "eq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Equalizer.json"
+        }
+      ],
+      "description": "10-band parametric equalizer. Updated via band-specific endpoints."
+    },
+    "gain": {
+      "allOf": [
+        {
+          "$ref": "../definitions/UserProcessingGain.json"
+        }
+      ],
+      "description": "User gain in dB (range: -144.0 to +15.0)"
+    },
+    "generator_mix": {
+      "allOf": [
+        {
+          "$ref": "../definitions/GeneratorMixMode.json"
+        }
+      ],
+      "description": "Test signal generator mix mode (Off, Replace, Mix)"
+    },
+    "hpf": {
+      "allOf": [
+        {
+          "$ref": "../definitions/HighpassType.json"
+        }
+      ],
+      "description": "High-pass filter type (Off, 6dB, 12dB slopes)"
+    },
+    "hpf_freq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FilterFrequencyType.json"
+        }
+      ],
+      "description": "HPF corner frequency in Hz (range: 10.0-22000.0)"
+    },
+    "mute": {
+      "description": "Channel mute state",
+      "type": "boolean"
+    },
+    "polarity": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PolarityType.json"
+        }
+      ],
+      "description": "Signal polarity (+1 = normal, -1 = inverted)"
+    }
+  },
+  "required": [
+    "delay",
+    "eq",
+    "gain",
+    "generator_mix",
+    "hpf",
+    "hpf_freq",
+    "mute",
+    "polarity"
+  ],
+  "title": "UserProcessing",
+  "type": "object"
+}

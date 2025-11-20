@@ -1,0 +1,18 @@
+{
+  "type": "string",
+  "enum": [
+    "off",
+    "analog/1",
+    "analog/2",
+    "analog/3",
+    "analog/4",
+    "digital/1",
+    "digital/2",
+    "digital/3",
+    "digital/4",
+    "speaker/1",
+    "speaker/2",
+    "speaker/3",
+    "speaker/4"
+  ]
+}

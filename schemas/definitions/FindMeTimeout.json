@@ -1,0 +1,7 @@
+{
+  "description": "Timeout in seconds (0-120)",
+  "type": "number",
+  "format": "float",
+  "maximum": 120.0,
+  "minimum": 0.0
+}

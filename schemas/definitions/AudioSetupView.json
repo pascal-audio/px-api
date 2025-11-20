@@ -1,0 +1,26 @@
+{
+  "description": "View version of AudioSetup combining input and output views.\n\nTop-level audio configuration container with preset locking support.",
+  "type": "object",
+  "required": [
+    "input",
+    "output"
+  ],
+  "properties": {
+    "input": {
+      "description": "Audio input configuration with numbered channel keys",
+      "allOf": [
+        {
+          "$ref": "./AudioInputView.json"
+        }
+      ]
+    },
+    "output": {
+      "description": "Audio output configuration with numbered channel keys and preset locking",
+      "allOf": [
+        {
+          "$ref": "./AudioOutputView.json"
+        }
+      ]
+    }
+  }
+}

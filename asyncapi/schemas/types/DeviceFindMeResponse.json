@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Response for device_find_me\n\n# Fields * `success` - Whether find-me was activated * `timeout` - Duration in seconds",
+  "properties": {
+    "success": {
+      "description": "Find-me activation status",
+      "type": "boolean"
+    },
+    "timeout": {
+      "description": "Timeout in seconds",
+      "format": "float",
+      "type": "number"
+    }
+  },
+  "required": [
+    "success",
+    "timeout"
+  ],
+  "title": "DeviceFindMeResponse",
+  "type": "object"
+}

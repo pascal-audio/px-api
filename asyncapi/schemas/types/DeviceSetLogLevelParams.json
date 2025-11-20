@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for logs_set_level\n\n# Fields * `filter` - Log level to set for filtering",
+  "properties": {
+    "filter": {
+      "allOf": [
+        {
+          "$ref": "../definitions/LogLevel.json"
+        }
+      ],
+      "description": "Log level filter (TRACE, DEBUG, INFO, WARN, ERROR)"
+    }
+  },
+  "required": [
+    "filter"
+  ],
+  "title": "DeviceSetLogLevelParams",
+  "type": "object"
+}

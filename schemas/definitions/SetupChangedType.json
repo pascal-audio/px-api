@@ -1,0 +1,825 @@
+{
+  "description": "Setup change notification sent to API clients after a successful update.\n\n# Patch vs Full Object Strategy\n\nThis enum uses **patches** (partial updates) for most variants to optimize bandwidth and provide precise change semantics. Patches only contain fields that were actually modified, not the entire object state.\n\n## Why Patches?\n\n1. **Bandwidth Efficiency** - Changing an input name sends `{name: \"Vocal\"}` not entire channel config - Toggling EQ bypass sends `{bypass: true}` not all 10/5/15 bands - Critical for WebSocket notifications with multiple subscribed clients\n\n2. **Change Precision** - Client knows exactly what changed: `{gain: -3.0}` vs `{gain: -3.0, name: \"Ch1\", ...}` - Easier to display in UI: \"Gain changed to -3.0 dB\" not \"Channel updated\"\n\n3. **Performance** - Less JSON serialization overhead - Smaller WebSocket frames - Faster client-side patch application\n\n## Special Cases: Full Objects & Views\n\nSome variants use full objects or view types instead of patches:\n\n- **`SpeakerOutputSummingMatrix`**: Always full object (small, rarely changes) - **`AudioOutputSpeakerWays`**: Always full array (structural change, not patchable) - **`SpeakerOutputPresetProcessing`**: Uses `PresetProcessingValueView` to respect locked fields - **`All`**: Full device state as `DeviceSetupView` (complete sync operation) - **`Batch`**: Array of changes (atomic multi-field updates from preset apply/clear)\n\n## Preset Locking & Views\n\nPreset processing uses `PresetProcessingValueView` for scalar fields to handle vendor-locked presets. When locked, fields return `null` in the view. Sub-objects (crossover, EQ, FIR, limiters) use regular patches since they're always readable.\n\n# Type Naming Convention\n\n- Request types: `Set*` variants with `*Patch` values (e.g., `SetAudioInputAnalog`) - Response types: Plain names with `*Patch` values (e.g., `AudioInputAnalog`) - Patches: Derived via `#[derive(Patch)]` from full types\n\n# Examples\n\n```ignore // Changing input name: only name field in patch SetupChangedType::AudioInputAnalog { channel: 1, value: InputChannelPatch { name: Some(\"Vocal\".into()), ..Default::default() } }\n\n// Toggling EQ bypass: only bypass field in patch SetupChangedType::SpeakerOutputUserEq { channel: 2, value: EqualizerPatch { bypass: Some(true), bands: None } }\n\n// Changing single EQ band: only that band's fields SetupChangedType::SpeakerOutputUserEqBand { channel: 1, band: 3, value: EqualizerBandPatch { gain: Some(-2.5), ..Default::default() } }\n\n// Batch operation: multiple changes from preset apply SetupChangedType::Batch { changes: vec![ SetupChangedType::SpeakerOutputPresetCrossover { ... }, SetupChangedType::SpeakerOutputPresetEq { ... }, SetupChangedType::SpeakerOutputPresetFir { ... }, ] } ```",
+  "oneOf": [
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioInputAnalog": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./InputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioInputAnalog"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioInputDigital": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./InputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioInputDigital"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioInputNetwork": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./InputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioInputNetwork"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioInputConfig": {
+          "properties": {
+            "value": {
+              "$ref": "./InputConfigPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioInputConfig"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioGenerator": {
+          "properties": {
+            "value": {
+              "$ref": "./GeneratorSetupPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioGenerator"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutput": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./SpeakerOutputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutput"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputSummingMatrix": {
+          "properties": {
+            "value": {
+              "items": {
+                "items": {
+                  "format": "float",
+                  "type": "number"
+                },
+                "type": "array"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputSummingMatrix"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputUserProcessing": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./UserProcessingPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputUserProcessing"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputUserEq": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputUserEq"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputUserEqBand": {
+          "properties": {
+            "band": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerBandPatch.json"
+            }
+          },
+          "required": [
+            "band",
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputUserEqBand"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputArrayProcessing": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./ArrayProcessingPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputArrayProcessing"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputArrayEq": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputArrayEq"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputArrayEqBand": {
+          "properties": {
+            "band": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerBandPatch.json"
+            }
+          },
+          "required": [
+            "band",
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputArrayEqBand"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputArrayFir": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./ArrayFirFilterPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputArrayFir"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetProcessing": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./PresetProcessingValueView.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetProcessing"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetCrossover": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./CrossoverPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetCrossover"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetEq": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetEq"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetEqBand": {
+          "properties": {
+            "band": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./EqualizerBandPatch.json"
+            }
+          },
+          "required": [
+            "band",
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetEqBand"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetFir": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./PresetFirFilterPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetFir"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetPeakLimiter": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./PeakLimiterPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetPeakLimiter"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetRmsLimiter": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./RmsLimiterPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetRmsLimiter"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "SpeakerOutputPresetClipLimiter": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./ClipLimiterPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "SpeakerOutputPresetClipLimiter"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioDigitalOutput": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./DigitalOutputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioDigitalOutput"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioNetworkOutput": {
+          "properties": {
+            "channel": {
+              "format": "uint32",
+              "minimum": 0.0,
+              "type": "integer"
+            },
+            "value": {
+              "$ref": "./DigitalOutputChannelPatch.json"
+            }
+          },
+          "required": [
+            "channel",
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioNetworkOutput"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "AudioOutputSpeakerWays": {
+          "properties": {
+            "value": {
+              "items": {
+                "$ref": "./SpeakerWayMapping.json"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "AudioOutputSpeakerWays"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "InstallInfo": {
+          "properties": {
+            "value": {
+              "$ref": "./InstallInfoPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "InstallInfo"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "PowerManagement": {
+          "properties": {
+            "value": {
+              "$ref": "./PowerManagementPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "PowerManagement"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "Gpio": {
+          "properties": {
+            "value": {
+              "$ref": "./GpioPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "Gpio"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "Lan1Setup": {
+          "properties": {
+            "value": {
+              "$ref": "./LanSetupPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "Lan1Setup"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "Lan2Setup": {
+          "properties": {
+            "value": {
+              "$ref": "./LanSetupPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "Lan2Setup"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "properties": {
+        "NetworkSetup": {
+          "properties": {
+            "value": {
+              "$ref": "./NetworkSetupPatch.json"
+            }
+          },
+          "required": [
+            "value"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "NetworkSetup"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "description": "Complete setup change",
+      "properties": {
+        "All": {
+          "properties": {
+            "setup": {
+              "$ref": "./DeviceSetupView.json"
+            }
+          },
+          "required": [
+            "setup"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "All"
+      ],
+      "type": "object"
+    },
+    {
+      "additionalProperties": false,
+      "description": "Batch of multiple setup changes",
+      "properties": {
+        "Batch": {
+          "properties": {
+            "changes": {
+              "items": {
+                "description": "SetupChangedType variant (recursive reference - same structure as parent type)",
+                "type": "object"
+              },
+              "type": "array"
+            }
+          },
+          "required": [
+            "changes"
+          ],
+          "type": "object"
+        }
+      },
+      "required": [
+        "Batch"
+      ],
+      "type": "object"
+    }
+  ]
+}

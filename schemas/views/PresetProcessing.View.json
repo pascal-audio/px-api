@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "View version of PresetProcessing where locked fields are serialized as null\n\n# Preset Locking Behavior When a factory preset is vendor-locked (encrypted): - All fields return `None` to hide proprietary speaker voicing data - Only `preset_metadata` and `preset_customized` remain visible - This prevents reverse-engineering of factory tuning",
+  "properties": {
+    "clip_limiter": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/ClipLimiter.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Clip limiter settings (None if locked)"
+    },
+    "crossover": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/Crossover.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Crossover filters (None if locked)"
+    },
+    "delay": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PresetDelayTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Preset delay in milliseconds (None if locked)"
+    },
+    "drive": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/OutputDriveType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Amplifier drive mode (None if locked)"
+    },
+    "eq": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/EqualizerView.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "15-band parametric EQ with 1-indexed bands (None if locked)"
+    },
+    "fir": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PresetFirFilter.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Factory FIR filter (None if locked - hides proprietary taps)"
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/GainTrimType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Preset gain trim in dB (None if locked)"
+    },
+    "peak_limiter": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PeakLimiter.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Peak limiter settings (None if locked)"
+    },
+    "polarity": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PolarityType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Signal polarity (None if locked)"
+    },
+    "preset_customized": {
+      "description": "Whether the preset has been customized after application",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "preset_metadata": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/ChannelPresetMetadata.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Applied preset metadata (name, ID, etc.) - None if no preset is applied"
+    },
+    "rms_limiter": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/RmsLimiter.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "RMS limiter settings (None if locked)"
+    }
+  },
+  "title": "PresetProcessingView",
+  "type": "object"
+}

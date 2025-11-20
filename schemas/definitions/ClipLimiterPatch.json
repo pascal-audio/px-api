@@ -1,0 +1,22 @@
+{
+  "type": "object",
+  "properties": {
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "mode": {
+      "anyOf": [
+        {
+          "$ref": "./ClipLimiterMode.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

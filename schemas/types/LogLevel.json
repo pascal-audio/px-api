@@ -1,0 +1,42 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Log level for filtering device logs",
+  "oneOf": [
+    {
+      "description": "Trace level - most verbose",
+      "enum": [
+        "TRACE"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Debug level - detailed debugging information",
+      "enum": [
+        "DEBUG"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Info level - general informational messages",
+      "enum": [
+        "INFO"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Warn level - warning messages",
+      "enum": [
+        "WARN"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Error level - error messages only",
+      "enum": [
+        "ERROR"
+      ],
+      "type": "string"
+    }
+  ],
+  "title": "LogLevel"
+}

@@ -1,0 +1,26 @@
+{
+  "description": "Power state of the device.",
+  "oneOf": [
+    {
+      "description": "Device fully operational",
+      "type": "string",
+      "enum": [
+        "on"
+      ]
+    },
+    {
+      "description": "Low-power standby mode",
+      "type": "string",
+      "enum": [
+        "standby"
+      ]
+    },
+    {
+      "description": "Powered off (should not be observable)",
+      "type": "string",
+      "enum": [
+        "off"
+      ]
+    }
+  ]
+}

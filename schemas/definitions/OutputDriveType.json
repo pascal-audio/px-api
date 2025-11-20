@@ -1,0 +1,10 @@
+{
+  "type": "string",
+  "enum": [
+    "off",
+    "lo_z",
+    "70v",
+    "100v",
+    "btl"
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "system_state": {
+      "current_state": "Off",
+      "error_count": 0,
+      "fw_update_in_progress": false,
+      "last_error": null,
+      "last_error_timestamp": null,
+      "power_button_pressed": false,
+      "previous_state": "Init",
+      "recovery_attempt_count": 0,
+      "request_power_off": false,
+      "request_power_on": false,
+      "state_enter_timestamp": 1762962562.4993558,
+      "time_in_state_seconds": 417.500644169,
+      "time_since_last_error_seconds": null
+    }
+  }
+}

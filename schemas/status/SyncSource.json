@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Audio clock synchronization source.",
+  "oneOf": [
+    {
+      "description": "Internal clock (free-running)",
+      "enum": [
+        "internal"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Dante network clock",
+      "enum": [
+        "dante"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "External word clock",
+      "enum": [
+        "word_clock"
+      ],
+      "type": "string"
+    }
+  ],
+  "title": "SyncSource"
+}

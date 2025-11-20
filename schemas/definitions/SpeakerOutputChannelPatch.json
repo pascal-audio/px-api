@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "fallback_src": {
+      "anyOf": [
+        {
+          "$ref": "./OutputSource.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "primary_src": {
+      "anyOf": [
+        {
+          "$ref": "./OutputSource.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

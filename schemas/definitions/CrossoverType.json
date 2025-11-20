@@ -1,0 +1,19 @@
+{
+  "type": "string",
+  "enum": [
+    "off",
+    "but6",
+    "but12",
+    "but24",
+    "but18",
+    "but36",
+    "but48",
+    "bes12",
+    "bes24",
+    "bes48",
+    "lr12",
+    "lr24",
+    "lr36",
+    "lr48"
+  ]
+}

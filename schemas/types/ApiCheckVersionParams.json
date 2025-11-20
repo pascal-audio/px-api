@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "properties": {
+    "client_version": {
+      "description": "Client API version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "client_version"
+  ],
+  "title": "ApiCheckVersionParams",
+  "type": "object"
+}

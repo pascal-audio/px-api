@@ -1,0 +1,68 @@
+{
+  "description": "View version of DeviceSetup with preset locking support.\n\nTop-level device configuration for API responses. Uses AudioSetupView which includes preset locking (locked preset fields return None).",
+  "type": "object",
+  "required": [
+    "audio",
+    "gpio",
+    "id",
+    "install",
+    "network",
+    "power",
+    "version"
+  ],
+  "properties": {
+    "audio": {
+      "description": "Audio configuration with preset locking support",
+      "allOf": [
+        {
+          "$ref": "./AudioSetupView.json"
+        }
+      ]
+    },
+    "gpio": {
+      "description": "GPIO pin configuration",
+      "allOf": [
+        {
+          "$ref": "./Gpio.json"
+        }
+      ]
+    },
+    "id": {
+      "description": "Unique setup identifier (UUID)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "install": {
+      "description": "System metadata (device name, venue, installer info)",
+      "allOf": [
+        {
+          "$ref": "./InstallInfo.json"
+        }
+      ]
+    },
+    "network": {
+      "description": "Network configuration (dual LAN ports)",
+      "allOf": [
+        {
+          "$ref": "./NetworkSetup.json"
+        }
+      ]
+    },
+    "power": {
+      "description": "Power management and protection settings",
+      "allOf": [
+        {
+          "$ref": "./PowerManagement.json"
+        }
+      ]
+    },
+    "version": {
+      "description": "Setup version (for migration compatibility)",
+      "allOf": [
+        {
+          "$ref": "./DeviceSetupVersion.json"
+        }
+      ]
+    }
+  }
+}

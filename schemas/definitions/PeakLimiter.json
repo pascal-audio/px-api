@@ -1,0 +1,63 @@
+{
+  "description": "Peak limiter with configurable threshold, attack, release, hold, and knee.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/peak_limiter`\n\n# Purpose Protects speakers from instantaneous peaks that could cause damage. Fast attack time catches transient peaks before they reach the driver.\n\n# Structure - `bypass`: Enable/disable limiter - `auto`: Auto-threshold mode (adjusts based on signal level) - `threshold`: Maximum output level (1.0-50.0 V RMS) - `attack`: Attack time in seconds (0.0003-0.1s) - how fast limiter engages - `release`: Release time in seconds (0.004-2.0s) - how fast limiter recovers - `hold`: Hold time in seconds (0.0-0.5s) - sustain limiting after peak - `knee`: Soft knee amount (0.0-12.0 dB) - gradual vs hard limiting\n\n# Factory Defaults - Auto mode disabled - Threshold: 1.0 V RMS (minimum, most protective) - Attack: 0.3 ms (very fast) - Release: 4 ms (fast recovery) - Hold: 0 ms (no sustain) - Knee: 0 dB (hard limiting)",
+  "type": "object",
+  "required": [
+    "attack",
+    "auto",
+    "bypass",
+    "hold",
+    "knee",
+    "release",
+    "threshold"
+  ],
+  "properties": {
+    "attack": {
+      "description": "Attack time in seconds (range: 0.0003-0.1) - how fast limiter engages on peaks",
+      "allOf": [
+        {
+          "$ref": "./PeakLimiterAttackType.json"
+        }
+      ]
+    },
+    "auto": {
+      "description": "Auto-threshold mode - automatically adjusts threshold based on signal level",
+      "type": "boolean"
+    },
+    "bypass": {
+      "description": "Enable/disable peak limiter",
+      "type": "boolean"
+    },
+    "hold": {
+      "description": "Hold time in seconds (range: 0.0-0.5) - sustain limiting after peak detected",
+      "allOf": [
+        {
+          "$ref": "./PeakLimiterHoldType.json"
+        }
+      ]
+    },
+    "knee": {
+      "description": "Soft knee amount in dB (range: 0.0-12.0) - 0=hard limiting, higher=gradual",
+      "allOf": [
+        {
+          "$ref": "./PeakLimiterKneeType.json"
+        }
+      ]
+    },
+    "release": {
+      "description": "Release time in seconds (range: 0.004-2.0) - how fast limiter recovers after peak",
+      "allOf": [
+        {
+          "$ref": "./PeakLimiterReleaseType.json"
+        }
+      ]
+    },
+    "threshold": {
+      "description": "Maximum output level in V RMS (range: 1.0-50.0)",
+      "allOf": [
+        {
+          "$ref": "./PeakLimiterThresholdType.json"
+        }
+      ]
+    }
+  }
+}

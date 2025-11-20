@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "api_check_version",
+  "params": {
+    "client_version": "1.0.0"
+  }
+}

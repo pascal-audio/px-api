@@ -1,0 +1,7 @@
+{
+  "description": "Schema version for DeviceSetup",
+  "type": "string",
+  "enum": [
+    "V100"
+  ]
+}

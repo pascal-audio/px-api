@@ -1,0 +1,8 @@
+{
+  "type": "string",
+  "enum": [
+    "off",
+    "mix",
+    "solo"
+  ]
+}

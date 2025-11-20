@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Clip limiter for absolute hard-clipping protection at amplifier output.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/clip_limiter`\n\n# Purpose Final safety stage before amplifier output. Prevents signal from exceeding maximum voltage that would cause hard clipping distortion in power amp.\n\n# Modes - **Normal**: Standard soft clipping - **Soft**: More gradual clipping curve (less harsh)\n\n# Structure - `bypass`: Enable/disable limiter - `mode`: Clipping mode (Normal or Soft)\n\n# Factory Defaults - Mode: Normal - Bypass: false (always active in factory presets)",
+  "properties": {
+    "bypass": {
+      "description": "Enable/disable clip limiter",
+      "type": "boolean"
+    },
+    "mode": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ClipLimiterMode.json"
+        }
+      ],
+      "description": "Clipping mode: Normal (standard) or Soft (gradual curve)"
+    }
+  },
+  "required": [
+    "bypass",
+    "mode"
+  ],
+  "title": "ClipLimiter",
+  "type": "object"
+}

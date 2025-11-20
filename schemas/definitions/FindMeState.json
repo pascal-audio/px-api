@@ -1,0 +1,22 @@
+{
+  "description": "Find-me LED state.",
+  "type": "object",
+  "required": [
+    "active"
+  ],
+  "properties": {
+    "active": {
+      "description": "Whether find-me is currently active",
+      "type": "boolean"
+    },
+    "timeout_remaining": {
+      "description": "Seconds remaining until automatic timeout (None if not active)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "uint32",
+      "minimum": 0.0
+    }
+  }
+}

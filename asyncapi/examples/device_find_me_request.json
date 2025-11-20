@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "device_find_me",
+  "params": {
+    "timeout": 5.0
+  }
+}

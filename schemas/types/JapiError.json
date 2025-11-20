@@ -1,0 +1,204 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "JAPI Error - unified error type for all API methods\n\nEach variant represents a specific error condition and automatically converts to appropriate JSON-RPC error codes with structured data.",
+  "oneOf": [
+    {
+      "description": "Configuration path doesn't exist",
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_PATH"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "path": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Channel index out of range (valid range: 1-4)",
+      "properties": {
+        "channel": {
+          "format": "uint8",
+          "minimum": 0.0,
+          "type": [
+            "integer",
+            "null"
+          ]
+        },
+        "code": {
+          "enum": [
+            "INVALID_CHANNEL"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Value outside valid range or wrong type",
+      "properties": {
+        "code": {
+          "enum": [
+            "INVALID_VALUE"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "value": true
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Preset is vendor-locked and cannot be modified",
+      "properties": {
+        "code": {
+          "enum": [
+            "PRESET_LOCKED"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "preset_name": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Preset data is corrupted or invalid format",
+      "properties": {
+        "code": {
+          "enum": [
+            "PRESET_INVALID"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "reason": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Device is performing another operation",
+      "properties": {
+        "code": {
+          "enum": [
+            "DEVICE_BUSY"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "operation": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Hardware communication failed",
+      "properties": {
+        "code": {
+          "enum": [
+            "HARDWARE_ERROR"
+          ],
+          "type": "string"
+        },
+        "component": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "message": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    },
+    {
+      "description": "Operation not allowed in current state",
+      "properties": {
+        "code": {
+          "enum": [
+            "PERMISSION_DENIED"
+          ],
+          "type": "string"
+        },
+        "message": {
+          "type": "string"
+        },
+        "required_state": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "type": "object"
+    }
+  ],
+  "title": "JapiError"
+}

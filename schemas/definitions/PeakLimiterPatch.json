@@ -1,0 +1,68 @@
+{
+  "type": "object",
+  "properties": {
+    "attack": {
+      "anyOf": [
+        {
+          "$ref": "./PeakLimiterAttackType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "auto": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "hold": {
+      "anyOf": [
+        {
+          "$ref": "./PeakLimiterHoldType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "knee": {
+      "anyOf": [
+        {
+          "$ref": "./PeakLimiterKneeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "release": {
+      "anyOf": [
+        {
+          "$ref": "./PeakLimiterReleaseType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "threshold": {
+      "anyOf": [
+        {
+          "$ref": "./PeakLimiterThresholdType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

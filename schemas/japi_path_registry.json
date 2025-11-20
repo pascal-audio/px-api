@@ -1,0 +1,295 @@
+{
+  "description": "JAPI Path Registry - Maps API paths to their schema types",
+  "generatedAt": "2025-11-21T12:19:57.261519157+00:00",
+  "paths": {
+    "/": {
+      "dataType": "DeviceSetup",
+      "description": "Complete device setup configuration",
+      "patchType": null,
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": "DeviceSetupView"
+    },
+    "/audio/input/analog/:channel": {
+      "dataType": "InputChannel",
+      "description": "Analog input channel (XLR/TRS)",
+      "patchType": "InputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/input/config": {
+      "dataType": "InputConfig",
+      "description": "Global input configuration and routing",
+      "patchType": "InputConfigPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/audio/input/digital/:channel": {
+      "dataType": "InputChannel",
+      "description": "Digital input channel (AES/SPDIF)",
+      "patchType": "InputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/input/generator": {
+      "dataType": "GeneratorSetup",
+      "description": "Test signal generator settings",
+      "patchType": "GeneratorSetupPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/audio/input/network/:channel": {
+      "dataType": "InputChannel",
+      "description": "Network audio input (Dante)",
+      "patchType": "InputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/digital/:channel": {
+      "dataType": "DigitalOutputChannel",
+      "description": "Digital output channel (AES/EBU)",
+      "patchType": "DigitalOutputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/network/:channel": {
+      "dataType": "DigitalOutputChannel",
+      "description": "Network audio output (Dante)",
+      "patchType": "DigitalOutputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel": {
+      "dataType": "SpeakerOutputChannel",
+      "description": "Speaker channel settings (name, sources, mute)",
+      "patchType": "SpeakerOutputChannelPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/array": {
+      "dataType": "ArrayProcessing",
+      "description": "Array processing (gain, polarity, delay)",
+      "patchType": "ArrayProcessingPatch",
+      "processingLayer": "Array",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/array/eq": {
+      "dataType": "Equalizer",
+      "description": "Array 5-band parametric EQ",
+      "patchType": "EqualizerPatch",
+      "processingLayer": "Array",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/array/eq/bands/:band": {
+      "dataType": "EqualizerBand",
+      "description": "Array EQ single band parameters",
+      "patchType": "EqualizerBandPatch",
+      "processingLayer": "Array",
+      "requiresBand": true,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/array/fir": {
+      "dataType": "ArrayFirFilter",
+      "description": "Array FIR filter coefficients",
+      "patchType": "ArrayFirFilterPatch",
+      "processingLayer": "Array",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset": {
+      "dataType": "PresetProcessing",
+      "description": "Preset processing (drive, gain, polarity, delay)",
+      "patchType": "PresetProcessingPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": "PresetProcessingValueView"
+    },
+    "/audio/output/speaker/:channel/preset/clip_limiter": {
+      "dataType": "ClipLimiter",
+      "description": "Preset hard clip protection",
+      "patchType": "ClipLimiterPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/crossover": {
+      "dataType": "Crossover",
+      "description": "Preset crossover filters (HPF + LPF)",
+      "patchType": "CrossoverPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/eq": {
+      "dataType": "Equalizer",
+      "description": "Preset 15-band parametric EQ",
+      "patchType": "EqualizerPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/eq/bands/:band": {
+      "dataType": "EqualizerBand",
+      "description": "Preset EQ single band parameters",
+      "patchType": "EqualizerBandPatch",
+      "processingLayer": "Preset",
+      "requiresBand": true,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/fir": {
+      "dataType": "PresetFirFilter",
+      "description": "Preset FIR filter coefficients",
+      "patchType": "PresetFirFilterPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/peak_limiter": {
+      "dataType": "PeakLimiter",
+      "description": "Preset fast peak limiter",
+      "patchType": "PeakLimiterPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/preset/rms_limiter": {
+      "dataType": "RmsLimiter",
+      "description": "Preset thermal/RMS limiter",
+      "patchType": "RmsLimiterPatch",
+      "processingLayer": "Preset",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/user": {
+      "dataType": "UserProcessing",
+      "description": "User processing (gain, polarity, delay, mute, HPF)",
+      "patchType": "UserProcessingPatch",
+      "processingLayer": "User",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/user/eq": {
+      "dataType": "Equalizer",
+      "description": "User 10-band parametric EQ",
+      "patchType": "EqualizerPatch",
+      "processingLayer": "User",
+      "requiresBand": false,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker/:channel/user/eq/bands/:band": {
+      "dataType": "EqualizerBand",
+      "description": "User EQ single band parameters",
+      "patchType": "EqualizerBandPatch",
+      "processingLayer": "User",
+      "requiresBand": true,
+      "requiresChannel": true,
+      "viewType": null
+    },
+    "/audio/output/speaker_ways": {
+      "dataType": "SpeakerWayMapping",
+      "description": "Speaker way mapping for multi-way systems",
+      "patchType": null,
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/audio/output/summing_matrix": {
+      "dataType": "SummingMatrix",
+      "description": "Input-to-output routing matrix",
+      "patchType": null,
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/gpio": {
+      "dataType": "Gpio",
+      "description": "GPIO pin configuration",
+      "patchType": "GpioPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/install": {
+      "dataType": "InstallInfo",
+      "description": "User-editable device metadata",
+      "patchType": "InstallInfoPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/network": {
+      "dataType": "NetworkSetup",
+      "description": "Network mode (split/redundant) configuration",
+      "patchType": "NetworkSetupPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/network/lan1": {
+      "dataType": "LanSetup",
+      "description": "LAN1 network interface configuration",
+      "patchType": "LanSetupPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/network/lan2": {
+      "dataType": "LanSetup",
+      "description": "LAN2 network interface configuration",
+      "patchType": "LanSetupPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    },
+    "/power": {
+      "dataType": "PowerManagement",
+      "description": "Power modes and protection settings",
+      "patchType": "PowerManagementPatch",
+      "processingLayer": null,
+      "requiresBand": false,
+      "requiresChannel": false,
+      "viewType": null
+    }
+  },
+  "version": "1.0"
+}

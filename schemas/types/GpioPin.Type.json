@@ -1,0 +1,16 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "enum": [
+    "off",
+    "vcc3_v3",
+    "volume_control",
+    "trigger12_v_out",
+    "trigger12_v_in",
+    "standby_no",
+    "standby_nc",
+    "mute_no",
+    "mute_nc"
+  ],
+  "title": "GpioPinType",
+  "type": "string"
+}

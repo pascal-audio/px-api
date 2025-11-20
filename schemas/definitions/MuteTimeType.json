@@ -1,0 +1,6 @@
+{
+  "type": "number",
+  "format": "float",
+  "maximum": 3600.0,
+  "minimum": 5.0
+}

@@ -1,0 +1,11 @@
+{
+  "type": "string",
+  "enum": [
+    "audio",
+    "audio_eco",
+    "trigger",
+    "trigger_eco",
+    "network_only",
+    "audio_dsp"
+  ]
+}

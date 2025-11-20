@@ -1,0 +1,53 @@
+{
+  "description": "View version of ArrayProcessing with 1-indexed EQ bands\n\n# Array Processing Layer Installer-level tuning with 5-band parametric EQ. Used for room correction and array optimization. No crossover (crossover is in preset layer only).",
+  "type": "object",
+  "required": [
+    "delay",
+    "eq",
+    "fir",
+    "gain",
+    "polarity"
+  ],
+  "properties": {
+    "delay": {
+      "description": "Array delay in seconds",
+      "allOf": [
+        {
+          "$ref": "./ArrayDelayTimeType.json"
+        }
+      ]
+    },
+    "eq": {
+      "description": "5-band parametric EQ with 1-indexed bands",
+      "allOf": [
+        {
+          "$ref": "./EqualizerView.json"
+        }
+      ]
+    },
+    "fir": {
+      "description": "FIR filter for array tuning",
+      "allOf": [
+        {
+          "$ref": "./ArrayFirFilter.json"
+        }
+      ]
+    },
+    "gain": {
+      "description": "Trim gain in dB",
+      "allOf": [
+        {
+          "$ref": "./GainTrimType.json"
+        }
+      ]
+    },
+    "polarity": {
+      "description": "Signal polarity",
+      "allOf": [
+        {
+          "$ref": "./PolarityType.json"
+        }
+      ]
+    }
+  }
+}

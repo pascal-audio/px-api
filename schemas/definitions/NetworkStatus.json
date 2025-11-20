@@ -1,0 +1,37 @@
+{
+  "description": "Network interface status for all interfaces.",
+  "type": "object",
+  "required": [
+    "lan1",
+    "lan2"
+  ],
+  "properties": {
+    "dante": {
+      "description": "Dante network status (if available)",
+      "anyOf": [
+        {
+          "$ref": "./DanteStatus.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lan1": {
+      "description": "LAN1 interface status",
+      "allOf": [
+        {
+          "$ref": "./NetworkInterfaceStatus.json"
+        }
+      ]
+    },
+    "lan2": {
+      "description": "LAN2 interface status",
+      "allOf": [
+        {
+          "$ref": "./NetworkInterfaceStatus.json"
+        }
+      ]
+    }
+  }
+}

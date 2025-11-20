@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Device operational state.",
+  "properties": {
+    "boot_time": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Timestamp.json"
+        }
+      ],
+      "description": "Boot timestamp (RFC 3339 format)"
+    },
+    "find_me": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FindMeState.json"
+        }
+      ],
+      "description": "Find-me LED state"
+    },
+    "power_state": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PowerState.json"
+        }
+      ],
+      "description": "Current power state"
+    },
+    "reboot_pending": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/RebootPending.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Pending reboot information"
+    },
+    "uptime_seconds": {
+      "description": "Seconds since boot",
+      "format": "uint64",
+      "minimum": 0.0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "boot_time",
+    "find_me",
+    "power_state",
+    "uptime_seconds"
+  ],
+  "title": "DeviceState",
+  "type": "object"
+}

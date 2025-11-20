@@ -1,0 +1,21 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Network configuration mode.",
+  "oneOf": [
+    {
+      "description": "DHCP automatic configuration",
+      "enum": [
+        "dhcp"
+      ],
+      "type": "string"
+    },
+    {
+      "description": "Static IP configuration",
+      "enum": [
+        "static"
+      ],
+      "type": "string"
+    }
+  ],
+  "title": "NetworkConfigMode"
+}

@@ -1,0 +1,36 @@
+{
+  "type": "object",
+  "properties": {
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./DigitalOutputGain.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "source": {
+      "anyOf": [
+        {
+          "$ref": "./DigitalOutputSource.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

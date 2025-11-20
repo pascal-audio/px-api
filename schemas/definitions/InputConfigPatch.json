@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "input_switch": {
+      "anyOf": [
+        {
+          "$ref": "./InputSwitchType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

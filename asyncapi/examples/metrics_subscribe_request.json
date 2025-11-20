@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "method": "metrics_subscribe",
+  "params": {
+    "interval": 1000
+  }
+}

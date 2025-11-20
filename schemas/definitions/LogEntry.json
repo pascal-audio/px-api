@@ -1,0 +1,28 @@
+{
+  "type": "object",
+  "required": [
+    "fields",
+    "level",
+    "message",
+    "target",
+    "timestamp"
+  ],
+  "properties": {
+    "fields": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "level": {
+      "type": "string"
+    },
+    "message": {
+      "type": "string"
+    },
+    "target": {
+      "type": "string"
+    },
+    "timestamp": {
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "RMS (Root Mean Square) limiter for thermal and long-term power protection.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/rms_limiter`\n\n# Purpose Protects speakers from thermal damage by limiting average power over time. Slower attack than peak limiter - prevents voice coil overheating, not transients.\n\n# Structure - `bypass`: Enable/disable limiter - `threshold`: Maximum RMS level (1.0-50.0 V RMS) - `attack`: Attack time in milliseconds (0.1-100.0 ms) - `release`: Release time in milliseconds (0.1-100.0 ms) - `hold`: Hold time in milliseconds (0.0-500.0 ms) - `knee`: Soft knee amount (0.0-12.0 dB)\n\n# Factory Defaults - Threshold: 45.0 V RMS (high, minimal limiting) - Attack: 2.5 ms (slower than peak limiter) - Release: 5.0 ms - Hold: 0 ms - Knee: 0 dB (hard limiting)",
+  "properties": {
+    "attack": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiterAttackType.json"
+        }
+      ],
+      "description": "Attack time in milliseconds (range: 0.1-100.0)"
+    },
+    "bypass": {
+      "description": "Enable/disable RMS limiter",
+      "type": "boolean"
+    },
+    "hold": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiterHoldType.json"
+        }
+      ],
+      "description": "Hold time in milliseconds (range: 0.0-500.0)"
+    },
+    "knee": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiterKneeType.json"
+        }
+      ],
+      "description": "Soft knee amount in dB (range: 0.0-12.0)"
+    },
+    "release": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiterReleaseType.json"
+        }
+      ],
+      "description": "Release time in milliseconds (range: 0.1-100.0)"
+    },
+    "threshold": {
+      "allOf": [
+        {
+          "$ref": "../definitions/RmsLimiterThresholdType.json"
+        }
+      ],
+      "description": "Maximum RMS level in V RMS (range: 1.0-50.0)"
+    }
+  },
+  "required": [
+    "attack",
+    "bypass",
+    "hold",
+    "knee",
+    "release",
+    "threshold"
+  ],
+  "title": "RmsLimiter",
+  "type": "object"
+}

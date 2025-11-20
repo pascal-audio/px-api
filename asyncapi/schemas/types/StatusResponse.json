@@ -1,0 +1,20 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Generic success response for operations that return status messages\n\n# Fields * `success` - Whether the operation succeeded * `message` - Description of the operation result",
+  "properties": {
+    "message": {
+      "description": "Status or result message",
+      "type": "string"
+    },
+    "success": {
+      "description": "Operation success indicator",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "message",
+    "success"
+  ],
+  "title": "StatusResponse",
+  "type": "object"
+}

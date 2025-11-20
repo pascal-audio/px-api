@@ -1,0 +1,76 @@
+{
+  "description": "View version of UserProcessing with 1-indexed EQ bands\n\n# User Processing Layer User-adjustable processing with 10-band parametric EQ. This layer is always accessible (no locking) and provides end-user controls.",
+  "type": "object",
+  "required": [
+    "delay",
+    "eq",
+    "gain",
+    "generator_mix",
+    "hpf",
+    "hpf_freq",
+    "mute",
+    "polarity"
+  ],
+  "properties": {
+    "delay": {
+      "description": "User delay in seconds",
+      "allOf": [
+        {
+          "$ref": "./UserDelayTimeType.json"
+        }
+      ]
+    },
+    "eq": {
+      "description": "10-band parametric EQ with 1-indexed bands",
+      "allOf": [
+        {
+          "$ref": "./EqualizerView.json"
+        }
+      ]
+    },
+    "gain": {
+      "description": "User gain in dB",
+      "allOf": [
+        {
+          "$ref": "./UserProcessingGain.json"
+        }
+      ]
+    },
+    "generator_mix": {
+      "description": "Test signal generator mix mode",
+      "allOf": [
+        {
+          "$ref": "./GeneratorMixMode.json"
+        }
+      ]
+    },
+    "hpf": {
+      "description": "High-pass filter type",
+      "allOf": [
+        {
+          "$ref": "./HighpassType.json"
+        }
+      ]
+    },
+    "hpf_freq": {
+      "description": "HPF corner frequency in Hz",
+      "allOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        }
+      ]
+    },
+    "mute": {
+      "description": "Channel mute state",
+      "type": "boolean"
+    },
+    "polarity": {
+      "description": "Signal polarity",
+      "allOf": [
+        {
+          "$ref": "./PolarityType.json"
+        }
+      ]
+    }
+  }
+}

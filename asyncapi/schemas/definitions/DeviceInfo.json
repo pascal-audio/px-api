@@ -1,0 +1,45 @@
+{
+  "type": "object",
+  "required": [
+    "model_id",
+    "model_name",
+    "serial",
+    "software_id",
+    "vendor_id",
+    "vendor_name"
+  ],
+  "properties": {
+    "model_id": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "model_name": {
+      "type": "string"
+    },
+    "product_code": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "serial": {
+      "type": "string"
+    },
+    "software_id": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "vendor_id": {
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "vendor_name": {
+      "type": "string"
+    }
+  }
+}

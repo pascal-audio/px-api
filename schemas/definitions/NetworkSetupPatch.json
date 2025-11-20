@@ -1,0 +1,16 @@
+{
+  "type": "object",
+  "properties": {
+    "mode": {
+      "anyOf": [
+        {
+          "$ref": "./NetworkModeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

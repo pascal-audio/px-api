@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Multi-sample-rate FIR filter for channel presets Supports optional FIR filter taps for 48kHz and 96kHz sample rates",
+  "properties": {
+    "bypass": {
+      "type": "boolean"
+    },
+    "taps_48k": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PresetFirTaps.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "FIR filter taps for 48kHz sample rate (optional)"
+    },
+    "taps_96k": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/PresetFirTaps.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "FIR filter taps for 96kHz sample rate (optional)"
+    }
+  },
+  "required": [
+    "bypass"
+  ],
+  "title": "ChannelPresetFirFilter",
+  "type": "object"
+}

@@ -1,0 +1,53 @@
+{
+  "description": "Device operational state.",
+  "type": "object",
+  "required": [
+    "boot_time",
+    "find_me",
+    "power_state",
+    "uptime_seconds"
+  ],
+  "properties": {
+    "boot_time": {
+      "description": "Boot timestamp (RFC 3339 format)",
+      "allOf": [
+        {
+          "$ref": "./Rfc3339Timestamp.json"
+        }
+      ]
+    },
+    "find_me": {
+      "description": "Find-me LED state",
+      "allOf": [
+        {
+          "$ref": "./FindMeState.json"
+        }
+      ]
+    },
+    "power_state": {
+      "description": "Current power state",
+      "allOf": [
+        {
+          "$ref": "./PowerState.json"
+        }
+      ]
+    },
+    "reboot_pending": {
+      "description": "Pending reboot information",
+      "anyOf": [
+        {
+          "$ref": "./RebootPending.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "uptime_seconds": {
+      "description": "Seconds since boot",
+      "type": "integer",
+      "format": "uint64",
+      "minimum": 0.0
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "type": "object",
+  "properties": {
+    "asset_tag": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "contact_info": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "custom1": {
+      "anyOf": [
+        {
+          "$ref": "./CustomFieldType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "custom2": {
+      "anyOf": [
+        {
+          "$ref": "./CustomFieldType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "custom3": {
+      "anyOf": [
+        {
+          "$ref": "./CustomFieldType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "customer_name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "device_name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "install_date": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "install_notes": {
+      "anyOf": [
+        {
+          "$ref": "./InstallNotesType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "installer_name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "venue_name": {
+      "anyOf": [
+        {
+          "$ref": "./NameType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

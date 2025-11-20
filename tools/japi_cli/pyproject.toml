@@ -1,0 +1,68 @@
+[project]
+name = "japi-cli"
+version = "1.0.0"
+description = "Command-line interface for Thorium JSON-RPC API - Professional audio amplifier control"
+readme = "README.md"
+requires-python = ">=3.9"
+authors = [
+    {name = "Pascal Audio", email = "support@pascal-audio.com"}
+]
+license = {text = "Proprietary"}
+keywords = ["audio", "dsp", "amplifier", "json-rpc", "websocket", "cli"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "Topic :: Multimedia :: Sound/Audio",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "argcomplete>=3.6.2",
+    "colorama>=0.4.6",
+    "websockets>=15.0.1",
+    "prompt-toolkit>=3.0.48",
+    "aiohttp>=3.9.0",
+    "zeroconf>=0.132.0",
+]
+
+[project.scripts]
+japi_cli = "japi_cli:main"
+
+[project.urls]
+Homepage = "https://github.com/pascal-audio/px-api"
+Documentation = "https://github.com/pascal-audio/px-api/tree/main/docs"
+Repository = "https://github.com/pascal-audio/px-api"
+Issues = "https://github.com/pascal-audio/px-api/issues"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.407",
+    "ruff"
+]
+
+
+[tool.ruff]
+# Enable linting rules (E,F,I = pycodestyle/pyflakes/imports). Add more as you go.
+lint.select = ["E", "F", "I", "UP", "B"]  # UP=pyupgrade, B=bugbear
+lint.ignore = ["E501"]  # let formatter handle line length
+line-length = 120
+target-version = "py311"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "standard"  # or "strict" incrementally
+reportMissingTypeStubs = "warning"
+venvPath = "."
+venv = ".venv"
+exclude = ["**/.venv", "**/build", "**/.mypy_cache", "**/test_env", "**/__pycache__"]
+

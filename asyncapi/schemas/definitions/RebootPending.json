@@ -1,0 +1,27 @@
+{
+  "description": "Pending reboot information.",
+  "type": "object",
+  "required": [
+    "pending",
+    "reason"
+  ],
+  "properties": {
+    "delay_seconds": {
+      "description": "Seconds until reboot (None if immediate)",
+      "type": [
+        "integer",
+        "null"
+      ],
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "pending": {
+      "description": "Whether a reboot is scheduled",
+      "type": "boolean"
+    },
+    "reason": {
+      "description": "Reason for reboot (e.g., \"firmware_update\", \"network_reconfigure\")",
+      "type": "string"
+    }
+  }
+}

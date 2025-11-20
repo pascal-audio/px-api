@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "View version of SpeakerOutputChannel with preset locking support and 1-indexed EQ bands.\n\nConverts all processing layers to use view types with 1-indexed EQ bands. PresetProcessingView additionally handles vendor-locked presets (returns None for locked fields).",
+  "properties": {
+    "array": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ArrayProcessingView.json"
+        }
+      ],
+      "description": "Array processing layer with 5-band EQ (1-indexed bands)"
+    },
+    "fallback_src": {
+      "allOf": [
+        {
+          "$ref": "../definitions/OutputSource.json"
+        }
+      ],
+      "description": "Fallback input source"
+    },
+    "name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Channel name (max 31 characters)"
+    },
+    "preset": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PresetProcessingView.json"
+        }
+      ],
+      "description": "Preset processing layer with 15-band EQ (1-indexed bands) and locking support"
+    },
+    "primary_src": {
+      "allOf": [
+        {
+          "$ref": "../definitions/OutputSource.json"
+        }
+      ],
+      "description": "Primary input source"
+    },
+    "user": {
+      "allOf": [
+        {
+          "$ref": "../definitions/UserProcessingView.json"
+        }
+      ],
+      "description": "User processing layer with 10-band EQ (1-indexed bands)"
+    }
+  },
+  "required": [
+    "array",
+    "fallback_src",
+    "name",
+    "preset",
+    "primary_src",
+    "user"
+  ],
+  "title": "SpeakerOutputChannelView",
+  "type": "object"
+}

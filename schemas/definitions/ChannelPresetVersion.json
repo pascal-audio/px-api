@@ -1,0 +1,7 @@
+{
+  "description": "Schema version for SpeakerPreset",
+  "type": "string",
+  "enum": [
+    "V100"
+  ]
+}

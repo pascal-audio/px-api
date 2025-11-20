@@ -1,0 +1,64 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Main speaker output channel with 3-layer DSP processing chain.\n\nEach speaker channel consists of: - **User Layer**: User-adjustable parameters (10-band EQ, gain, delay, mute) - **Array Layer**: Installer tuning for multi-cabinet arrays (5-band EQ, FIR, delay) - **Preset Layer**: Factory presets with crossover and limiters (15-band EQ, may be locked)\n\nSignal flow: primary_src → User → Array → Preset → Amplifier",
+  "properties": {
+    "array": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ArrayProcessing.json"
+        }
+      ],
+      "description": "Array processing layer (5-band EQ, FIR, alignment delay)"
+    },
+    "fallback_src": {
+      "allOf": [
+        {
+          "$ref": "../definitions/OutputSource.json"
+        }
+      ],
+      "description": "Fallback input source when primary unavailable"
+    },
+    "name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Channel name (max 31 characters)"
+    },
+    "preset": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PresetProcessing.json"
+        }
+      ],
+      "description": "Preset processing layer (15-band EQ, crossover, limiters, may be locked)"
+    },
+    "primary_src": {
+      "allOf": [
+        {
+          "$ref": "../definitions/OutputSource.json"
+        }
+      ],
+      "description": "Primary input source (Analog/Digital/Network/Generator)"
+    },
+    "user": {
+      "allOf": [
+        {
+          "$ref": "../definitions/UserProcessing.json"
+        }
+      ],
+      "description": "User processing layer (10-band EQ, gain, delay, mute, HPF)"
+    }
+  },
+  "required": [
+    "array",
+    "fallback_src",
+    "name",
+    "preset",
+    "primary_src",
+    "user"
+  ],
+  "title": "SpeakerOutputChannel",
+  "type": "object"
+}

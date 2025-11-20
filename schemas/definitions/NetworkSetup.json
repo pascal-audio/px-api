@@ -1,0 +1,35 @@
+{
+  "description": "Network configuration for dual LAN ports.\n\nSupports two operation modes: - **Split**: LAN1 (control) + LAN2 (Dante audio) - independent configs - **Redundant**: Both ports bridged with same IP for failover",
+  "type": "object",
+  "required": [
+    "lan1",
+    "lan2",
+    "mode"
+  ],
+  "properties": {
+    "lan1": {
+      "description": "LAN1 (eth1) configuration - control network",
+      "allOf": [
+        {
+          "$ref": "./LanSetup.json"
+        }
+      ]
+    },
+    "lan2": {
+      "description": "LAN2 (eth0) configuration - Dante audio network",
+      "allOf": [
+        {
+          "$ref": "./LanSetup.json"
+        }
+      ]
+    },
+    "mode": {
+      "description": "Network mode (Split or Redundant)",
+      "allOf": [
+        {
+          "$ref": "./NetworkModeType.json"
+        }
+      ]
+    }
+  }
+}

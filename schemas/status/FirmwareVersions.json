@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Firmware and subsystem versions.",
+  "properties": {
+    "amp_mcu": {
+      "description": "Amplifier MCU firmware version",
+      "type": "string"
+    },
+    "bootloader": {
+      "description": "Bootloader version",
+      "type": "string"
+    },
+    "dsp": {
+      "description": "DSP firmware version",
+      "type": "string"
+    },
+    "front_mcu": {
+      "description": "Front panel MCU firmware version",
+      "type": "string"
+    },
+    "main": {
+      "description": "Main firmware version",
+      "type": "string"
+    },
+    "psu_primary_mcu": {
+      "description": "PSU Primary MCU firmware version",
+      "type": "string"
+    },
+    "psu_secondary_mcu": {
+      "description": "PSU Secondary MCU firmware version",
+      "type": "string"
+    },
+    "system_mcu": {
+      "description": "System MCU firmware version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "amp_mcu",
+    "bootloader",
+    "dsp",
+    "front_mcu",
+    "main",
+    "psu_primary_mcu",
+    "psu_secondary_mcu",
+    "system_mcu"
+  ],
+  "title": "FirmwareVersions",
+  "type": "object"
+}

@@ -1,0 +1,13 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for getting a specific property value from a path.\n\nUsed by `setup_get_value` to extract a single property from a configuration object.\n\n# Fields * `path` - Base path to the configuration object + property_name as leaf\n\n# Example ```json { \"path\": \"/audio/output/speaker/1/user/gain\", } ```",
+  "properties": {
+    "path": {
+      "default": "",
+      "description": "Base path to query",
+      "type": "string"
+    }
+  },
+  "title": "JapiGetValueParams",
+  "type": "object"
+}

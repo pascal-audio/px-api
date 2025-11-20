@@ -1,0 +1,9 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "api_level": 1,
+    "api_version": "1.0.0",
+    "firmware_version": "0.1.0"
+  }
+}

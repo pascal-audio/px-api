@@ -1,0 +1,36 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Dante network status.",
+  "properties": {
+    "connected": {
+      "description": "Dante connected to network",
+      "type": "boolean"
+    },
+    "device_name": {
+      "description": "Device name on Dante network",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "network_name": {
+      "description": "Dante network name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sample_rate": {
+      "description": "Current Dante sample rate",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "connected"
+  ],
+  "title": "DanteStatus",
+  "type": "object"
+}

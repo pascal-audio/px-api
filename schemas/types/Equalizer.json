@@ -1,0 +1,23 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Multi-band parametric equalizer with global bypass.\n\n# Internal Type This is the internal representation using `Vec<EqualizerBand>`. API consumers work with band indices (1-based) via JSON paths like `/audio/output/speaker/1/user/eq/bands/3`.\n\n# Band Counts by Layer - **User EQ**: 10 bands (user-adjustable) - **Array EQ**: 5 bands (installer tuning) - **Preset EQ**: 15 bands (factory presets)\n\n# Structure - `bypass`: Master EQ bypass (affects all bands) - `bands`: Vector of `EqualizerBand` (internal indexing: 0-based, API: 1-based)\n\n# Patch Behavior The `bands` field is marked `#[patch(skip)]` because bands are updated individually via `SetSpeakerOutputUserEqBand` requests, not as a complete array replacement.\n\n# Usage Pattern ```ignore // Create 10-band user EQ let eq = Equalizer::create(10);\n\n// Access band 3 (0-indexed internally) let band = &eq.bands[2];\n\n// Client updates band 3 via API (1-indexed) // Path: /audio/output/speaker/1/user/eq/bands/3 ```",
+  "properties": {
+    "bands": {
+      "description": "Array of EQ bands. Count varies by layer: 10 (user), 5 (array), 15 (preset). Not patchable - bands updated individually via band-specific endpoints.",
+      "items": {
+        "$ref": "../definitions/EqualizerBand.json"
+      },
+      "type": "array"
+    },
+    "bypass": {
+      "description": "Master EQ bypass - when true, all bands are disabled",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "bands",
+    "bypass"
+  ],
+  "title": "Equalizer",
+  "type": "object"
+}

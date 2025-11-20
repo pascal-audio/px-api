@@ -1,0 +1,14 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "boot_time": "2025-11-12T15:49:22.875888461+00:00",
+    "find_me": {
+      "active": false,
+      "timeout_remaining": null
+    },
+    "power_state": "on",
+    "reboot_pending": null,
+    "uptime_seconds": 0
+  }
+}

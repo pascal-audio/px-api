@@ -1,0 +1,55 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Array processing layer - installer tuning for multi-cabinet systems.\n\n# Processing Layer 2 of 3 Second layer in 3-layer DSP chain: User → **Array** → Preset\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/array`\n\n# Purpose Installer-level adjustments for array deployment. Used when multiple cabinets work together as a single system (line arrays, subwoofer arrays, delay towers).\n\n# Critical: NO Crossover in Array Layer Unlike preset layer, array processing does NOT include crossover filters. Crossover is only in preset layer (factory speaker voicing).\n\n# Structure - `gain`: Trim gain (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Array delay (0.0 to 0.02 seconds) - inter-cabinet alignment - `eq`: 5-band parametric equalizer (less than user's 10 bands) - `fir`: FIR filter for array tuning\n\n# Typical Usage - Level balancing between array elements - Time alignment for coherent wavefront - Tilt/splay EQ adjustments - Room/venue acoustic compensation\n\n# Patch Behavior `eq` and `fir` are marked `#[patch(skip)]` - updated via dedicated endpoints, not as complete replacements.",
+  "properties": {
+    "delay": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ArrayDelayTimeType.json"
+        }
+      ],
+      "description": "Array delay in seconds (range: 0.0 to 0.02) for inter-cabinet alignment"
+    },
+    "eq": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Equalizer.json"
+        }
+      ],
+      "description": "5-band parametric equalizer. Updated via band-specific endpoints."
+    },
+    "fir": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ArrayFirFilter.json"
+        }
+      ],
+      "description": "FIR filter for array tuning. Updated via dedicated endpoint."
+    },
+    "gain": {
+      "allOf": [
+        {
+          "$ref": "../definitions/GainTrimType.json"
+        }
+      ],
+      "description": "Trim gain in dB (range: -15.0 to +15.0)"
+    },
+    "polarity": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PolarityType.json"
+        }
+      ],
+      "description": "Signal polarity (+1 = normal, -1 = inverted)"
+    }
+  },
+  "required": [
+    "delay",
+    "eq",
+    "fir",
+    "gain",
+    "polarity"
+  ],
+  "title": "ArrayProcessing",
+  "type": "object"
+}

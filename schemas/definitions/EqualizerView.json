@@ -1,0 +1,21 @@
+{
+  "description": "View version of Equalizer with 1-indexed band keys\n\n# Band Indexing - **Internal**: `Vec<EqualizerBand>` with 0-based indexing - **API**: `BTreeMap<String, EqualizerBand>` with 1-based string keys (\"1\", \"2\", \"3\")\n\n# Example JSON ```json { \"bypass\": false, \"bands\": { \"1\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 1000.0, \"q\": 0.7, \"bypass\": false }, \"2\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 2000.0, \"q\": 0.7, \"bypass\": false }, \"3\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 3000.0, \"q\": 0.7, \"bypass\": false } } } ```",
+  "type": "object",
+  "required": [
+    "bands",
+    "bypass"
+  ],
+  "properties": {
+    "bands": {
+      "description": "EQ bands indexed by 1-based string keys matching API paths",
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "./EqualizerBand.json"
+      }
+    },
+    "bypass": {
+      "description": "Master EQ bypass - when true, all bands are disabled",
+      "type": "boolean"
+    }
+  }
+}

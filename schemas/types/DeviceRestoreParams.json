@@ -1,0 +1,22 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for backup_restore\n\n# Fields * `config` - Base64-encoded backup configuration data * `preserve_network_settings` - If true, keeps current network settings (default: false)",
+  "properties": {
+    "config": {
+      "description": "Base64-encoded configuration data",
+      "type": "string"
+    },
+    "preserve_network_settings": {
+      "description": "Preserve current network configuration during restore",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "required": [
+    "config"
+  ],
+  "title": "DeviceRestoreParams",
+  "type": "object"
+}

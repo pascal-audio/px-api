@@ -1,0 +1,30 @@
+[project]
+name = "py-client"
+version = "1.0.0"
+description = "Minimal Python client for PX Control API (JSON-RPC over WebSocket)"
+readme = "README.md"
+requires-python = ">=3.8"
+dependencies = [
+    "websockets>=12.0",
+    "zeroconf>=0.136.2",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0",
+    "pytest-asyncio>=0.21",
+    "ruff>=0.4.0",
+]
+
+[tool.ruff]
+# Enable linting rules (E,F,I = pycodestyle/pyflakes/imports). Add more as you go.
+lint.select = ["E", "F", "I", "UP", "B"]  # UP=pyupgrade, B=bugbear
+lint.ignore = ["E501"]  # let formatter handle line length
+line-length = 120
+target-version = "py38"
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
+skip-magic-trailing-comma = false
+docstring-code-format = true

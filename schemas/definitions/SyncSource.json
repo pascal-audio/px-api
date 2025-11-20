@@ -1,0 +1,26 @@
+{
+  "description": "Audio clock synchronization source.",
+  "oneOf": [
+    {
+      "description": "Internal clock (free-running)",
+      "type": "string",
+      "enum": [
+        "internal"
+      ]
+    },
+    {
+      "description": "Dante network clock",
+      "type": "string",
+      "enum": [
+        "dante"
+      ]
+    },
+    {
+      "description": "External word clock",
+      "type": "string",
+      "enum": [
+        "word_clock"
+      ]
+    }
+  ]
+}

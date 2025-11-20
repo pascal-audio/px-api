@@ -1,0 +1,83 @@
+{
+  "type": "object",
+  "properties": {
+    "frequency": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "$ref": "./FilterFrequencyType.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./GeneratorGainType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hpf_freq": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "$ref": "./FilterFrequencyType.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "kind": {
+      "anyOf": [
+        {
+          "$ref": "./GeneratorType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "lpf_freq": {
+      "anyOf": [
+        {
+          "anyOf": [
+            {
+              "$ref": "./FilterFrequencyType.json"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "name": {
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

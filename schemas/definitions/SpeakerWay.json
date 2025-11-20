@@ -1,0 +1,54 @@
+{
+  "description": "Speaker frequency range designation for multi-way systems. Indicates which frequency band a particular output channel is responsible for.",
+  "oneOf": [
+    {
+      "description": "Full Range speaker covering the entire frequency spectrum (typically 20Hz-20kHz)",
+      "type": "string",
+      "enum": [
+        "FR"
+      ]
+    },
+    {
+      "description": "Low Frequency driver (woofer) - typically handles bass frequencies",
+      "type": "string",
+      "enum": [
+        "LF"
+      ]
+    },
+    {
+      "description": "Low-Mid Frequency driver - handles lower midrange frequencies",
+      "type": "string",
+      "enum": [
+        "LM"
+      ]
+    },
+    {
+      "description": "Mid Frequency driver - handles midrange frequencies",
+      "type": "string",
+      "enum": [
+        "MF"
+      ]
+    },
+    {
+      "description": "High-Mid Frequency driver - handles upper midrange frequencies",
+      "type": "string",
+      "enum": [
+        "HM"
+      ]
+    },
+    {
+      "description": "High Frequency driver (tweeter) - handles treble frequencies",
+      "type": "string",
+      "enum": [
+        "HF"
+      ]
+    },
+    {
+      "description": "Subwoofer - dedicated low frequency driver (typically <120Hz)",
+      "type": "string",
+      "enum": [
+        "SUB"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for setting a specific property value at a path.\n\nUsed by `setup_set_value` to modify a single property within a configuration object.\n\n# Fields * `path` - Base configuration path + property_name as leaf * `value` - New value for the property\n\n# Example ```json { \"path\": \"/audio/output/speaker/1/user/gain\", \"value\": -3.0 } ```",
+  "properties": {
+    "path": {
+      "description": "Base path to modify",
+      "type": "string"
+    },
+    "value": {
+      "description": "Value to set for the property"
+    }
+  },
+  "required": [
+    "path",
+    "value"
+  ],
+  "title": "JapiSetValueParams",
+  "type": "object"
+}

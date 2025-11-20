@@ -1,0 +1,1465 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "categories": {
+    "changes": "Setup change notification types",
+    "definitions": "Setup configuration types (DeviceSetup, AudioSetup, etc.)",
+    "status": "Device status and state types",
+    "types": "Common types, enums, and primitives",
+    "views": "Response wrapper types"
+  },
+  "description": "Index of all JSON schemas for the PX Control API v1.0.0",
+  "generatedAt": "2025-11-21T12:19:57.275525146+00:00",
+  "schemas": {
+    "ApiCheckVersionParams": {
+      "$ref": "./types/ApiCheckVersionParams.json",
+      "category": "types",
+      "description": "",
+      "path": "types/ApiCheckVersionParams.json",
+      "title": "ApiCheckVersionParams"
+    },
+    "ApiCheckVersionResponse": {
+      "$ref": "./types/ApiCheckVersionResponse.json",
+      "category": "types",
+      "description": "",
+      "path": "types/ApiCheckVersionResponse.json",
+      "title": "ApiCheckVersionResponse"
+    },
+    "ApiPingResponse": {
+      "$ref": "./types/ApiPingResponse.json",
+      "category": "types",
+      "description": "",
+      "path": "types/ApiPingResponse.json",
+      "title": "String"
+    },
+    "ApiVersionResponse": {
+      "$ref": "./types/ApiVersionResponse.json",
+      "category": "types",
+      "description": "",
+      "path": "types/ApiVersionResponse.json",
+      "title": "ApiVersionResponse"
+    },
+    "Array.Processing": {
+      "$ref": "./types/Array.Processing.json",
+      "category": "types",
+      "description": "Array processing layer - installer tuning for multi-cabinet systems.\n\n# Processing Layer 2 of 3 Second layer in 3-layer DSP chain: User → **Array** → Preset\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/array`\n\n# Purpose Installer-level adjustments for array deployment. Used when multiple cabinets work together as a single system (line arrays, subwoofer arrays, delay towers).\n\n# Critical: NO Crossover in Array Layer Unlike preset layer, array processing does NOT include crossover filters. Crossover is only in preset layer (factory speaker voicing).\n\n# Structure - `gain`: Trim gain (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Array delay (0.0 to 0.02 seconds) - inter-cabinet alignment - `eq`: 5-band parametric equalizer (less than user's 10 bands) - `fir`: FIR filter for array tuning\n\n# Typical Usage - Level balancing between array elements - Time alignment for coherent wavefront - Tilt/splay EQ adjustments - Room/venue acoustic compensation\n\n# Patch Behavior `eq` and `fir` are marked `#[patch(skip)]` - updated via dedicated endpoints, not as complete replacements.",
+      "path": "types/Array.Processing.json",
+      "title": "ArrayProcessing"
+    },
+    "ArrayDelayTimeType": {
+      "$ref": "./definitions/ArrayDelayTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/ArrayDelayTimeType.json",
+      "title": "ArrayDelayTimeType"
+    },
+    "ArrayFir.Filter": {
+      "$ref": "./types/ArrayFir.Filter.json",
+      "category": "types",
+      "description": "FIR (Finite Impulse Response) filter for array processing layer.\n\n# Internal Type Used in **array processing layer** for installer-configurable linear-phase filtering. Path: `/audio/output/speaker/1/array/fir`\n\n# Purpose Installer-loaded FIR filters for array tuning. Typically used for: - Speaker voicing/tuning - Room acoustic correction - Phase alignment in multi-cabinet arrays\n\n# Structure - `bypass`: Enable/disable FIR filter - `taps`: FIR coefficient array (float32, max 64 taps)\n\n# Tap Validation `PresetFirTaps` validates: - Maximum 64 taps - Valid float values (no NaN/Inf) - Empty array allowed (no filtering)",
+      "path": "types/ArrayFir.Filter.json",
+      "title": "ArrayFirFilter"
+    },
+    "ArrayFirFilter": {
+      "$ref": "./definitions/ArrayFirFilter.json",
+      "category": "definitions",
+      "description": "FIR (Finite Impulse Response) filter for array processing layer.\n\n# Internal Type Used in **array processing layer** for installer-configurable linear-phase filtering. Path: `/audio/output/speaker/1/array/fir`\n\n# Purpose Installer-loaded FIR filters for array tuning. Typically used for: - Speaker voicing/tuning - Room acoustic correction - Phase alignment in multi-cabinet arrays\n\n# Structure - `bypass`: Enable/disable FIR filter - `taps`: FIR coefficient array (float32, max 64 taps)\n\n# Tap Validation `PresetFirTaps` validates: - Maximum 64 taps - Valid float values (no NaN/Inf) - Empty array allowed (no filtering)",
+      "path": "definitions/ArrayFirFilter.json",
+      "title": "ArrayFirFilter"
+    },
+    "ArrayFirFilterPatch": {
+      "$ref": "./definitions/ArrayFirFilterPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/ArrayFirFilterPatch.json",
+      "title": "ArrayFirFilterPatch"
+    },
+    "ArrayProcessing": {
+      "$ref": "./definitions/ArrayProcessing.json",
+      "category": "definitions",
+      "description": "Array processing layer - installer tuning for multi-cabinet systems.\n\n# Processing Layer 2 of 3 Second layer in 3-layer DSP chain: User → **Array** → Preset\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/array`\n\n# Purpose Installer-level adjustments for array deployment. Used when multiple cabinets work together as a single system (line arrays, subwoofer arrays, delay towers).\n\n# Critical: NO Crossover in Array Layer Unlike preset layer, array processing does NOT include crossover filters. Crossover is only in preset layer (factory speaker voicing).\n\n# Structure - `gain`: Trim gain (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Array delay (0.0 to 0.02 seconds) - inter-cabinet alignment - `eq`: 5-band parametric equalizer (less than user's 10 bands) - `fir`: FIR filter for array tuning\n\n# Typical Usage - Level balancing between array elements - Time alignment for coherent wavefront - Tilt/splay EQ adjustments - Room/venue acoustic compensation\n\n# Patch Behavior `eq` and `fir` are marked `#[patch(skip)]` - updated via dedicated endpoints, not as complete replacements.",
+      "path": "definitions/ArrayProcessing.json",
+      "title": "ArrayProcessing"
+    },
+    "ArrayProcessingPatch": {
+      "$ref": "./definitions/ArrayProcessingPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/ArrayProcessingPatch.json",
+      "title": "ArrayProcessingPatch"
+    },
+    "ArrayProcessingView": {
+      "$ref": "./definitions/ArrayProcessingView.json",
+      "category": "definitions",
+      "description": "View version of ArrayProcessing with 1-indexed EQ bands\n\n# Array Processing Layer Installer-level tuning with 5-band parametric EQ. Used for room correction and array optimization. No crossover (crossover is in preset layer only).",
+      "path": "definitions/ArrayProcessingView.json",
+      "title": "ArrayProcessingView"
+    },
+    "Audio.Input": {
+      "$ref": "./types/Audio.Input.json",
+      "category": "types",
+      "description": "View version of AudioInput with numbered channel keys.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.) for JSON API compatibility.",
+      "path": "types/Audio.Input.json",
+      "title": "AudioInputView"
+    },
+    "Audio.Input.View": {
+      "$ref": "./views/Audio.Input.View.json",
+      "category": "views",
+      "description": "View version of AudioInput with numbered channel keys.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.) for JSON API compatibility.",
+      "path": "views/Audio.Input.View.json",
+      "title": "AudioInputView"
+    },
+    "Audio.Output": {
+      "$ref": "./types/Audio.Output.json",
+      "category": "types",
+      "description": "View version of AudioOutput with numbered channel keys and preset locking.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.). Uses SpeakerOutputChannelView to handle vendor-locked presets.",
+      "path": "types/Audio.Output.json",
+      "title": "AudioOutputView"
+    },
+    "Audio.Output.View": {
+      "$ref": "./views/Audio.Output.View.json",
+      "category": "views",
+      "description": "View version of AudioOutput with numbered channel keys and preset locking.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.). Uses SpeakerOutputChannelView to handle vendor-locked presets.",
+      "path": "views/Audio.Output.View.json",
+      "title": "AudioOutputView"
+    },
+    "Audio.Setup": {
+      "$ref": "./types/Audio.Setup.json",
+      "category": "types",
+      "description": "View version of AudioSetup combining input and output views.\n\nTop-level audio configuration container with preset locking support.",
+      "path": "types/Audio.Setup.json",
+      "title": "AudioSetupView"
+    },
+    "Audio.Setup.View": {
+      "$ref": "./views/Audio.Setup.View.json",
+      "category": "views",
+      "description": "View version of AudioSetup combining input and output views.\n\nTop-level audio configuration container with preset locking support.",
+      "path": "views/Audio.Setup.View.json",
+      "title": "AudioSetupView"
+    },
+    "AudioInputView": {
+      "$ref": "./definitions/AudioInputView.json",
+      "category": "definitions",
+      "description": "View version of AudioInput with numbered channel keys.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.) for JSON API compatibility.",
+      "path": "definitions/AudioInputView.json",
+      "title": "AudioInputView"
+    },
+    "AudioOutputView": {
+      "$ref": "./definitions/AudioOutputView.json",
+      "category": "definitions",
+      "description": "View version of AudioOutput with numbered channel keys and preset locking.\n\nConverts Vec storage to BTreeMap with string keys (\"1\", \"2\", etc.). Uses SpeakerOutputChannelView to handle vendor-locked presets.",
+      "path": "definitions/AudioOutputView.json",
+      "title": "AudioOutputView"
+    },
+    "AudioSetupView": {
+      "$ref": "./definitions/AudioSetupView.json",
+      "category": "definitions",
+      "description": "View version of AudioSetup combining input and output views.\n\nTop-level audio configuration container with preset locking support.",
+      "path": "definitions/AudioSetupView.json",
+      "title": "AudioSetupView"
+    },
+    "AudioStatus": {
+      "$ref": "./status/AudioStatus.json",
+      "category": "status",
+      "description": "Audio processing operational status.\n\nContains DSP operational state (sample rate, sync source). Per-channel metrics (signal levels, clipping, mute state) are available via the metrics subscription system, not status domain.",
+      "path": "status/AudioStatus.json",
+      "title": "AudioStatus"
+    },
+    "Channel.Preset": {
+      "$ref": "./types/Channel.Preset.json",
+      "category": "types",
+      "description": "A speaker preset with associated metadata",
+      "path": "types/Channel.Preset.json",
+      "title": "ChannelPreset"
+    },
+    "ChannelPreset": {
+      "$ref": "./definitions/ChannelPreset.json",
+      "category": "definitions",
+      "description": "A speaker preset with associated metadata",
+      "path": "definitions/ChannelPreset.json",
+      "title": "ChannelPreset"
+    },
+    "ChannelPreset.Metadata": {
+      "$ref": "./types/ChannelPreset.Metadata.json",
+      "category": "types",
+      "description": "Metadata for a speaker preset This is stored unencrypted for easy identification without decryption",
+      "path": "types/ChannelPreset.Metadata.json",
+      "title": "ChannelPresetMetadata"
+    },
+    "ChannelPresetFir.Filter": {
+      "$ref": "./types/ChannelPresetFir.Filter.json",
+      "category": "types",
+      "description": "Multi-sample-rate FIR filter for channel presets Supports optional FIR filter taps for 48kHz and 96kHz sample rates",
+      "path": "types/ChannelPresetFir.Filter.json",
+      "title": "ChannelPresetFirFilter"
+    },
+    "ChannelPresetFirFilter": {
+      "$ref": "./definitions/ChannelPresetFirFilter.json",
+      "category": "definitions",
+      "description": "Multi-sample-rate FIR filter for channel presets Supports optional FIR filter taps for 48kHz and 96kHz sample rates",
+      "path": "definitions/ChannelPresetFirFilter.json",
+      "title": "ChannelPresetFirFilter"
+    },
+    "ChannelPresetMetadata": {
+      "$ref": "./definitions/ChannelPresetMetadata.json",
+      "category": "definitions",
+      "description": "Metadata for a speaker preset This is stored unencrypted for easy identification without decryption",
+      "path": "definitions/ChannelPresetMetadata.json",
+      "title": "ChannelPresetMetadata"
+    },
+    "ChannelPresetMetadata.View": {
+      "$ref": "./views/ChannelPresetMetadata.View.json",
+      "category": "views",
+      "description": "View of preset metadata for API responses Includes both metadata and runtime state (customization status)",
+      "path": "views/ChannelPresetMetadata.View.json",
+      "title": "ChannelPresetMetadataView"
+    },
+    "ChannelPresetVersion": {
+      "$ref": "./definitions/ChannelPresetVersion.json",
+      "category": "definitions",
+      "description": "Schema version for SpeakerPreset",
+      "path": "definitions/ChannelPresetVersion.json",
+      "title": "ChannelPresetVersion"
+    },
+    "ClipLimiter": {
+      "$ref": "./types/ClipLimiter.json",
+      "category": "types",
+      "description": "Clip limiter for absolute hard-clipping protection at amplifier output.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/clip_limiter`\n\n# Purpose Final safety stage before amplifier output. Prevents signal from exceeding maximum voltage that would cause hard clipping distortion in power amp.\n\n# Modes - **Normal**: Standard soft clipping - **Soft**: More gradual clipping curve (less harsh)\n\n# Structure - `bypass`: Enable/disable limiter - `mode`: Clipping mode (Normal or Soft)\n\n# Factory Defaults - Mode: Normal - Bypass: false (always active in factory presets)",
+      "path": "types/ClipLimiter.json",
+      "title": "ClipLimiter"
+    },
+    "ClipLimiter.Mode": {
+      "$ref": "./types/ClipLimiter.Mode.json",
+      "category": "types",
+      "description": "",
+      "path": "types/ClipLimiter.Mode.json",
+      "title": "ClipLimiterMode"
+    },
+    "ClipLimiterMode": {
+      "$ref": "./definitions/ClipLimiterMode.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/ClipLimiterMode.json",
+      "title": "ClipLimiterMode"
+    },
+    "ClipLimiterPatch": {
+      "$ref": "./definitions/ClipLimiterPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/ClipLimiterPatch.json",
+      "title": "ClipLimiterPatch"
+    },
+    "Crossover": {
+      "$ref": "./types/Crossover.json",
+      "category": "types",
+      "description": "Crossover filter with independent high-pass and low-pass filters.\n\n# Internal Type Used in **preset processing layer only**. User and array layers do NOT have crossover. Path: `/audio/output/speaker/1/preset/crossover`\n\n# Critical: Layer Availability - ✅ Preset layer: Has crossover (from factory presets)\n\n# Purpose Frequency-splits signal for multi-way speaker systems. Factory presets configure appropriate crossover points for LF, MF, HF drivers based on speaker model.\n\n# Structure - `gain`: Crossover gain adjustment (-20.0 to +20.0 dB) - `lpf`: Low-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off) - `lpf_freq`: Low-pass corner frequency (20.0-20000.0 Hz) - `hpf`: High-pass filter type (Butterworth, Linkwitz-Riley, Bessel, Off) - `hpf_freq`: High-pass corner frequency (20.0-20000.0 Hz) - `bypass`: Bypass both filters\n\n# Filter Types Each filter supports multiple slopes (6/12/24/36/48 dB/octave) and topologies: - Butterworth (But): Maximally flat passband - Linkwitz-Riley (LR): Ideal for multi-way systems (constant power sum) - Bessel (Bes): Linear phase, minimal ringing\n\n# Factory Defaults - Gain: 0 dB - Both filters: Off - Frequencies: 20 Hz (HPF), 20 kHz (LPF) - full bandwidth when enabled",
+      "path": "types/Crossover.json",
+      "title": "Crossover"
+    },
+    "Crossover.Type": {
+      "$ref": "./types/Crossover.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Crossover.Type.json",
+      "title": "CrossoverType"
+    },
+    "CrossoverPatch": {
+      "$ref": "./definitions/CrossoverPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/CrossoverPatch.json",
+      "title": "CrossoverPatch"
+    },
+    "CrossoverType": {
+      "$ref": "./definitions/CrossoverType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/CrossoverType.json",
+      "title": "CrossoverType"
+    },
+    "CustomFieldType": {
+      "$ref": "./definitions/CustomFieldType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/CustomFieldType.json",
+      "title": "CustomFieldType"
+    },
+    "DanteStatus": {
+      "$ref": "./status/DanteStatus.json",
+      "category": "status",
+      "description": "Dante network status.",
+      "path": "status/DanteStatus.json",
+      "title": "DanteStatus"
+    },
+    "Device.Setup": {
+      "$ref": "./types/Device.Setup.json",
+      "category": "types",
+      "description": "View version of DeviceSetup with preset locking support.\n\nTop-level device configuration for API responses. Uses AudioSetupView which includes preset locking (locked preset fields return None).",
+      "path": "types/Device.Setup.json",
+      "title": "DeviceSetupView"
+    },
+    "Device.Setup.View": {
+      "$ref": "./views/Device.Setup.View.json",
+      "category": "views",
+      "description": "View version of DeviceSetup with preset locking support.\n\nTop-level device configuration for API responses. Uses AudioSetupView which includes preset locking (locked preset fields return None).",
+      "path": "views/Device.Setup.View.json",
+      "title": "DeviceSetupView"
+    },
+    "DeviceBackupResponse": {
+      "$ref": "./types/DeviceBackupResponse.json",
+      "category": "types",
+      "description": "Response for backup_create\n\n# Fields * `timestamp` - Time when backup was created * `config` - Base64-encoded backup data",
+      "path": "types/DeviceBackupResponse.json",
+      "title": "DeviceBackupResponse"
+    },
+    "DeviceFindMeParams": {
+      "$ref": "./types/DeviceFindMeParams.json",
+      "category": "types",
+      "description": "Parameters for device_find_me",
+      "path": "types/DeviceFindMeParams.json",
+      "title": "DeviceFindMeParams"
+    },
+    "DeviceFindMeResponse": {
+      "$ref": "./types/DeviceFindMeResponse.json",
+      "category": "types",
+      "description": "Response for device_find_me\n\n# Fields * `success` - Whether find-me was activated * `timeout` - Duration in seconds",
+      "path": "types/DeviceFindMeResponse.json",
+      "title": "DeviceFindMeResponse"
+    },
+    "DeviceGetDiagnosticsParams": {
+      "$ref": "./types/DeviceGetDiagnosticsParams.json",
+      "category": "types",
+      "description": "Parameters for diagnostics_get\n\n# Fields * `namespace` - Optional namespace filter for diagnostic data",
+      "path": "types/DeviceGetDiagnosticsParams.json",
+      "title": "DeviceGetDiagnosticsParams"
+    },
+    "DeviceGetLogsParams": {
+      "$ref": "./types/DeviceGetLogsParams.json",
+      "category": "types",
+      "description": "Parameters for logs_get\n\n# Fields * `limit` - Maximum number of log entries to return * `offset` - Number of entries to skip (for pagination)",
+      "path": "types/DeviceGetLogsParams.json",
+      "title": "DeviceGetLogsParams"
+    },
+    "DeviceGetLogsResponse": {
+      "$ref": "./types/DeviceGetLogsResponse.json",
+      "category": "types",
+      "description": "Response for logs_get\n\n# Fields * `logs` - Array of log entries",
+      "path": "types/DeviceGetLogsResponse.json",
+      "title": "DeviceGetLogsResponse"
+    },
+    "DeviceInfo": {
+      "$ref": "./definitions/DeviceInfo.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/DeviceInfo.json",
+      "title": "DeviceInfo"
+    },
+    "DeviceResetParams": {
+      "$ref": "./types/DeviceResetParams.json",
+      "category": "types",
+      "description": "Parameters for device_reset\n\n# Fields * `preserve_network` - If true, keeps network settings during reset (default: false)",
+      "path": "types/DeviceResetParams.json",
+      "title": "DeviceResetParams"
+    },
+    "DeviceResetResponse": {
+      "$ref": "./types/DeviceResetResponse.json",
+      "category": "types",
+      "description": "Response for device_reset\n\n# Fields * `success` - Whether reset was initiated * `message` - Status message * `preserve_network` - Whether network settings were preserved",
+      "path": "types/DeviceResetResponse.json",
+      "title": "DeviceResetResponse"
+    },
+    "DeviceRestoreParams": {
+      "$ref": "./types/DeviceRestoreParams.json",
+      "category": "types",
+      "description": "Parameters for backup_restore\n\n# Fields * `config` - Base64-encoded backup configuration data * `preserve_network_settings` - If true, keeps current network settings (default: false)",
+      "path": "types/DeviceRestoreParams.json",
+      "title": "DeviceRestoreParams"
+    },
+    "DeviceSetLogLevelParams": {
+      "$ref": "./types/DeviceSetLogLevelParams.json",
+      "category": "types",
+      "description": "Parameters for logs_set_level\n\n# Fields * `filter` - Log level to set for filtering",
+      "path": "types/DeviceSetLogLevelParams.json",
+      "title": "DeviceSetLogLevelParams"
+    },
+    "DeviceSetupVersion": {
+      "$ref": "./definitions/DeviceSetupVersion.json",
+      "category": "definitions",
+      "description": "Schema version for DeviceSetup",
+      "path": "definitions/DeviceSetupVersion.json",
+      "title": "DeviceSetupVersion"
+    },
+    "DeviceSetupView": {
+      "$ref": "./definitions/DeviceSetupView.json",
+      "category": "definitions",
+      "description": "View version of DeviceSetup with preset locking support.\n\nTop-level device configuration for API responses. Uses AudioSetupView which includes preset locking (locked preset fields return None).",
+      "path": "definitions/DeviceSetupView.json",
+      "title": "DeviceSetupView"
+    },
+    "DeviceState": {
+      "$ref": "./status/DeviceState.json",
+      "category": "status",
+      "description": "Device operational state.",
+      "path": "status/DeviceState.json",
+      "title": "DeviceState"
+    },
+    "DeviceStatus": {
+      "$ref": "./status/DeviceStatus.json",
+      "category": "status",
+      "description": "Complete runtime device status.\n\nThis is the root type returned by `status_get_all()`.",
+      "path": "status/DeviceStatus.json",
+      "title": "DeviceStatus"
+    },
+    "DigitalOutput.Channel": {
+      "$ref": "./types/DigitalOutput.Channel.json",
+      "category": "types",
+      "description": "Digital output channel (AES/EBU or Dante network output).\n\nProvides simple routing from internal processing to digital outputs. No DSP processing - only source selection and trim gain.",
+      "path": "types/DigitalOutput.Channel.json",
+      "title": "DigitalOutputChannel"
+    },
+    "DigitalOutput.Source": {
+      "$ref": "./types/DigitalOutput.Source.json",
+      "category": "types",
+      "description": "",
+      "path": "types/DigitalOutput.Source.json",
+      "title": "DigitalOutputSource"
+    },
+    "DigitalOutputChannel": {
+      "$ref": "./definitions/DigitalOutputChannel.json",
+      "category": "definitions",
+      "description": "Digital output channel (AES/EBU or Dante network output).\n\nProvides simple routing from internal processing to digital outputs. No DSP processing - only source selection and trim gain.",
+      "path": "definitions/DigitalOutputChannel.json",
+      "title": "DigitalOutputChannel"
+    },
+    "DigitalOutputChannelPatch": {
+      "$ref": "./definitions/DigitalOutputChannelPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/DigitalOutputChannelPatch.json",
+      "title": "DigitalOutputChannelPatch"
+    },
+    "DigitalOutputGain": {
+      "$ref": "./definitions/DigitalOutputGain.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/DigitalOutputGain.json",
+      "title": "DigitalOutputGain"
+    },
+    "DigitalOutputSource": {
+      "$ref": "./definitions/DigitalOutputSource.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/DigitalOutputSource.json",
+      "title": "DigitalOutputSource"
+    },
+    "Equalizer": {
+      "$ref": "./types/Equalizer.json",
+      "category": "types",
+      "description": "Multi-band parametric equalizer with global bypass.\n\n# Internal Type This is the internal representation using `Vec<EqualizerBand>`. API consumers work with band indices (1-based) via JSON paths like `/audio/output/speaker/1/user/eq/bands/3`.\n\n# Band Counts by Layer - **User EQ**: 10 bands (user-adjustable) - **Array EQ**: 5 bands (installer tuning) - **Preset EQ**: 15 bands (factory presets)\n\n# Structure - `bypass`: Master EQ bypass (affects all bands) - `bands`: Vector of `EqualizerBand` (internal indexing: 0-based, API: 1-based)\n\n# Patch Behavior The `bands` field is marked `#[patch(skip)]` because bands are updated individually via `SetSpeakerOutputUserEqBand` requests, not as a complete array replacement.\n\n# Usage Pattern ```ignore // Create 10-band user EQ let eq = Equalizer::create(10);\n\n// Access band 3 (0-indexed internally) let band = &eq.bands[2];\n\n// Client updates band 3 via API (1-indexed) // Path: /audio/output/speaker/1/user/eq/bands/3 ```",
+      "path": "types/Equalizer.json",
+      "title": "Equalizer"
+    },
+    "Equalizer.Band": {
+      "$ref": "./types/Equalizer.Band.json",
+      "category": "types",
+      "description": "Single parametric EQ band with configurable filter type, gain, frequency, and Q.\n\n# Internal Type This is the internal representation. API consumers should use the JSON-RPC methods to interact with EQ bands via paths like `/audio/output/speaker/1/user/eq/bands/3`.\n\n# Filter Types Supports 9 filter types: Parametric, LowPass6/12, HighPass6/12, LowShelf, HighShelf, AllPass, BandPass\n\n# Structure - `kind`: Filter type (parametric, shelf, pass, etc.) - `gain`: Filter gain in dB (-20.0 to +20.0) - `frequency`: Center/corner frequency in Hz (20.0 to 20000.0) - `q`: Filter Q factor (0.1 to 20.0) - bandwidth control - `bypass`: Individual band bypass\n\n# Patch Type `EqualizerBandPatch` is auto-generated via `#[derive(Patch)]` for partial updates. Used in API responses to indicate which fields changed.",
+      "path": "types/Equalizer.Band.json",
+      "title": "EqualizerBand"
+    },
+    "Equalizer.Type": {
+      "$ref": "./types/Equalizer.Type.json",
+      "category": "types",
+      "description": "Equalizer filter type defining the frequency response characteristic. Each filter type has different slope characteristics and use cases for audio processing.",
+      "path": "types/Equalizer.Type.json",
+      "title": "EqualizerType"
+    },
+    "EqualizerBand": {
+      "$ref": "./definitions/EqualizerBand.json",
+      "category": "definitions",
+      "description": "Single parametric EQ band with configurable filter type, gain, frequency, and Q.\n\n# Internal Type This is the internal representation. API consumers should use the JSON-RPC methods to interact with EQ bands via paths like `/audio/output/speaker/1/user/eq/bands/3`.\n\n# Filter Types Supports 9 filter types: Parametric, LowPass6/12, HighPass6/12, LowShelf, HighShelf, AllPass, BandPass\n\n# Structure - `kind`: Filter type (parametric, shelf, pass, etc.) - `gain`: Filter gain in dB (-20.0 to +20.0) - `frequency`: Center/corner frequency in Hz (20.0 to 20000.0) - `q`: Filter Q factor (0.1 to 20.0) - bandwidth control - `bypass`: Individual band bypass\n\n# Patch Type `EqualizerBandPatch` is auto-generated via `#[derive(Patch)]` for partial updates. Used in API responses to indicate which fields changed.",
+      "path": "definitions/EqualizerBand.json",
+      "title": "EqualizerBand"
+    },
+    "EqualizerBandPatch": {
+      "$ref": "./definitions/EqualizerBandPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/EqualizerBandPatch.json",
+      "title": "EqualizerBandPatch"
+    },
+    "EqualizerPatch": {
+      "$ref": "./definitions/EqualizerPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/EqualizerPatch.json",
+      "title": "EqualizerPatch"
+    },
+    "EqualizerType": {
+      "$ref": "./definitions/EqualizerType.json",
+      "category": "definitions",
+      "description": "Equalizer filter type defining the frequency response characteristic. Each filter type has different slope characteristics and use cases for audio processing.",
+      "path": "definitions/EqualizerType.json",
+      "title": "EqualizerType"
+    },
+    "EqualizerView": {
+      "$ref": "./definitions/EqualizerView.json",
+      "category": "definitions",
+      "description": "View version of Equalizer with 1-indexed band keys\n\n# Band Indexing - **Internal**: `Vec<EqualizerBand>` with 0-based indexing - **API**: `BTreeMap<String, EqualizerBand>` with 1-based string keys (\"1\", \"2\", \"3\")\n\n# Example JSON ```json { \"bypass\": false, \"bands\": { \"1\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 1000.0, \"q\": 0.7, \"bypass\": false }, \"2\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 2000.0, \"q\": 0.7, \"bypass\": false }, \"3\": { \"kind\": \"Parametric\", \"gain\": 0.0, \"frequency\": 3000.0, \"q\": 0.7, \"bypass\": false } } } ```",
+      "path": "definitions/EqualizerView.json",
+      "title": "EqualizerView"
+    },
+    "FilterFrequencyType": {
+      "$ref": "./definitions/FilterFrequencyType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/FilterFrequencyType.json",
+      "title": "FilterFrequencyType"
+    },
+    "FilterGainType": {
+      "$ref": "./definitions/FilterGainType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/FilterGainType.json",
+      "title": "FilterGainType"
+    },
+    "FilterQType": {
+      "$ref": "./definitions/FilterQType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/FilterQType.json",
+      "title": "FilterQType"
+    },
+    "FindMeState": {
+      "$ref": "./status/FindMeState.json",
+      "category": "status",
+      "description": "Find-me LED state.",
+      "path": "status/FindMeState.json",
+      "title": "FindMeState"
+    },
+    "FindMeTimeout": {
+      "$ref": "./definitions/FindMeTimeout.json",
+      "category": "definitions",
+      "description": "Timeout in seconds (0-120)",
+      "path": "definitions/FindMeTimeout.json",
+      "title": "FindMeTimeout"
+    },
+    "FirmwareVersions": {
+      "$ref": "./status/FirmwareVersions.json",
+      "category": "status",
+      "description": "Firmware and subsystem versions.",
+      "path": "status/FirmwareVersions.json",
+      "title": "FirmwareVersions"
+    },
+    "FuseProtection.Mode": {
+      "$ref": "./types/FuseProtection.Mode.json",
+      "category": "types",
+      "description": "",
+      "path": "types/FuseProtection.Mode.json",
+      "title": "FuseProtectionMode"
+    },
+    "FuseProtectionMode": {
+      "$ref": "./definitions/FuseProtectionMode.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/FuseProtectionMode.json",
+      "title": "FuseProtectionMode"
+    },
+    "GainTrimType": {
+      "$ref": "./definitions/GainTrimType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GainTrimType.json",
+      "title": "GainTrimType"
+    },
+    "Generator.MixMode": {
+      "$ref": "./types/Generator.MixMode.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Generator.MixMode.json",
+      "title": "GeneratorMixMode"
+    },
+    "Generator.Setup": {
+      "$ref": "./types/Generator.Setup.json",
+      "category": "types",
+      "description": "Test signal generator configuration.\n\nProvides internal test signals (sine, pink noise, white noise) that can be: - Routed as input source (replaces analog/digital inputs) - Mixed into speaker channels via `user.generator_mix` parameter\n\nUseful for system testing, alignment, and troubleshooting.",
+      "path": "types/Generator.Setup.json",
+      "title": "GeneratorSetup"
+    },
+    "Generator.Type": {
+      "$ref": "./types/Generator.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Generator.Type.json",
+      "title": "GeneratorType"
+    },
+    "GeneratorGainType": {
+      "$ref": "./definitions/GeneratorGainType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GeneratorGainType.json",
+      "title": "GeneratorGainType"
+    },
+    "GeneratorMixMode": {
+      "$ref": "./definitions/GeneratorMixMode.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GeneratorMixMode.json",
+      "title": "GeneratorMixMode"
+    },
+    "GeneratorSetup": {
+      "$ref": "./definitions/GeneratorSetup.json",
+      "category": "definitions",
+      "description": "Test signal generator configuration.\n\nProvides internal test signals (sine, pink noise, white noise) that can be: - Routed as input source (replaces analog/digital inputs) - Mixed into speaker channels via `user.generator_mix` parameter\n\nUseful for system testing, alignment, and troubleshooting.",
+      "path": "definitions/GeneratorSetup.json",
+      "title": "GeneratorSetup"
+    },
+    "GeneratorSetupPatch": {
+      "$ref": "./definitions/GeneratorSetupPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GeneratorSetupPatch.json",
+      "title": "GeneratorSetupPatch"
+    },
+    "GeneratorType": {
+      "$ref": "./definitions/GeneratorType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GeneratorType.json",
+      "title": "GeneratorType"
+    },
+    "Gpio": {
+      "$ref": "./types/Gpio.json",
+      "category": "types",
+      "description": "GPIO pin configuration for external control integration.\n\nFour configurable GPIO pins for: - Remote mute/unmute control - Fault indicators - External trigger inputs",
+      "path": "types/Gpio.json",
+      "title": "Gpio"
+    },
+    "GpioPatch": {
+      "$ref": "./definitions/GpioPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GpioPatch.json",
+      "title": "GpioPatch"
+    },
+    "GpioPin.Type": {
+      "$ref": "./types/GpioPin.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/GpioPin.Type.json",
+      "title": "GpioPinType"
+    },
+    "GpioPinType": {
+      "$ref": "./definitions/GpioPinType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/GpioPinType.json",
+      "title": "GpioPinType"
+    },
+    "Highpass.Type": {
+      "$ref": "./types/Highpass.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Highpass.Type.json",
+      "title": "HighpassType"
+    },
+    "HighpassType": {
+      "$ref": "./definitions/HighpassType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/HighpassType.json",
+      "title": "HighpassType"
+    },
+    "Input.Channel": {
+      "$ref": "./types/Input.Channel.json",
+      "category": "types",
+      "description": "Input channel configuration (analog, digital, or network).\n\n# Internal Type Used for all input types: analog, digital (AES/EBU), and network (Dante). Paths: - `/audio/input/analog/1` - `/audio/input/digital/1` - `/audio/input/network/1`\n\n# Structure - `name`: User-defined channel name (max 31 characters) - `gain`: Input gain adjustment (-12.0 to +12.0 dB) - `delay`: Input delay (0.0 to 1000.0 ms) - `mute`: Channel mute state\n\n# Usage Input channels are simple - just gain/delay/mute. No processing (EQ/FIR). Processing happens in speaker output layers (user/array/preset).",
+      "path": "types/Input.Channel.json",
+      "title": "InputChannel"
+    },
+    "Input.Config": {
+      "$ref": "./types/Input.Config.json",
+      "category": "types",
+      "description": "Global input configuration (source selection).\n\n# Internal Type Single instance per device. Path: `/audio/input/config`\n\n# Structure - `input_switch`: Active input source (Analog, Digital, Network, Generator)\n\n# Behavior Determines which physical/network input feeds the speaker output channels. Only one input type can be active at a time.",
+      "path": "types/Input.Config.json",
+      "title": "InputConfig"
+    },
+    "InputChannel": {
+      "$ref": "./definitions/InputChannel.json",
+      "category": "definitions",
+      "description": "Input channel configuration (analog, digital, or network).\n\n# Internal Type Used for all input types: analog, digital (AES/EBU), and network (Dante). Paths: - `/audio/input/analog/1` - `/audio/input/digital/1` - `/audio/input/network/1`\n\n# Structure - `name`: User-defined channel name (max 31 characters) - `gain`: Input gain adjustment (-12.0 to +12.0 dB) - `delay`: Input delay (0.0 to 1000.0 ms) - `mute`: Channel mute state\n\n# Usage Input channels are simple - just gain/delay/mute. No processing (EQ/FIR). Processing happens in speaker output layers (user/array/preset).",
+      "path": "definitions/InputChannel.json",
+      "title": "InputChannel"
+    },
+    "InputChannelPatch": {
+      "$ref": "./definitions/InputChannelPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InputChannelPatch.json",
+      "title": "InputChannelPatch"
+    },
+    "InputConfig": {
+      "$ref": "./definitions/InputConfig.json",
+      "category": "definitions",
+      "description": "Global input configuration (source selection).\n\n# Internal Type Single instance per device. Path: `/audio/input/config`\n\n# Structure - `input_switch`: Active input source (Analog, Digital, Network, Generator)\n\n# Behavior Determines which physical/network input feeds the speaker output channels. Only one input type can be active at a time.",
+      "path": "definitions/InputConfig.json",
+      "title": "InputConfig"
+    },
+    "InputConfigPatch": {
+      "$ref": "./definitions/InputConfigPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InputConfigPatch.json",
+      "title": "InputConfigPatch"
+    },
+    "InputDelayTimeType": {
+      "$ref": "./definitions/InputDelayTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InputDelayTimeType.json",
+      "title": "InputDelayTimeType"
+    },
+    "InputGainType": {
+      "$ref": "./definitions/InputGainType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InputGainType.json",
+      "title": "InputGainType"
+    },
+    "InputSwitch.Type": {
+      "$ref": "./types/InputSwitch.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/InputSwitch.Type.json",
+      "title": "InputSwitchType"
+    },
+    "InputSwitchType": {
+      "$ref": "./definitions/InputSwitchType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InputSwitchType.json",
+      "title": "InputSwitchType"
+    },
+    "Install.Info": {
+      "$ref": "./types/Install.Info.json",
+      "category": "types",
+      "description": "System metadata and installation information.\n\nUser-editable text fields for tracking device deployment details. All fields are optional strings with length limits.",
+      "path": "types/Install.Info.json",
+      "title": "InstallInfo"
+    },
+    "InstallInfo": {
+      "$ref": "./definitions/InstallInfo.json",
+      "category": "definitions",
+      "description": "System metadata and installation information.\n\nUser-editable text fields for tracking device deployment details. All fields are optional strings with length limits.",
+      "path": "definitions/InstallInfo.json",
+      "title": "InstallInfo"
+    },
+    "InstallInfoPatch": {
+      "$ref": "./definitions/InstallInfoPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InstallInfoPatch.json",
+      "title": "InstallInfoPatch"
+    },
+    "InstallNotesType": {
+      "$ref": "./definitions/InstallNotesType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/InstallNotesType.json",
+      "title": "InstallNotesType"
+    },
+    "JapiEmptyParams": {
+      "$ref": "./types/JapiEmptyParams.json",
+      "category": "types",
+      "description": "Empty parameter type for methods that take no parameters.\n\nUsed by methods like `api_ping`, `api_version` that don't require any input data.\n\n# Example ```json {} ```",
+      "path": "types/JapiEmptyParams.json",
+      "title": "JapiEmptyParams"
+    },
+    "JapiError": {
+      "$ref": "./types/JapiError.json",
+      "category": "types",
+      "description": "JAPI Error - unified error type for all API methods\n\nEach variant represents a specific error condition and automatically converts to appropriate JSON-RPC error codes with structured data.",
+      "path": "types/JapiError.json",
+      "title": "JapiError"
+    },
+    "JapiGetAllParams": {
+      "$ref": "./types/JapiGetAllParams.json",
+      "category": "types",
+      "description": "Parameters for getting all setup configuration.\n\nUsed by `setup_get_all` to retrieve the entire device configuration.\n\n# Fields * `flatten` - If true, returns flattened structure with dot-notation paths as keys\n\n# Example - Hierarchical structure ```json { \"flatten\": false } ```\n\n# Example - Flattened structure ```json { \"flatten\": true } ``` Returns: `{\"audio.output.speaker.1\": { \"gain\": -3.0, ...}}`",
+      "path": "types/JapiGetAllParams.json",
+      "title": "JapiGetAllParams"
+    },
+    "JapiGetParams": {
+      "$ref": "./types/JapiGetParams.json",
+      "category": "types",
+      "description": "Parameters for get operations (status_get, setup_get).\n\nQueries a value at a specific JSON path in the configuration or status tree.\n\n# Fields * `path` - JSON path to query (e.g., \"/status/device\", \"/audio/output/speaker/1/gain\")\n\n# Example ```json { \"path\": \"/audio/input/analog/1\" } ```",
+      "path": "types/JapiGetParams.json",
+      "title": "JapiGetParams"
+    },
+    "JapiGetValueParams": {
+      "$ref": "./types/JapiGetValueParams.json",
+      "category": "types",
+      "description": "Parameters for getting a specific property value from a path.\n\nUsed by `setup_get_value` to extract a single property from a configuration object.\n\n# Fields * `path` - Base path to the configuration object + property_name as leaf\n\n# Example ```json { \"path\": \"/audio/output/speaker/1/user/gain\", } ```",
+      "path": "types/JapiGetValueParams.json",
+      "title": "JapiGetValueParams"
+    },
+    "JapiSetParams": {
+      "$ref": "./types/JapiSetParams.json",
+      "category": "types",
+      "description": "Parameters for setting a value at a path.\n\nUsed by `setup_set` to write configuration values at arbitrary JSON paths.\n\n# Fields * `path` - Configuration path to modify (e.g., \"/audio/output/speaker/1/gain\") * `value` - New value to set (type depends on path)\n\n# Example - Set speaker gain ```json { \"path\": \"/audio/output/speaker/1/gain\", \"value\": -3.0 } ```\n\n# Example - Set input name ```json { \"path\": \"/audio/input/analog/1/name\", \"value\": \"Microphone A\" } ```",
+      "path": "types/JapiSetParams.json",
+      "title": "JapiSetParams"
+    },
+    "JapiSetValueParams": {
+      "$ref": "./types/JapiSetValueParams.json",
+      "category": "types",
+      "description": "Parameters for setting a specific property value at a path.\n\nUsed by `setup_set_value` to modify a single property within a configuration object.\n\n# Fields * `path` - Base configuration path + property_name as leaf * `value` - New value for the property\n\n# Example ```json { \"path\": \"/audio/output/speaker/1/user/gain\", \"value\": -3.0 } ```",
+      "path": "types/JapiSetValueParams.json",
+      "title": "JapiSetValueParams"
+    },
+    "JapiSubscribeParams": {
+      "$ref": "./types/JapiSubscribeParams.json",
+      "category": "types",
+      "description": "Parameters for subscribe operations (status_subscribe, setup_subscribe, metrics_subscribe).\n\nEstablishes a subscription for real-time updates on configuration or status changes.\n\n# Fields * `path` - Optional path filter (None = subscribe to all changes) * `freq` - Optional update frequency in Hz (metrics_subscribe only)\n\n# Example - Subscribe to all setup changes ```json { \"path\": null } ```\n\n# Example - Subscribe to specific path ```json { \"path\": \"/audio/output/speaker/1\" } ```\n\n# Example - Metrics at 10 Hz ```json { \"path\": null, \"freq\": 10.0 } ```",
+      "path": "types/JapiSubscribeParams.json",
+      "title": "JapiSubscribeParams"
+    },
+    "JapiSubscribeResponse": {
+      "$ref": "./types/JapiSubscribeResponse.json",
+      "category": "types",
+      "description": "Generic subscription response used across all subscription endpoints\n\n# Fields * `subscription_id` - Unique identifier for managing the subscription",
+      "path": "types/JapiSubscribeResponse.json",
+      "title": "JapiSubscribeResponse"
+    },
+    "JapiSuccessResponse": {
+      "$ref": "./types/JapiSuccessResponse.json",
+      "category": "types",
+      "description": "Generic status response\n\n# Fields * `success` - Whether the operation succeeded * `message` - Human-readable status message",
+      "path": "types/JapiSuccessResponse.json",
+      "title": "JapiSuccessResponse"
+    },
+    "JapiUnsubscribeParams": {
+      "$ref": "./types/JapiUnsubscribeParams.json",
+      "category": "types",
+      "description": "Parameters for unsubscribe operations (status_unsubscribe, setup_unsubscribe, metrics_unsubscribe).\n\nCancels an active subscription using the subscription ID returned by the subscribe method.\n\n# Fields * `subscription_id` - Subscription identifier to cancel\n\n# Example ```json { \"subscription_id\": \"550e8400-e29b-41d4-a716-446655440000\" } ```",
+      "path": "types/JapiUnsubscribeParams.json",
+      "title": "JapiUnsubscribeParams"
+    },
+    "Lan.Setup": {
+      "$ref": "./types/Lan.Setup.json",
+      "category": "types",
+      "description": "Network interface configuration for one LAN port.\n\nSupports DHCP or static IP configuration with DNS settings.",
+      "path": "types/Lan.Setup.json",
+      "title": "LanSetup"
+    },
+    "LanSetup": {
+      "$ref": "./definitions/LanSetup.json",
+      "category": "definitions",
+      "description": "Network interface configuration for one LAN port.\n\nSupports DHCP or static IP configuration with DNS settings.",
+      "path": "definitions/LanSetup.json",
+      "title": "LanSetup"
+    },
+    "LanSetupPatch": {
+      "$ref": "./definitions/LanSetupPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/LanSetupPatch.json",
+      "title": "LanSetupPatch"
+    },
+    "LastPowerState": {
+      "$ref": "./definitions/LastPowerState.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/LastPowerState.json",
+      "title": "LastPowerState"
+    },
+    "LinkSpeed": {
+      "$ref": "./status/LinkSpeed.json",
+      "category": "status",
+      "description": "Network link speed.",
+      "path": "status/LinkSpeed.json",
+      "title": "LinkSpeed"
+    },
+    "LogEntry": {
+      "$ref": "./definitions/LogEntry.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/LogEntry.json",
+      "title": "LogEntry"
+    },
+    "LogLevel": {
+      "$ref": "./types/LogLevel.json",
+      "category": "types",
+      "description": "Log level for filtering device logs",
+      "path": "types/LogLevel.json",
+      "title": "LogLevel"
+    },
+    "MuteTimeType": {
+      "$ref": "./definitions/MuteTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/MuteTimeType.json",
+      "title": "MuteTimeType"
+    },
+    "NameType": {
+      "$ref": "./definitions/NameType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/NameType.json",
+      "title": "NameType"
+    },
+    "Network.Setup": {
+      "$ref": "./types/Network.Setup.json",
+      "category": "types",
+      "description": "Network configuration for dual LAN ports.\n\nSupports two operation modes: - **Split**: LAN1 (control) + LAN2 (Dante audio) - independent configs - **Redundant**: Both ports bridged with same IP for failover",
+      "path": "types/Network.Setup.json",
+      "title": "NetworkSetup"
+    },
+    "NetworkConfig.Type": {
+      "$ref": "./types/NetworkConfig.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/NetworkConfig.Type.json",
+      "title": "NetworkConfigType"
+    },
+    "NetworkConfigMode": {
+      "$ref": "./status/NetworkConfigMode.json",
+      "category": "status",
+      "description": "Network configuration mode.",
+      "path": "status/NetworkConfigMode.json",
+      "title": "NetworkConfigMode"
+    },
+    "NetworkConfigType": {
+      "$ref": "./definitions/NetworkConfigType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/NetworkConfigType.json",
+      "title": "NetworkConfigType"
+    },
+    "NetworkInterfaceStatus": {
+      "$ref": "./status/NetworkInterfaceStatus.json",
+      "category": "status",
+      "description": "Status of a single network interface.",
+      "path": "status/NetworkInterfaceStatus.json",
+      "title": "NetworkInterfaceStatus"
+    },
+    "NetworkMode.Type": {
+      "$ref": "./types/NetworkMode.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/NetworkMode.Type.json",
+      "title": "NetworkModeType"
+    },
+    "NetworkModeType": {
+      "$ref": "./definitions/NetworkModeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/NetworkModeType.json",
+      "title": "NetworkModeType"
+    },
+    "NetworkSetup": {
+      "$ref": "./definitions/NetworkSetup.json",
+      "category": "definitions",
+      "description": "Network configuration for dual LAN ports.\n\nSupports two operation modes: - **Split**: LAN1 (control) + LAN2 (Dante audio) - independent configs - **Redundant**: Both ports bridged with same IP for failover",
+      "path": "definitions/NetworkSetup.json",
+      "title": "NetworkSetup"
+    },
+    "NetworkSetupPatch": {
+      "$ref": "./definitions/NetworkSetupPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/NetworkSetupPatch.json",
+      "title": "NetworkSetupPatch"
+    },
+    "NetworkStatus": {
+      "$ref": "./status/NetworkStatus.json",
+      "category": "status",
+      "description": "Network interface status for all interfaces.",
+      "path": "status/NetworkStatus.json",
+      "title": "NetworkStatus"
+    },
+    "Output.Source": {
+      "$ref": "./types/Output.Source.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Output.Source.json",
+      "title": "OutputSource"
+    },
+    "OutputDrive.Type": {
+      "$ref": "./types/OutputDrive.Type.json",
+      "category": "types",
+      "description": "",
+      "path": "types/OutputDrive.Type.json",
+      "title": "OutputDriveType"
+    },
+    "OutputDriveType": {
+      "$ref": "./definitions/OutputDriveType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/OutputDriveType.json",
+      "title": "OutputDriveType"
+    },
+    "OutputSource": {
+      "$ref": "./definitions/OutputSource.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/OutputSource.json",
+      "title": "OutputSource"
+    },
+    "PeakLimiter": {
+      "$ref": "./types/PeakLimiter.json",
+      "category": "types",
+      "description": "Peak limiter with configurable threshold, attack, release, hold, and knee.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/peak_limiter`\n\n# Purpose Protects speakers from instantaneous peaks that could cause damage. Fast attack time catches transient peaks before they reach the driver.\n\n# Structure - `bypass`: Enable/disable limiter - `auto`: Auto-threshold mode (adjusts based on signal level) - `threshold`: Maximum output level (1.0-50.0 V RMS) - `attack`: Attack time in seconds (0.0003-0.1s) - how fast limiter engages - `release`: Release time in seconds (0.004-2.0s) - how fast limiter recovers - `hold`: Hold time in seconds (0.0-0.5s) - sustain limiting after peak - `knee`: Soft knee amount (0.0-12.0 dB) - gradual vs hard limiting\n\n# Factory Defaults - Auto mode disabled - Threshold: 1.0 V RMS (minimum, most protective) - Attack: 0.3 ms (very fast) - Release: 4 ms (fast recovery) - Hold: 0 ms (no sustain) - Knee: 0 dB (hard limiting)",
+      "path": "types/PeakLimiter.json",
+      "title": "PeakLimiter"
+    },
+    "PeakLimiterAttackType": {
+      "$ref": "./definitions/PeakLimiterAttackType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterAttackType.json",
+      "title": "PeakLimiterAttackType"
+    },
+    "PeakLimiterHoldType": {
+      "$ref": "./definitions/PeakLimiterHoldType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterHoldType.json",
+      "title": "PeakLimiterHoldType"
+    },
+    "PeakLimiterKneeType": {
+      "$ref": "./definitions/PeakLimiterKneeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterKneeType.json",
+      "title": "PeakLimiterKneeType"
+    },
+    "PeakLimiterPatch": {
+      "$ref": "./definitions/PeakLimiterPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterPatch.json",
+      "title": "PeakLimiterPatch"
+    },
+    "PeakLimiterReleaseType": {
+      "$ref": "./definitions/PeakLimiterReleaseType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterReleaseType.json",
+      "title": "PeakLimiterReleaseType"
+    },
+    "PeakLimiterThresholdType": {
+      "$ref": "./definitions/PeakLimiterThresholdType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PeakLimiterThresholdType.json",
+      "title": "PeakLimiterThresholdType"
+    },
+    "PolarityType": {
+      "$ref": "./definitions/PolarityType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PolarityType.json",
+      "title": "PolarityType"
+    },
+    "Power.Management": {
+      "$ref": "./types/Power.Management.json",
+      "category": "types",
+      "description": "Power management and protection settings.\n\nControls amplifier power behavior, automatic standby, and thermal protection.",
+      "path": "types/Power.Management.json",
+      "title": "PowerManagement"
+    },
+    "PowerManagement": {
+      "$ref": "./definitions/PowerManagement.json",
+      "category": "definitions",
+      "description": "Power management and protection settings.\n\nControls amplifier power behavior, automatic standby, and thermal protection.",
+      "path": "definitions/PowerManagement.json",
+      "title": "PowerManagement"
+    },
+    "PowerManagementPatch": {
+      "$ref": "./definitions/PowerManagementPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PowerManagementPatch.json",
+      "title": "PowerManagementPatch"
+    },
+    "PowerOn.Mode": {
+      "$ref": "./types/PowerOn.Mode.json",
+      "category": "types",
+      "description": "",
+      "path": "types/PowerOn.Mode.json",
+      "title": "PowerOnMode"
+    },
+    "PowerOnMode": {
+      "$ref": "./definitions/PowerOnMode.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PowerOnMode.json",
+      "title": "PowerOnMode"
+    },
+    "PowerState": {
+      "$ref": "./definitions/PowerState.json",
+      "category": "definitions",
+      "description": "Power state of the device.",
+      "path": "definitions/PowerState.json",
+      "title": "PowerState"
+    },
+    "Preset.Processing": {
+      "$ref": "./types/Preset.Processing.json",
+      "category": "types",
+      "description": "Preset processing layer - factory speaker voicing and protection.\n\n# Processing Layer 3 of 3 Final layer in 3-layer DSP chain: User → Array → **Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/preset` **Note**: Does NOT derive `Patch` - uses custom partial update logic.\n\n# Purpose Factory-defined speaker model voicing, including: - Driver voicing (frequency response shaping) - Crossover filters (multi-way speaker systems) - Protection limiters (thermal, peak, clip) - Factory-tuned FIR filters\n\n# Preset Locking Factory presets can be **vendor-locked** (encrypted). When locked: - Scalar fields (gain, polarity, delay) return `null` in API views - Complex objects (crossover, EQ, FIR, limiters) are visible but modifications cause `preset_customized` flag to be set - Locking prevents reverse-engineering proprietary speaker voicing\n\n# Structure - `preset`: Currently applied `ChannelPreset` (if any) - `preset_customized`: Flag indicating user modified preset parameters - `drive`: Amplifier drive mode (Off, LoZ, 70v, 100v) - `gain`: Preset gain trim (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Preset delay (0.0 to 0.01 seconds) - `crossover`: Crossover filters (HPF + LPF) - **ONLY in preset layer** - `eq`: 15-band parametric equalizer (most bands of all layers) - `fir`: Factory FIR filter - `peak_limiter`: Fast transient protection - `rms_limiter`: Thermal/long-term protection - `clip_limiter`: Final hard-clipping protection\n\n# Critical: Crossover Only Here User and array layers do NOT have crossover. Only preset layer has crossover filters, configured by factory presets for specific speaker models.",
+      "path": "types/Preset.Processing.json",
+      "title": "PresetProcessing"
+    },
+    "PresetApplyParams": {
+      "$ref": "./types/PresetApplyParams.json",
+      "category": "types",
+      "description": "Parameters for applying a channel preset\n\n# Fields * `channel` - Speaker channel index (1-4) * `preset` - Preset data in one of two formats: - JSON object: Plain `ChannelPreset` structure - Base64 string: Encrypted or unencrypted CBOR binary preset",
+      "path": "types/PresetApplyParams.json",
+      "title": "PresetApplyParams"
+    },
+    "PresetClearParams": {
+      "$ref": "./types/PresetClearParams.json",
+      "category": "types",
+      "description": "Parameters for clearing a channel preset\n\nRemoves the applied preset and restores factory default processing configuration\n\n# Fields * `channel` - Speaker channel index (1-4)",
+      "path": "types/PresetClearParams.json",
+      "title": "PresetClearParams"
+    },
+    "PresetCreateParams": {
+      "$ref": "./types/PresetCreateParams.json",
+      "category": "types",
+      "description": "Parameters for creating a preset from current channel configuration\n\n# Fields * `channel` - Speaker channel index (1-4) to capture configuration from * `name` - Human-readable preset name * `version` - Version string for the preset (e.g., \"1.0\") * `created_date` - Creation date in RFC3339 format (e.g., \"2024-01-15T10:30:00Z\") * `vendor_lock` - If true, encrypts the preset for vendor-only use",
+      "path": "types/PresetCreateParams.json",
+      "title": "PresetCreateParams"
+    },
+    "PresetCreateResponse": {
+      "$ref": "./types/PresetCreateResponse.json",
+      "category": "types",
+      "description": "Response from preset_create operation\n\nContains the created preset data along with its metadata. The preset can be in JSON format (plain object) or binary format (base64-encoded encrypted or unencrypted CBOR).",
+      "path": "types/PresetCreateResponse.json",
+      "title": "PresetCreateResponse"
+    },
+    "PresetDelayTimeType": {
+      "$ref": "./definitions/PresetDelayTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PresetDelayTimeType.json",
+      "title": "PresetDelayTimeType"
+    },
+    "PresetFir.Filter": {
+      "$ref": "./types/PresetFir.Filter.json",
+      "category": "types",
+      "description": "FIR (Finite Impulse Response) filter for preset processing layer.\n\n# Internal Type Used in **preset processing layer** from factory presets. Part of speaker model voicing. Path: `/audio/output/speaker/1/preset/fir`\n\n# Purpose Factory-tuned FIR filters that define speaker's frequency response. Contains: - Driver voicing curves - Phase linearization - Cabinet compensation\n\n# Structure - `bypass`: Enable/disable FIR filter (usually not bypassed in factory presets) - `taps`: FIR coefficient array (float32, max 2048 taps)\n\n# Preset Locking When preset is vendor-locked (encrypted), FIR taps are hidden from API responses. Only bypass state is visible/modifiable.",
+      "path": "types/PresetFir.Filter.json",
+      "title": "PresetFirFilter"
+    },
+    "PresetFirFilter": {
+      "$ref": "./definitions/PresetFirFilter.json",
+      "category": "definitions",
+      "description": "FIR (Finite Impulse Response) filter for preset processing layer.\n\n# Internal Type Used in **preset processing layer** from factory presets. Part of speaker model voicing. Path: `/audio/output/speaker/1/preset/fir`\n\n# Purpose Factory-tuned FIR filters that define speaker's frequency response. Contains: - Driver voicing curves - Phase linearization - Cabinet compensation\n\n# Structure - `bypass`: Enable/disable FIR filter (usually not bypassed in factory presets) - `taps`: FIR coefficient array (float32, max 2048 taps)\n\n# Preset Locking When preset is vendor-locked (encrypted), FIR taps are hidden from API responses. Only bypass state is visible/modifiable.",
+      "path": "definitions/PresetFirFilter.json",
+      "title": "PresetFirFilter"
+    },
+    "PresetFirFilterPatch": {
+      "$ref": "./definitions/PresetFirFilterPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PresetFirFilterPatch.json",
+      "title": "PresetFirFilterPatch"
+    },
+    "PresetFirTaps": {
+      "$ref": "./definitions/PresetFirTaps.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PresetFirTaps.json",
+      "title": "PresetFirTaps"
+    },
+    "PresetProcessing": {
+      "$ref": "./definitions/PresetProcessing.json",
+      "category": "definitions",
+      "description": "Preset processing layer - factory speaker voicing and protection.\n\n# Processing Layer 3 of 3 Final layer in 3-layer DSP chain: User → Array → **Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/preset` **Note**: Does NOT derive `Patch` - uses custom partial update logic.\n\n# Purpose Factory-defined speaker model voicing, including: - Driver voicing (frequency response shaping) - Crossover filters (multi-way speaker systems) - Protection limiters (thermal, peak, clip) - Factory-tuned FIR filters\n\n# Preset Locking Factory presets can be **vendor-locked** (encrypted). When locked: - Scalar fields (gain, polarity, delay) return `null` in API views - Complex objects (crossover, EQ, FIR, limiters) are visible but modifications cause `preset_customized` flag to be set - Locking prevents reverse-engineering proprietary speaker voicing\n\n# Structure - `preset`: Currently applied `ChannelPreset` (if any) - `preset_customized`: Flag indicating user modified preset parameters - `drive`: Amplifier drive mode (Off, LoZ, 70v, 100v) - `gain`: Preset gain trim (-15.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: Preset delay (0.0 to 0.01 seconds) - `crossover`: Crossover filters (HPF + LPF) - **ONLY in preset layer** - `eq`: 15-band parametric equalizer (most bands of all layers) - `fir`: Factory FIR filter - `peak_limiter`: Fast transient protection - `rms_limiter`: Thermal/long-term protection - `clip_limiter`: Final hard-clipping protection\n\n# Critical: Crossover Only Here User and array layers do NOT have crossover. Only preset layer has crossover filters, configured by factory presets for specific speaker models.",
+      "path": "definitions/PresetProcessing.json",
+      "title": "PresetProcessing"
+    },
+    "PresetProcessing.View": {
+      "$ref": "./views/PresetProcessing.View.json",
+      "category": "views",
+      "description": "View version of PresetProcessing where locked fields are serialized as null\n\n# Preset Locking Behavior When a factory preset is vendor-locked (encrypted): - All fields return `None` to hide proprietary speaker voicing data - Only `preset_metadata` and `preset_customized` remain visible - This prevents reverse-engineering of factory tuning",
+      "path": "views/PresetProcessing.View.json",
+      "title": "PresetProcessingView"
+    },
+    "PresetProcessingPatch": {
+      "$ref": "./definitions/PresetProcessingPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/PresetProcessingPatch.json",
+      "title": "PresetProcessingPatch"
+    },
+    "PresetProcessingValue.View": {
+      "$ref": "./views/PresetProcessingValue.View.json",
+      "category": "views",
+      "description": "Value-based preset view for serialization and change notifications\n\n# Purpose Used in `SetupChangedType::SpeakerOutputPresetProcessing` to notify clients of scalar field changes. Contains only the scalar fields (not complex objects like crossover, EQ, FIR, limiters) which are notified separately.\n\n# Why Separate from PresetProcessingView? - This is for change notifications (what changed) - PresetProcessingView is for full state queries (what is) - Splitting reduces notification payload size",
+      "path": "views/PresetProcessingValue.View.json",
+      "title": "PresetProcessingValueView"
+    },
+    "PresetProcessingValueView": {
+      "$ref": "./definitions/PresetProcessingValueView.json",
+      "category": "definitions",
+      "description": "Value-based preset view for serialization and change notifications\n\n# Purpose Used in `SetupChangedType::SpeakerOutputPresetProcessing` to notify clients of scalar field changes. Contains only the scalar fields (not complex objects like crossover, EQ, FIR, limiters) which are notified separately.\n\n# Why Separate from PresetProcessingView? - This is for change notifications (what changed) - PresetProcessingView is for full state queries (what is) - Splitting reduces notification payload size",
+      "path": "definitions/PresetProcessingValueView.json",
+      "title": "PresetProcessingValueView"
+    },
+    "PresetProcessingView": {
+      "$ref": "./definitions/PresetProcessingView.json",
+      "category": "definitions",
+      "description": "View version of PresetProcessing where locked fields are serialized as null\n\n# Preset Locking Behavior When a factory preset is vendor-locked (encrypted): - All fields return `None` to hide proprietary speaker voicing data - Only `preset_metadata` and `preset_customized` remain visible - This prevents reverse-engineering of factory tuning",
+      "path": "definitions/PresetProcessingView.json",
+      "title": "PresetProcessingView"
+    },
+    "RebootPending": {
+      "$ref": "./status/RebootPending.json",
+      "category": "status",
+      "description": "Pending reboot information.",
+      "path": "status/RebootPending.json",
+      "title": "RebootPending"
+    },
+    "Rfc3339Date": {
+      "$ref": "./definitions/Rfc3339Date.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/Rfc3339Date.json",
+      "title": "Rfc3339Date"
+    },
+    "Rfc3339Timestamp": {
+      "$ref": "./definitions/Rfc3339Timestamp.json",
+      "category": "definitions",
+      "description": "RFC 3339 timestamp (e.g., \"2025-11-11T14:30:00Z\")",
+      "path": "definitions/Rfc3339Timestamp.json",
+      "title": "Rfc3339Timestamp"
+    },
+    "RmsLimiter": {
+      "$ref": "./types/RmsLimiter.json",
+      "category": "types",
+      "description": "RMS (Root Mean Square) limiter for thermal and long-term power protection.\n\n# Internal Type Used in preset processing layer only. Not available in user or array layers. Path: `/audio/output/speaker/1/preset/rms_limiter`\n\n# Purpose Protects speakers from thermal damage by limiting average power over time. Slower attack than peak limiter - prevents voice coil overheating, not transients.\n\n# Structure - `bypass`: Enable/disable limiter - `threshold`: Maximum RMS level (1.0-50.0 V RMS) - `attack`: Attack time in milliseconds (0.1-100.0 ms) - `release`: Release time in milliseconds (0.1-100.0 ms) - `hold`: Hold time in milliseconds (0.0-500.0 ms) - `knee`: Soft knee amount (0.0-12.0 dB)\n\n# Factory Defaults - Threshold: 45.0 V RMS (high, minimal limiting) - Attack: 2.5 ms (slower than peak limiter) - Release: 5.0 ms - Hold: 0 ms - Knee: 0 dB (hard limiting)",
+      "path": "types/RmsLimiter.json",
+      "title": "RmsLimiter"
+    },
+    "RmsLimiterAttackType": {
+      "$ref": "./definitions/RmsLimiterAttackType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterAttackType.json",
+      "title": "RmsLimiterAttackType"
+    },
+    "RmsLimiterHoldType": {
+      "$ref": "./definitions/RmsLimiterHoldType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterHoldType.json",
+      "title": "RmsLimiterHoldType"
+    },
+    "RmsLimiterKneeType": {
+      "$ref": "./definitions/RmsLimiterKneeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterKneeType.json",
+      "title": "RmsLimiterKneeType"
+    },
+    "RmsLimiterPatch": {
+      "$ref": "./definitions/RmsLimiterPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterPatch.json",
+      "title": "RmsLimiterPatch"
+    },
+    "RmsLimiterReleaseType": {
+      "$ref": "./definitions/RmsLimiterReleaseType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterReleaseType.json",
+      "title": "RmsLimiterReleaseType"
+    },
+    "RmsLimiterThresholdType": {
+      "$ref": "./definitions/RmsLimiterThresholdType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/RmsLimiterThresholdType.json",
+      "title": "RmsLimiterThresholdType"
+    },
+    "Sample.Rate": {
+      "$ref": "./types/Sample.Rate.json",
+      "category": "types",
+      "description": "",
+      "path": "types/Sample.Rate.json",
+      "title": "SampleRate"
+    },
+    "SampleRate": {
+      "$ref": "./definitions/SampleRate.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/SampleRate.json",
+      "title": "SampleRate"
+    },
+    "Setup.Change": {
+      "$ref": "./changes/Setup.Change.json",
+      "category": "changes",
+      "description": "Setup modification commands received from API clients.\n\n# Overview\n\nThese commands represent **requests to modify** device configuration. Each command: - Validates parameters before application - Applies changes to internal `DeviceSetup` state - Generates a corresponding `SetupChangedType` notification on success - Maps to a JAPI path via `JapiSetupPath` (see `web::protocol::japi_path`)\n\n# Command → Notification Flow\n\n```text JSON-RPC setup_set ↓ SetupChangeType::SetSpeakerOutputUserEq { channel: 1, value: patch } ↓ Validation (channel exists? values in range?) ↓ Apply patch to DeviceSetup.audio.output.speaker[0].user.eq ↓ Generate SetupChangedType::SpeakerOutputUserEq { channel: 1, value: patch } ↓ Broadcast notification to WebSocket clients ↓ Auto-save to /data/device_setup.bin (debounced) ```\n\n# Patch vs Full Objects\n\nMost commands use **Patch types** (`*Patch`) that only contain changed fields:\n\n```json // Changing gain only - other fields are None { \"method\": \"setup_set\", \"params\": { \"change\": { \"SetSpeakerOutputUserProcessing\": { \"channel\": 1, \"value\": { \"gain\": -6.0 // mute, polarity, delay, etc. are None = unchanged } } } } } ```\n\n**Why Patches?** - Explicit about what's changing (gain only, not entire processing layer) - Bandwidth efficient (don't send 10 EQ bands when only gain changes) - Simplifies validation (only validate changed fields) - Clear intent (\"set gain\" not \"update processing layer\")\n\n**Exceptions (Full Objects):** - `SetSpeakerOutputSummingMatrix` - Small matrix, always sent in full - Channel indexing parameters (`channel`, `band`) - Always full u32 values\n\n# Command Categories\n\n## Audio Input Configuration (`/audio/input/*`) - `SetAudioInputAnalog` - Analog input channels (XLR/TRS) - `SetAudioInputDigital` - Digital input channels (AES/SPDIF) - `SetAudioInputNetwork` - Network audio channels (Dante) - `SetAudioInputConfig` - Global input routing configuration - `SetAudioGenerator` - Test signal generator settings\n\n## Speaker Output Configuration (`/audio/output/speaker/:channel/*`)\n\n### Channel-Level Settings - `SetSpeakerOutput` - Channel name, sources, mute - `SetSpeakerOutputSummingMatrix` - Input-to-output routing matrix\n\n### User Processing Layer (`/user/*`) - User-Adjustable - `SetSpeakerOutputUserProcessing` - Gain, polarity, delay, mute, HPF, generator mix - `SetSpeakerOutputUserEq` - 10-band parametric EQ - `SetSpeakerOutputUserEqBand` - Single EQ band modification\n\n### Array Processing Layer (`/array/*`) - Installer Tuning - `SetSpeakerOutputArrayProcessing` - Gain, polarity, delay - `SetSpeakerOutputArrayEq` - 5-band parametric EQ - `SetSpeakerOutputArrayEqBand` - Single EQ band modification - `SetSpeakerOutputArrayFir` - FIR filter for array tuning\n\n### Preset Processing Layer (`/preset/*`) - Factory Presets - `SetSpeakerOutputPresetProcessing` - Drive mode, gain, polarity, delay - `SetSpeakerOutputPresetCrossover` - Crossover filters (HPF + LPF) - **ONLY IN PRESET** - `SetSpeakerOutputPresetEq` - 15-band parametric EQ - `SetSpeakerOutputPresetEqBand` - Single EQ band modification - `SetSpeakerOutputPresetFir` - Factory FIR filter (may be locked) - `SetSpeakerOutputPresetPeakLimiter` - Fast transient peak limiter - `SetSpeakerOutputPresetRmsLimiter` - Thermal/long-term RMS limiter - `SetSpeakerOutputPresetClipLimiter` - Final hard-clipping protection\n\n## Digital/Network Outputs - `SetAudioDigitalOutput` - Digital output channels (AES/EBU) - `SetAudioNetworkOutput` - Network output channels (Dante) - `SetAudioOutputSpeakerWays` - Speaker way mapping (multi-way systems)\n\n## System Configuration - `SetSystemInfo` - Device metadata (name, venue, installer info) - `SetPowerManagement` - Power modes and protection - `SetGpio` - GPIO pin configuration - `SetLan1Setup` - LAN1 network configuration - `SetLan2Setup` - LAN2 network configuration - `SetNetworkSetup` - Network mode (Split/Redundant)\n\n## Preset Operations - `ApplyChannelPreset` - Apply factory preset to speaker channel - `ClearChannelPreset` - Remove preset, return to defaults\n\n# JAPI Path Mapping\n\nEach command variant maps to a JAPI path (see `web::protocol::japi_path`):\n\n| Command Variant | JAPI Path | |----------------|-----------| | `SetAudioInputAnalog` | `/audio/input/analog/:channel` | | `SetSpeakerOutputUserEq` | `/audio/output/speaker/:channel/user/eq` | | `SetSpeakerOutputUserEqBand` | `/audio/output/speaker/:channel/user/eq/bands/:band` | | `SetSpeakerOutputPresetCrossover` | `/audio/output/speaker/:channel/preset/crossover` | | `SetNetworkSetup` | `/network` |\n\n# Examples\n\n```ignore // Change input channel name SetupChangeType::SetAudioInputAnalog { channel: 1, value: InputChannelPatch { name: Some(\"Vocal Mic\".into()), ..Default::default()  // Other fields unchanged } }\n\n// Toggle EQ bypass SetupChangeType::SetSpeakerOutputUserEq { channel: 1, value: EqualizerPatch { bypass: Some(true), bands: None,  // Don't modify bands } }\n\n// Adjust single EQ band frequency and gain SetupChangeType::SetSpeakerOutputUserEqBand { channel: 2, band: 5, value: EqualizerBandPatch { frequency: Some(1000.0), gain: Some(-3.0), kind: None,     // Keep current filter type q: None,        // Keep current Q bypass: None,   // Keep current bypass state } }\n\n// Apply factory preset (generates batch of changes) SetupChangeType::ApplyChannelPreset { channel: 1, preset: ChannelPreset { metadata: ChannelPresetMetadata { name: \"Speaker Model X\".into(), vendor: \"Acme Audio\".into(), // ... }, data: ChannelPresetData { crossover: Some(Crossover { /* ... */ }), eq: Some(Equalizer { /* 15 bands */ }), // ... } } } ```\n\n# Validation\n\nAll commands are validated before application (see [`validator`] module): - Channel indices must exist (1-4 for speakers, 1-64 for network) - Band indices must be in range (1-10 user, 1-5 array, 1-15 preset) - Values must be within valid ranges (gain: -40 to +10 dB, etc.) - Enum values must be valid\n\nInvalid commands return `JapiError::InvalidChannel`, `InvalidValue`, or `InvalidPath`.\n\n# See Also\n\n- [`SetupChangedType`] - Notification sent after successful command application - [`structs`] - Internal configuration structs that commands modify - [`validator`] - Validation logic for commands - `web::protocol::japi_path` - Path templates and routing - `japi/01-api-reference.md` - External API documentation",
+      "path": "changes/Setup.Change.json",
+      "title": "SetupChangeType"
+    },
+    "Setup.Changed": {
+      "$ref": "./changes/Setup.Changed.json",
+      "category": "changes",
+      "description": "Setup change notification sent to API clients after a successful update.\n\n# Patch vs Full Object Strategy\n\nThis enum uses **patches** (partial updates) for most variants to optimize bandwidth and provide precise change semantics. Patches only contain fields that were actually modified, not the entire object state.\n\n## Why Patches?\n\n1. **Bandwidth Efficiency** - Changing an input name sends `{name: \"Vocal\"}` not entire channel config - Toggling EQ bypass sends `{bypass: true}` not all 10/5/15 bands - Critical for WebSocket notifications with multiple subscribed clients\n\n2. **Change Precision** - Client knows exactly what changed: `{gain: -3.0}` vs `{gain: -3.0, name: \"Ch1\", ...}` - Easier to display in UI: \"Gain changed to -3.0 dB\" not \"Channel updated\"\n\n3. **Performance** - Less JSON serialization overhead - Smaller WebSocket frames - Faster client-side patch application\n\n## Special Cases: Full Objects & Views\n\nSome variants use full objects or view types instead of patches:\n\n- **`SpeakerOutputSummingMatrix`**: Always full object (small, rarely changes) - **`AudioOutputSpeakerWays`**: Always full array (structural change, not patchable) - **`SpeakerOutputPresetProcessing`**: Uses `PresetProcessingValueView` to respect locked fields - **`All`**: Full device state as `DeviceSetupView` (complete sync operation) - **`Batch`**: Array of changes (atomic multi-field updates from preset apply/clear)\n\n## Preset Locking & Views\n\nPreset processing uses `PresetProcessingValueView` for scalar fields to handle vendor-locked presets. When locked, fields return `null` in the view. Sub-objects (crossover, EQ, FIR, limiters) use regular patches since they're always readable.\n\n# Type Naming Convention\n\n- Request types: `Set*` variants with `*Patch` values (e.g., `SetAudioInputAnalog`) - Response types: Plain names with `*Patch` values (e.g., `AudioInputAnalog`) - Patches: Derived via `#[derive(Patch)]` from full types\n\n# Examples\n\n```ignore // Changing input name: only name field in patch SetupChangedType::AudioInputAnalog { channel: 1, value: InputChannelPatch { name: Some(\"Vocal\".into()), ..Default::default() } }\n\n// Toggling EQ bypass: only bypass field in patch SetupChangedType::SpeakerOutputUserEq { channel: 2, value: EqualizerPatch { bypass: Some(true), bands: None } }\n\n// Changing single EQ band: only that band's fields SetupChangedType::SpeakerOutputUserEqBand { channel: 1, band: 3, value: EqualizerBandPatch { gain: Some(-2.5), ..Default::default() } }\n\n// Batch operation: multiple changes from preset apply SetupChangedType::Batch { changes: vec![ SetupChangedType::SpeakerOutputPresetCrossover { ... }, SetupChangedType::SpeakerOutputPresetEq { ... }, SetupChangedType::SpeakerOutputPresetFir { ... }, ] } ```",
+      "path": "changes/Setup.Changed.json",
+      "title": "SetupChangedType"
+    },
+    "SetupChangedType": {
+      "$ref": "./definitions/SetupChangedType.json",
+      "category": "definitions",
+      "description": "Setup change notification sent to API clients after a successful update.\n\n# Patch vs Full Object Strategy\n\nThis enum uses **patches** (partial updates) for most variants to optimize bandwidth and provide precise change semantics. Patches only contain fields that were actually modified, not the entire object state.\n\n## Why Patches?\n\n1. **Bandwidth Efficiency** - Changing an input name sends `{name: \"Vocal\"}` not entire channel config - Toggling EQ bypass sends `{bypass: true}` not all 10/5/15 bands - Critical for WebSocket notifications with multiple subscribed clients\n\n2. **Change Precision** - Client knows exactly what changed: `{gain: -3.0}` vs `{gain: -3.0, name: \"Ch1\", ...}` - Easier to display in UI: \"Gain changed to -3.0 dB\" not \"Channel updated\"\n\n3. **Performance** - Less JSON serialization overhead - Smaller WebSocket frames - Faster client-side patch application\n\n## Special Cases: Full Objects & Views\n\nSome variants use full objects or view types instead of patches:\n\n- **`SpeakerOutputSummingMatrix`**: Always full object (small, rarely changes) - **`AudioOutputSpeakerWays`**: Always full array (structural change, not patchable) - **`SpeakerOutputPresetProcessing`**: Uses `PresetProcessingValueView` to respect locked fields - **`All`**: Full device state as `DeviceSetupView` (complete sync operation) - **`Batch`**: Array of changes (atomic multi-field updates from preset apply/clear)\n\n## Preset Locking & Views\n\nPreset processing uses `PresetProcessingValueView` for scalar fields to handle vendor-locked presets. When locked, fields return `null` in the view. Sub-objects (crossover, EQ, FIR, limiters) use regular patches since they're always readable.\n\n# Type Naming Convention\n\n- Request types: `Set*` variants with `*Patch` values (e.g., `SetAudioInputAnalog`) - Response types: Plain names with `*Patch` values (e.g., `AudioInputAnalog`) - Patches: Derived via `#[derive(Patch)]` from full types\n\n# Examples\n\n```ignore // Changing input name: only name field in patch SetupChangedType::AudioInputAnalog { channel: 1, value: InputChannelPatch { name: Some(\"Vocal\".into()), ..Default::default() } }\n\n// Toggling EQ bypass: only bypass field in patch SetupChangedType::SpeakerOutputUserEq { channel: 2, value: EqualizerPatch { bypass: Some(true), bands: None } }\n\n// Changing single EQ band: only that band's fields SetupChangedType::SpeakerOutputUserEqBand { channel: 1, band: 3, value: EqualizerBandPatch { gain: Some(-2.5), ..Default::default() } }\n\n// Batch operation: multiple changes from preset apply SetupChangedType::Batch { changes: vec![ SetupChangedType::SpeakerOutputPresetCrossover { ... }, SetupChangedType::SpeakerOutputPresetEq { ... }, SetupChangedType::SpeakerOutputPresetFir { ... }, ] } ```",
+      "path": "definitions/SetupChangedType.json",
+      "title": "SetupChangedType"
+    },
+    "Speaker.Way": {
+      "$ref": "./types/Speaker.Way.json",
+      "category": "types",
+      "description": "Speaker frequency range designation for multi-way systems. Indicates which frequency band a particular output channel is responsible for.",
+      "path": "types/Speaker.Way.json",
+      "title": "SpeakerWay"
+    },
+    "SpeakerOutput.Channel": {
+      "$ref": "./types/SpeakerOutput.Channel.json",
+      "category": "types",
+      "description": "Main speaker output channel with 3-layer DSP processing chain.\n\nEach speaker channel consists of: - **User Layer**: User-adjustable parameters (10-band EQ, gain, delay, mute) - **Array Layer**: Installer tuning for multi-cabinet arrays (5-band EQ, FIR, delay) - **Preset Layer**: Factory presets with crossover and limiters (15-band EQ, may be locked)\n\nSignal flow: primary_src → User → Array → Preset → Amplifier",
+      "path": "types/SpeakerOutput.Channel.json",
+      "title": "SpeakerOutputChannel"
+    },
+    "SpeakerOutput.Channel.View": {
+      "$ref": "./views/SpeakerOutput.Channel.View.json",
+      "category": "views",
+      "description": "View version of SpeakerOutputChannel with preset locking support and 1-indexed EQ bands.\n\nConverts all processing layers to use view types with 1-indexed EQ bands. PresetProcessingView additionally handles vendor-locked presets (returns None for locked fields).",
+      "path": "views/SpeakerOutput.Channel.View.json",
+      "title": "SpeakerOutputChannelView"
+    },
+    "SpeakerOutputChannelPatch": {
+      "$ref": "./definitions/SpeakerOutputChannelPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/SpeakerOutputChannelPatch.json",
+      "title": "SpeakerOutputChannelPatch"
+    },
+    "SpeakerOutputChannelView": {
+      "$ref": "./definitions/SpeakerOutputChannelView.json",
+      "category": "definitions",
+      "description": "View version of SpeakerOutputChannel with preset locking support and 1-indexed EQ bands.\n\nConverts all processing layers to use view types with 1-indexed EQ bands. PresetProcessingView additionally handles vendor-locked presets (returns None for locked fields).",
+      "path": "definitions/SpeakerOutputChannelView.json",
+      "title": "SpeakerOutputChannelView"
+    },
+    "SpeakerWay": {
+      "$ref": "./definitions/SpeakerWay.json",
+      "category": "definitions",
+      "description": "Speaker frequency range designation for multi-way systems. Indicates which frequency band a particular output channel is responsible for.",
+      "path": "definitions/SpeakerWay.json",
+      "title": "SpeakerWay"
+    },
+    "SpeakerWay.Mapping": {
+      "$ref": "./types/SpeakerWay.Mapping.json",
+      "category": "types",
+      "description": "",
+      "path": "types/SpeakerWay.Mapping.json",
+      "title": "SpeakerWayMapping"
+    },
+    "SpeakerWayMapping": {
+      "$ref": "./definitions/SpeakerWayMapping.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/SpeakerWayMapping.json",
+      "title": "SpeakerWayMapping"
+    },
+    "StandbyTimeType": {
+      "$ref": "./definitions/StandbyTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/StandbyTimeType.json",
+      "title": "StandbyTimeType"
+    },
+    "StatusResponse": {
+      "$ref": "./types/StatusResponse.json",
+      "category": "types",
+      "description": "Generic success response for operations that return status messages\n\n# Fields * `success` - Whether the operation succeeded * `message` - Description of the operation result",
+      "path": "types/StatusResponse.json",
+      "title": "StatusResponse"
+    },
+    "SyncSource": {
+      "$ref": "./status/SyncSource.json",
+      "category": "status",
+      "description": "Audio clock synchronization source.",
+      "path": "status/SyncSource.json",
+      "title": "SyncSource"
+    },
+    "SystemSetTimeParams": {
+      "$ref": "./types/SystemSetTimeParams.json",
+      "category": "types",
+      "description": "Parameters for device_set_time\n\n# Fields * `time` - RFC3339 timestamp to set as system time",
+      "path": "types/SystemSetTimeParams.json",
+      "title": "SystemSetTimeParams"
+    },
+    "SystemTimeResponse": {
+      "$ref": "./types/SystemTimeResponse.json",
+      "category": "types",
+      "description": "Response for device_get_time\n\n# Fields * `time` - Current system time in RFC3339 format",
+      "path": "types/SystemTimeResponse.json",
+      "title": "SystemTimeResponse"
+    },
+    "User.Processing": {
+      "$ref": "./types/User.Processing.json",
+      "category": "types",
+      "description": "User processing layer - user-adjustable DSP parameters.\n\n# Processing Layer 1 of 3 First layer in 3-layer DSP chain: **User → Array → Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/user`\n\n# Purpose User-accessible controls for everyday adjustments. Remains editable even with factory preset applied (preset is in separate layer).\n\n# Structure - `mute`: Channel mute - `gain`: User gain (-144.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: User delay (0.0 to 2.0 seconds) - alignment, lip sync - `hpf`: High-pass filter type (Off, 6dB, 12dB slopes) - `hpf_freq`: HPF corner frequency (10.0-22000.0 Hz) - `generator_mix`: Test signal mix mode (Off, Replace, Mix) - `eq`: 10-band parametric equalizer\n\n# EQ Configuration User EQ has 10 fully parametric bands (vs 5 in array, 15 in preset). Bands updated individually via `SetSpeakerOutputUserEqBand`.",
+      "path": "types/User.Processing.json",
+      "title": "UserProcessing"
+    },
+    "UserDelayTimeType": {
+      "$ref": "./definitions/UserDelayTimeType.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/UserDelayTimeType.json",
+      "title": "UserDelayTimeType"
+    },
+    "UserProcessing": {
+      "$ref": "./definitions/UserProcessing.json",
+      "category": "definitions",
+      "description": "User processing layer - user-adjustable DSP parameters.\n\n# Processing Layer 1 of 3 First layer in 3-layer DSP chain: **User → Array → Preset**\n\n# Internal Type Part of `SpeakerOutputChannel`. Path: `/audio/output/speaker/1/user`\n\n# Purpose User-accessible controls for everyday adjustments. Remains editable even with factory preset applied (preset is in separate layer).\n\n# Structure - `mute`: Channel mute - `gain`: User gain (-144.0 to +15.0 dB) - `polarity`: Signal polarity (+1 or -1) - `delay`: User delay (0.0 to 2.0 seconds) - alignment, lip sync - `hpf`: High-pass filter type (Off, 6dB, 12dB slopes) - `hpf_freq`: HPF corner frequency (10.0-22000.0 Hz) - `generator_mix`: Test signal mix mode (Off, Replace, Mix) - `eq`: 10-band parametric equalizer\n\n# EQ Configuration User EQ has 10 fully parametric bands (vs 5 in array, 15 in preset). Bands updated individually via `SetSpeakerOutputUserEqBand`.",
+      "path": "definitions/UserProcessing.json",
+      "title": "UserProcessing"
+    },
+    "UserProcessingGain": {
+      "$ref": "./definitions/UserProcessingGain.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/UserProcessingGain.json",
+      "title": "UserProcessingGain"
+    },
+    "UserProcessingPatch": {
+      "$ref": "./definitions/UserProcessingPatch.json",
+      "category": "definitions",
+      "description": "",
+      "path": "definitions/UserProcessingPatch.json",
+      "title": "UserProcessingPatch"
+    },
+    "UserProcessingView": {
+      "$ref": "./definitions/UserProcessingView.json",
+      "category": "definitions",
+      "description": "View version of UserProcessing with 1-indexed EQ bands\n\n# User Processing Layer User-adjustable processing with 10-band parametric EQ. This layer is always accessible (no locking) and provides end-user controls.",
+      "path": "definitions/UserProcessingView.json",
+      "title": "UserProcessingView"
+    },
+    "VendorId": {
+      "$ref": "./definitions/VendorId.json",
+      "category": "definitions",
+      "description": "Vendor identifier (internal use only)",
+      "path": "definitions/VendorId.json",
+      "title": "VendorId"
+    }
+  },
+  "title": "PX API Schema Catalog",
+  "version": "1.0.0"
+}

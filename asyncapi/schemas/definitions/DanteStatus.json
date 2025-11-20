@@ -1,0 +1,34 @@
+{
+  "description": "Dante network status.",
+  "type": "object",
+  "required": [
+    "connected"
+  ],
+  "properties": {
+    "connected": {
+      "description": "Dante connected to network",
+      "type": "boolean"
+    },
+    "device_name": {
+      "description": "Device name on Dante network",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "network_name": {
+      "description": "Dante network name",
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "sample_rate": {
+      "description": "Current Dante sample rate",
+      "type": [
+        "string",
+        "null"
+      ]
+    }
+  }
+}

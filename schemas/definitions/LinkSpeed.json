@@ -1,0 +1,33 @@
+{
+  "description": "Network link speed.",
+  "oneOf": [
+    {
+      "description": "10 Mbps",
+      "type": "string",
+      "enum": [
+        "Speed10"
+      ]
+    },
+    {
+      "description": "100 Mbps",
+      "type": "string",
+      "enum": [
+        "Speed100"
+      ]
+    },
+    {
+      "description": "1000 Mbps (1 Gbps)",
+      "type": "string",
+      "enum": [
+        "Speed1000"
+      ]
+    },
+    {
+      "description": "Link down",
+      "type": "string",
+      "enum": [
+        "Down"
+      ]
+    }
+  ]
+}

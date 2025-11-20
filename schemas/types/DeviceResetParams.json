@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for device_reset\n\n# Fields * `preserve_network` - If true, keeps network settings during reset (default: false)",
+  "properties": {
+    "preserve_network": {
+      "description": "Preserve network configuration during reset",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "DeviceResetParams",
+  "type": "object"
+}

@@ -1,0 +1,23 @@
+{
+  "type": "object",
+  "required": [
+    "id",
+    "way"
+  ],
+  "properties": {
+    "id": {
+      "description": "Physical speaker number this channel drives (1-based)",
+      "type": "integer",
+      "format": "uint32",
+      "minimum": 0.0
+    },
+    "way": {
+      "description": "Frequency range/role this channel serves",
+      "allOf": [
+        {
+          "$ref": "./SpeakerWay.json"
+        }
+      ]
+    }
+  }
+}

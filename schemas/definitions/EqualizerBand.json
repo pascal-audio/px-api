@@ -1,0 +1,49 @@
+{
+  "description": "Single parametric EQ band with configurable filter type, gain, frequency, and Q.\n\n# Internal Type This is the internal representation. API consumers should use the JSON-RPC methods to interact with EQ bands via paths like `/audio/output/speaker/1/user/eq/bands/3`.\n\n# Filter Types Supports 9 filter types: Parametric, LowPass6/12, HighPass6/12, LowShelf, HighShelf, AllPass, BandPass\n\n# Structure - `kind`: Filter type (parametric, shelf, pass, etc.) - `gain`: Filter gain in dB (-20.0 to +20.0) - `frequency`: Center/corner frequency in Hz (20.0 to 20000.0) - `q`: Filter Q factor (0.1 to 20.0) - bandwidth control - `bypass`: Individual band bypass\n\n# Patch Type `EqualizerBandPatch` is auto-generated via `#[derive(Patch)]` for partial updates. Used in API responses to indicate which fields changed.",
+  "type": "object",
+  "required": [
+    "bypass",
+    "frequency",
+    "gain",
+    "kind",
+    "q"
+  ],
+  "properties": {
+    "bypass": {
+      "description": "Individual band bypass (true = band disabled)",
+      "type": "boolean"
+    },
+    "frequency": {
+      "description": "Center or corner frequency in Hz (range: 20.0 to 20000.0)",
+      "allOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        }
+      ]
+    },
+    "gain": {
+      "description": "Filter gain in dB (range: -20.0 to +20.0)",
+      "allOf": [
+        {
+          "$ref": "./FilterGainType.json"
+        }
+      ]
+    },
+    "kind": {
+      "description": "Filter type: Parametric, LowPass6/12, HighPass6/12, LowShelf, HighShelf, AllPass, BandPass",
+      "allOf": [
+        {
+          "$ref": "./EqualizerType.json"
+        }
+      ]
+    },
+    "q": {
+      "description": "Filter Q factor (bandwidth control, range: 0.1 to 20.0). Lower Q = wider bandwidth.",
+      "allOf": [
+        {
+          "$ref": "./FilterQType.json"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Power management and protection settings.\n\nControls amplifier power behavior, automatic standby, and thermal protection.",
+  "properties": {
+    "fuse_protection": {
+      "allOf": [
+        {
+          "$ref": "../definitions/FuseProtectionMode.json"
+        }
+      ],
+      "default": "off",
+      "description": "Fuse protection mode (Off, Protect, Auto)"
+    },
+    "mute_time": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/MuteTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Mute timeout in seconds (range: 60-14400, None=disabled)"
+    },
+    "power_on": {
+      "allOf": [
+        {
+          "$ref": "../definitions/PowerOnMode.json"
+        }
+      ],
+      "description": "Power-on behavior (Audio, AlwaysOn, Mains, LastState)"
+    },
+    "standby_time": {
+      "anyOf": [
+        {
+          "$ref": "../definitions/StandbyTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "description": "Standby timeout in seconds (range: 60-14400, None=disabled)"
+    }
+  },
+  "required": [
+    "power_on"
+  ],
+  "title": "PowerManagement",
+  "type": "object"
+}

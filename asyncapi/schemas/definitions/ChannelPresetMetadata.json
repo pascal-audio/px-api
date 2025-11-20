@@ -1,0 +1,52 @@
+{
+  "description": "Metadata for a speaker preset This is stored unencrypted for easy identification without decryption",
+  "type": "object",
+  "required": [
+    "created_date",
+    "id",
+    "name",
+    "sample_rate",
+    "version"
+  ],
+  "properties": {
+    "created_date": {
+      "description": "ISO 8601 timestamp of creation (RFC3339 format)",
+      "allOf": [
+        {
+          "$ref": "./Rfc3339Date.json"
+        }
+      ]
+    },
+    "id": {
+      "description": "Unique preset identifier (UUID v4 or v7)",
+      "type": "string",
+      "format": "uuid"
+    },
+    "name": {
+      "description": "Human-readable preset name (e.g., \"Dynaudio Core 7 RevB\" or \"KRK Rokit 5 G4\")",
+      "type": "string"
+    },
+    "sample_rate": {
+      "description": "Vector of supported sample rates (48kHz or 96kHz)",
+      "type": "array",
+      "items": {
+        "$ref": "./SampleRate.json"
+      }
+    },
+    "vendor_lock": {
+      "description": "Vendor lock - prevents preset from being used with different vendor hardware",
+      "anyOf": [
+        {
+          "$ref": "./VendorId.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "version": {
+      "description": "Version of the preset definition (e.g., \"1.2.0\")",
+      "type": "string"
+    }
+  }
+}

@@ -1,0 +1,25 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Response for device_reset\n\n# Fields * `success` - Whether reset was initiated * `message` - Status message * `preserve_network` - Whether network settings were preserved",
+  "properties": {
+    "message": {
+      "description": "Status message",
+      "type": "string"
+    },
+    "preserve_network": {
+      "description": "Network preservation flag",
+      "type": "boolean"
+    },
+    "success": {
+      "description": "Reset initiation status",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "message",
+    "preserve_network",
+    "success"
+  ],
+  "title": "DeviceResetResponse",
+  "type": "object"
+}

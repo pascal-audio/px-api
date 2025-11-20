@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for creating a preset from current channel configuration\n\n# Fields * `channel` - Speaker channel index (1-4) to capture configuration from * `name` - Human-readable preset name * `version` - Version string for the preset (e.g., \"1.0\") * `created_date` - Creation date in RFC3339 format (e.g., \"2024-01-15T10:30:00Z\") * `vendor_lock` - If true, encrypts the preset for vendor-only use",
+  "properties": {
+    "channel": {
+      "description": "Speaker channel index (1-4)",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": "integer"
+    },
+    "created_date": {
+      "allOf": [
+        {
+          "$ref": "../definitions/Rfc3339Date.json"
+        }
+      ],
+      "description": "Creation date in RFC3339 format"
+    },
+    "name": {
+      "description": "Preset name (e.g., \"Stadium Mode\")",
+      "type": "string"
+    },
+    "vendor_lock": {
+      "default": false,
+      "description": "Encrypt preset with vendor key (prevents user modification)",
+      "type": "boolean"
+    },
+    "version": {
+      "description": "Version string (e.g., \"1.0\", \"2.3.1\")",
+      "type": "string"
+    }
+  },
+  "required": [
+    "channel",
+    "created_date",
+    "name",
+    "version"
+  ],
+  "title": "PresetCreateParams",
+  "type": "object"
+}

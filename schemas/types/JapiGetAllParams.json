@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for getting all setup configuration.\n\nUsed by `setup_get_all` to retrieve the entire device configuration.\n\n# Fields * `flatten` - If true, returns flattened structure with dot-notation paths as keys\n\n# Example - Hierarchical structure ```json { \"flatten\": false } ```\n\n# Example - Flattened structure ```json { \"flatten\": true } ``` Returns: `{\"audio.output.speaker.1\": { \"gain\": -3.0, ...}}`",
+  "properties": {
+    "flatten": {
+      "description": "If true, flatten nested structure into dot-notation paths",
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "title": "JapiGetAllParams",
+  "type": "object"
+}

@@ -1,0 +1,40 @@
+{
+  "description": "Input channel configuration (analog, digital, or network).\n\n# Internal Type Used for all input types: analog, digital (AES/EBU), and network (Dante). Paths: - `/audio/input/analog/1` - `/audio/input/digital/1` - `/audio/input/network/1`\n\n# Structure - `name`: User-defined channel name (max 31 characters) - `gain`: Input gain adjustment (-12.0 to +12.0 dB) - `delay`: Input delay (0.0 to 1000.0 ms) - `mute`: Channel mute state\n\n# Usage Input channels are simple - just gain/delay/mute. No processing (EQ/FIR). Processing happens in speaker output layers (user/array/preset).",
+  "type": "object",
+  "required": [
+    "delay",
+    "gain",
+    "mute",
+    "name"
+  ],
+  "properties": {
+    "delay": {
+      "description": "Input delay in milliseconds (range: 0.0 to 1000.0)",
+      "allOf": [
+        {
+          "$ref": "./InputDelayTimeType.json"
+        }
+      ]
+    },
+    "gain": {
+      "description": "Input gain in dB (range: -12.0 to +12.0)",
+      "allOf": [
+        {
+          "$ref": "./InputGainType.json"
+        }
+      ]
+    },
+    "mute": {
+      "description": "Channel mute state",
+      "type": "boolean"
+    },
+    "name": {
+      "description": "User-defined channel name (max 31 characters)",
+      "allOf": [
+        {
+          "$ref": "./NameType.json"
+        }
+      ]
+    }
+  }
+}

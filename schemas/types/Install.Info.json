@@ -1,0 +1,109 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "System metadata and installation information.\n\nUser-editable text fields for tracking device deployment details. All fields are optional strings with length limits.",
+  "properties": {
+    "asset_tag": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Asset tag or inventory number (max 31 chars)"
+    },
+    "contact_info": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Contact information (phone/email, max 31 chars)"
+    },
+    "custom1": {
+      "allOf": [
+        {
+          "$ref": "../definitions/CustomFieldType.json"
+        }
+      ],
+      "description": "Custom field 1 (user-defined, max 127 chars)"
+    },
+    "custom2": {
+      "allOf": [
+        {
+          "$ref": "../definitions/CustomFieldType.json"
+        }
+      ],
+      "description": "Custom field 2 (user-defined, max 127 chars)"
+    },
+    "custom3": {
+      "allOf": [
+        {
+          "$ref": "../definitions/CustomFieldType.json"
+        }
+      ],
+      "description": "Custom field 3 (user-defined, max 127 chars)"
+    },
+    "customer_name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Customer or client name (max 31 chars)"
+    },
+    "device_name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Device name for identification in network (max 31 chars)"
+    },
+    "install_date": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Installation date (free-form text, max 31 chars)"
+    },
+    "install_notes": {
+      "allOf": [
+        {
+          "$ref": "../definitions/InstallNotesType.json"
+        }
+      ],
+      "description": "Installation notes or comments (max 1023 chars)"
+    },
+    "installer_name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Installer or technician name (max 31 chars)"
+    },
+    "venue_name": {
+      "allOf": [
+        {
+          "$ref": "../definitions/NameType.json"
+        }
+      ],
+      "description": "Venue or location name (max 31 chars)"
+    }
+  },
+  "required": [
+    "asset_tag",
+    "contact_info",
+    "custom1",
+    "custom2",
+    "custom3",
+    "customer_name",
+    "device_name",
+    "install_date",
+    "install_notes",
+    "installer_name",
+    "venue_name"
+  ],
+  "title": "InstallInfo",
+  "type": "object"
+}

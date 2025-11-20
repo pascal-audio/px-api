@@ -1,0 +1,49 @@
+{
+  "description": "Network interface configuration for one LAN port.\n\nSupports DHCP or static IP configuration with DNS settings.",
+  "type": "object",
+  "required": [
+    "dns1",
+    "gateway",
+    "ip_address",
+    "netmask",
+    "network_mode"
+  ],
+  "properties": {
+    "dns1": {
+      "description": "Primary DNS server address",
+      "type": "string",
+      "format": "ipv4"
+    },
+    "dns2": {
+      "description": "Secondary DNS server address (optional)",
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "gateway": {
+      "description": "Default gateway address (used when network_mode=Static)",
+      "type": "string",
+      "format": "ipv4"
+    },
+    "ip_address": {
+      "description": "Static IP address (used when network_mode=Static)",
+      "type": "string",
+      "format": "ipv4"
+    },
+    "netmask": {
+      "description": "Subnet mask (used when network_mode=Static)",
+      "type": "string",
+      "format": "ipv4"
+    },
+    "network_mode": {
+      "description": "Network configuration mode (Dhcp or Static)",
+      "allOf": [
+        {
+          "$ref": "./NetworkConfigType.json"
+        }
+      ]
+    }
+  }
+}

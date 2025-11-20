@@ -1,0 +1,12 @@
+{
+  "type": "object",
+  "properties": {
+    "bypass": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "additionalProperties": false
+}

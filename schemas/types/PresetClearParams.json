@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Parameters for clearing a channel preset\n\nRemoves the applied preset and restores factory default processing configuration\n\n# Fields * `channel` - Speaker channel index (1-4)",
+  "properties": {
+    "channel": {
+      "description": "Speaker channel index (1-4)",
+      "format": "uint32",
+      "minimum": 0.0,
+      "type": "integer"
+    }
+  },
+  "required": [
+    "channel"
+  ],
+  "title": "PresetClearParams",
+  "type": "object"
+}

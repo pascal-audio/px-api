@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Empty parameter type for methods that take no parameters.\n\nUsed by methods like `api_ping`, `api_version` that don't require any input data.\n\n# Example ```json {} ```",
+  "title": "JapiEmptyParams",
+  "type": "object"
+}

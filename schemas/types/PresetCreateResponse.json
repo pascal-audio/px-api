@@ -1,0 +1,33 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "description": "Response from preset_create operation\n\nContains the created preset data along with its metadata. The preset can be in JSON format (plain object) or binary format (base64-encoded encrypted or unencrypted CBOR).",
+  "properties": {
+    "metadata": {
+      "allOf": [
+        {
+          "$ref": "../definitions/ChannelPresetMetadata.json"
+        }
+      ],
+      "description": "Preset metadata"
+    },
+    "preset": {
+      "description": "The preset data (JSON object or base64 string)"
+    },
+    "preset_type": {
+      "description": "Preset format: \"json\" or \"binary\"",
+      "type": "string"
+    },
+    "success": {
+      "description": "Operation success indicator",
+      "type": "boolean"
+    }
+  },
+  "required": [
+    "metadata",
+    "preset",
+    "preset_type",
+    "success"
+  ],
+  "title": "PresetCreateResponse",
+  "type": "object"
+}

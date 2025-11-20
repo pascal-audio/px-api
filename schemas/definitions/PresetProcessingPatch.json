@@ -1,0 +1,46 @@
+{
+  "type": "object",
+  "properties": {
+    "delay": {
+      "anyOf": [
+        {
+          "$ref": "./PresetDelayTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "drive": {
+      "anyOf": [
+        {
+          "$ref": "./OutputDriveType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./GainTrimType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "polarity": {
+      "anyOf": [
+        {
+          "$ref": "./PolarityType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

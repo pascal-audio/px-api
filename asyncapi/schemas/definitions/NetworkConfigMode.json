@@ -1,0 +1,19 @@
+{
+  "description": "Network configuration mode.",
+  "oneOf": [
+    {
+      "description": "DHCP automatic configuration",
+      "type": "string",
+      "enum": [
+        "dhcp"
+      ]
+    },
+    {
+      "description": "Static IP configuration",
+      "type": "string",
+      "enum": [
+        "static"
+      ]
+    }
+  ]
+}

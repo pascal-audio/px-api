@@ -1,0 +1,51 @@
+{
+  "type": "object",
+  "properties": {
+    "dns1": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "dns2": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "gateway": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "ip_address": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "netmask": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "format": "ipv4"
+    },
+    "network_mode": {
+      "anyOf": [
+        {
+          "$ref": "./NetworkConfigType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

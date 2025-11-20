@@ -1,0 +1,26 @@
+{
+  "description": "Audio processing operational status.\n\nContains DSP operational state (sample rate, sync source). Per-channel metrics (signal levels, clipping, mute state) are available via the metrics subscription system, not status domain.",
+  "type": "object",
+  "required": [
+    "sample_rate",
+    "sync_source"
+  ],
+  "properties": {
+    "sample_rate": {
+      "description": "Current DSP sample rate",
+      "allOf": [
+        {
+          "$ref": "./SampleRate.json"
+        }
+      ]
+    },
+    "sync_source": {
+      "description": "Audio clock synchronization source",
+      "allOf": [
+        {
+          "$ref": "./SyncSource.json"
+        }
+      ]
+    }
+  }
+}

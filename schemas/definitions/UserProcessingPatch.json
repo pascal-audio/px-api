@@ -1,0 +1,72 @@
+{
+  "type": "object",
+  "properties": {
+    "delay": {
+      "anyOf": [
+        {
+          "$ref": "./UserDelayTimeType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "gain": {
+      "anyOf": [
+        {
+          "$ref": "./UserProcessingGain.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "generator_mix": {
+      "anyOf": [
+        {
+          "$ref": "./GeneratorMixMode.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hpf": {
+      "anyOf": [
+        {
+          "$ref": "./HighpassType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "hpf_freq": {
+      "anyOf": [
+        {
+          "$ref": "./FilterFrequencyType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "mute": {
+      "type": [
+        "boolean",
+        "null"
+      ]
+    },
+    "polarity": {
+      "anyOf": [
+        {
+          "$ref": "./PolarityType.json"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    }
+  },
+  "additionalProperties": false
+}

@@ -1,0 +1,8 @@
+{
+  "id": 1,
+  "jsonrpc": "2.0",
+  "result": {
+    "message": "System time set to 2025-11-12T15:51:13.658128+00:00",
+    "success": true
+  }
+}
